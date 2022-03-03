@@ -12,5 +12,10 @@
     width: 666px;
     height: 666px;
     margin-top: 20px;
+    float: left;
 
+}
+
+#club-info-div {
+    text-align: center;
 }
