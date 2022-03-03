@@ -1,0 +1,16 @@
+#guest-view {
+    text-align: center;
+    position: center;
+    /*width: 50%;*/
+}
+
+#guest-h1 {
+    font-size: 3.5em;
+}
+
+#logo-guest-view {
+    width: 666px;
+    height: 666px;
+    margin-top: 20px;
+
+}
