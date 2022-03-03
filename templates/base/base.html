@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CR la Unió Viladecans</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+</head>
+<body>
+<header>
+    <!-- Navigation -->
+    <nav class="nav">
+        <img id="logo-nav" src="{% static 'images/club_photos/launio_logo.jpg' %}" alt="headphones">
+        <a href="{% url 'show index' %}">Home</a>
+        <ul>
+            <li><a href="">Register</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">About us</a></li>
+        </ul>
+    </nav>
+</header>
+{% block dynamic_content %}
+{% endblock %}
+
+<footer>
+    <div>
+        &copy;Pako™ 2022. All rights reserved.
+    </div>
+</footer>
+</body>
+
+
+</html>
