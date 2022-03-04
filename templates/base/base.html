@@ -8,21 +8,30 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
 </head>
 <body>
-<header>
-    <!-- Navigation -->
-    <nav class="nav">
-        <img id="logo-nav" src="{% static 'images/club_photos/launio_logo.jpg' %}" alt="headphones">
-        <a href="{% url 'show index' %}">Inicio</a>
 
-        <ul>
-             <li><a href="">Gimnastas</a></li>
-             <li><a href="">Entrenadoras</a></li>
-            <li><a href="">Registrarte</a></li>
-            <li><a href="">Iniciar sesión</a></li>
-            <li></li>
-        </ul>
-    </nav>
-</header>
+<header class="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="logo">
+               <a href=""><img id="logo-bar" src="{% static 'images/club_photos/launio_logo.jpg' %}" alt="headphones"></a>
+            </div>
+            <button type="button" class="nav-toggler">
+               <span></span>
+            </button>
+            <nav class="nav">
+               <ul>
+                  <li><a href="#" class="active">Inicio</a></li>
+                  <li><a href="#">about</a></li>
+                  <li><a href="#">Gimnastas</a></li>
+                  <li><a href="#">Entrenadoras</a></li>
+                  <li><a href="#">Registrarte</a></li>
+                  <li><a href="#">Iniciar sesión</a></li>
+               </ul>
+            </nav>
+        </div>
+    </div>
+ </header>
+<script src="{% static 'js/script.js' %}"></script>
 {% block dynamic_content %}
 {% endblock %}
 
