@@ -1,8 +1,3 @@
-#guest-view {
-    width: 100%;
-    height: 100%;
-}
-
 #guest-h1 {
     font-size: 3.5em;
 }
@@ -12,24 +7,24 @@
     height: 25%;
     margin-top: 20px;
     margin-left: 5%;
+    margin-right: 5%;
     float: left;
 }
 
 .club-info-div {
     width: -moz-fit-content;
     width: fit-content;
+}
+.club-info-div p {
     padding: 5px;
-    margin-bottom: 1.5em;
-    margin-top: 1.5em;
 }
 
 .buttons-index-no-user {
-    margin: 0;
     position: absolute;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .buttons-index-no-user button {
@@ -43,6 +38,9 @@
     font-size: 16px;
 }
 
-.container-club-info-div {
-    margin-top: 1%;
+
+.container-guest-page {
+    position: absolute;
+    width: 100%;
+    padding: 5%;
 }
