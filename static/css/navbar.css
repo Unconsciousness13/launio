@@ -1,68 +1,9 @@
 #logo-bar {
-    height: 58px;
-    width: 58px;
+    height: 60px;
+    width: 60px;
+    position: relative;
+    margin-bottom: -10px;
 }
-
-/*nav {*/
-/*    background-color: black;*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    font-size: 16px;*/
-/*    justify-content: space-around;*/
-/*    align-items: center;*/
-/*    margin: 0;*/
-/*    color: white;*/
-
-
-/*}*/
-
-/*nav a {*/
-/*    text-decoration: none;*/
-/*    color: greenyellow;*/
-/*    font-size: 16px;*/
-/*    font-weight: bolder;*/
-/*    position: relative;*/
-/*    margin: 10px;*/
-/*}*/
-
-/*nav ul {*/
-/*    margin: 0 0 0 auto;*/
-/*}*/
-
-/*nav ul li {*/
-/*    display: inline;*/
-/*    margin: 0 1px;*/
-/*}*/
-
-/*li::before {*/
-/*    display: inline;*/
-/*}*/
-
-/*nav a {*/
-/*    text-decoration: none;*/
-/*    padding: 0.1em;*/
-/*    color: white;*/
-
-/*}*/
-
-
-/*nav > img {*/
-/*    width: 50px;*/
-/*    height: 50px;*/
-/*    margin-left: 0.1em;*/
-/*    margin-right: 0.1em;*/
-/*}*/
-
-/*#logo-big {*/
-/*    border-color: deeppink;*/
-/*}*/
-
-/*nav a:hover {*/
-/*    padding: 0.1em;*/
-/*    color: deeppink;*/
-/*}*/
-
-
 :root {
     --color-1: black;
 }
@@ -132,13 +73,16 @@ a {
     font-size: 16px;
     text-transform: capitalize;
     color: #ffffff;
-    padding: 10px 0;
+    /*padding: 10px 0;*/
     transition: all 0.5s ease;
 }
 
 .header .nav ul li a.active,
 .header .nav ul li a:hover {
     color: deeppink;
+    border-bottom: deeppink;
+    border-width: 1px;
+    border-bottom-style: inset;
 }
 
 .nav-toggler {
