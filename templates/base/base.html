@@ -7,7 +7,6 @@
     <title>CR la Unió Viladecans</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
     <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 
 </head>
 <body>
@@ -27,9 +26,16 @@
                     <li><a href="#" class="active">Inicio</a></li>
                     <li><a href="#">Gimnastas</a></li>
                     <li><a href="#">Entrenadoras</a></li>
-                    <li><a href="#">Competiciones</a></li>
-                    <li><a href="#">Registrarte</a></li>
-                    <li><a href="#">Iniciar sesión</a></li>
+                    <li><a href="#">Directiva</a></li>
+                    {% if Profile %}
+                        <li><a href="#">Competiciones</a></li>
+                        <li><a href="#">Notas</a></li>
+                        <li><a href="#">Prefil</a></li>
+                        <li><a href="#">Cerrar la sesión</a></li>
+                    {% else %}
+                        <li><a href="#">Registrarte</a></li>
+                        <li><a href="#">Iniciar sesión</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

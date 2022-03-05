@@ -27,7 +27,7 @@ a {
 }
 
 .container {
-    max-width: 80%;
+    max-width: 88%;
     margin: auto;
 }
 
@@ -64,12 +64,12 @@ a {
 
 .header .nav ul li {
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .header .nav ul li a {
     display: block;
-    font-size: 16px;
+    font-size: 18px;
     text-transform: capitalize;
     color: #ffffff;
     /*padding: 10px 0;*/

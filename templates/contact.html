@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+
+    <!-- CONTACT FORM -->
+    <div class="contact">
+        <form id="contact-form">
+            <p>
+                <label>Nombre</label>
+                <input type="text" name="name" id="name" required>
+            </p>
+
+            <p>
+                <label>Apellido</label>
+                <input type="text" name="apellido" id="apellido">
+            </p>
+
+            <p>
+                <label>E-mail</label>
+                <input type="email" name="email" id="email" required>
+            </p>
+
+            <p>
+                <label>Número de teléfono</label>
+                <input type="text" name="phone" id="phone">
+            </p>
+
+            <p class="full">
+                <label>Mensaje</label>
+                <textarea name="message" rows="5" id="message"></textarea>
+            </p>
+
+            <p class="full">
+                <button type="submit">Enviar</button>
+            </p>
+
+        </form>
+    </div>
+
+
+{% endblock %}

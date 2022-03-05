@@ -6,7 +6,7 @@
     width: 25%;
     height: 25%;
     margin-top: 20px;
-    margin-left: 5%;
+    margin-left: 3%;
     margin-right: 5%;
     float: left;
 }
@@ -16,7 +16,7 @@
     width: fit-content;
 }
 .club-info-div p {
-    padding: 5px;
+    padding: 15px;
 }
 
 .buttons-index-no-user {
@@ -24,7 +24,7 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .buttons-index-no-user button {
