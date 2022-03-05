@@ -21,3 +21,7 @@ def show_index(request):
     # }
     # return render(request, 'home-as-guest.html', context)
     return render(request, 'home-as-guest.html')
+
+
+def show_contact(request):
+    return render(request, 'contact.html')
