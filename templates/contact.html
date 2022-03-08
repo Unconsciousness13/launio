@@ -2,41 +2,73 @@
 {% load static %}
 {% block dynamic_content %}
 
-    <!-- CONTACT FORM -->
-    <div class="contact">
-        <h1>Contacta con nosotros</h1>
-        <form id="contact-form">
-            <p>
-                <label>Nombre</label>
-                <input type="text" name="name" id="name" required>
-            </p>
 
-            <p>
-                <label>Apellido</label>
-                <input type="text" name="apellido" id="apellido">
-            </p>
+    <div class="contact-form">
 
-            <p>
-                <label>E-mail</label>
-                <input type="email" name="email" id="email" required>
-            </p>
+        <h1 class="brand"><span>Contacta con nosotros</span></h1>
 
-            <p>
-                <label>Número de teléfono</label>
-                <input type="text" name="phone" id="phone">
-            </p>
+        <div class="wrapper">
 
-            <p class="full">
-                <label>Mensaje</label>
-                <textarea name="message" rows="5" id="message"></textarea>
-            </p>
+            <!-- COMPANY INFORMATION -->
+            <div class="company-info">
+                <h3>Rítmica la Unió Viladecans</h3>
 
-            <p class="full">
-                <button type="submit">Enviar</button>
-            </p>
+                <ul>
+                    <li><i class="fa fa-road"></i> C/Pompeu Fabra, 5
 
-        </form>
-    </div>
+                        08840 Viladecans
+                    </li>
+                    <li><i class="fa fa-phone"></i>+34 636 685 673</li>
+                    <li><i class="fa fa-envelope"></i>c.ritmicaunioviladecans@gmail.com</li>
+                </ul>
+                <ul class="ul-social-icons">
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/instagram.png' %}"
+                            alt="instagram"/></a>
+                    </li>
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/facebook.png' %}" alt="facebook"/></a>
+                    </li>
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/youtube.png' %}" alt="youtube"/></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- CONTACT FORM -->
+            <div class="contact">
+               
+                <form id="contact-form">
+                    <p>
+                        <label>Nombre</label>
+                        <input type="text" name="name" id="name" required>
+                    </p>
+
+                    <p>
+                        <label>Apellido</label>
+                        <input type="text" name="apellido" id="apellido">
+                    </p>
+
+                    <p>
+                        <label>E-mail</label>
+                        <input type="email" name="email" id="email" required>
+                    </p>
+
+                    <p>
+                        <label>Número de teléfono</label>
+                        <input type="text" name="phone" id="phone">
+                    </p>
+
+                    <p class="full">
+                        <label>Mensaje</label>
+                        <textarea name="message" rows="5" id="message"></textarea>
+                    </p>
+
+                    <p class="full">
+                        <button type="submit">Enviar</button>
+                    </p>
+
+                </form>
+            </div>
 
 
 {% endblock %}
