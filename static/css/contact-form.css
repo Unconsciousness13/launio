@@ -85,18 +85,24 @@ ul {
 .contact form textarea {
     resize: none;
 }
-
-.contact form button {
+.buttons-index-no-user {
+    width: auto;
+    left: 50%;
+    margin-bottom: 5%
+}
+.buttons-index-no-user a {
     background: deeppink;
     border: 0;
     color: #e4e4e4;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
+    width: 100px;
+    height: 6%;
 }
 
-.contact form button:hover,
-.contact form button:focus {
+.buttons-index-no-user a:hover,
+.buttons-index-no-user a:focus {
     background: purple;
     color: #ffffff;
     outline: 0;

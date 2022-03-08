@@ -15,7 +15,8 @@
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="logo">
-                <a href="{% url 'show index' %}"><img id="logo-bar" src="{% static 'images/club_photos/Logo.png' %}" alt="logo"></a>
+                <a href="{% url 'show index' %}"><img id="logo-bar" src="{% static 'images/club_photos/Logo.png' %}"
+                                                      alt="logo"></a>
             </div>
 
             <button type="button" class="nav-toggler">
@@ -23,10 +24,11 @@
             </button>
             <nav class="nav">
                 <ul>
-                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="{% url 'show index' %}" class="active">Inicio</a></li>
                     <li><a href="#">Gimnastas</a></li>
                     <li><a href="#">Entrenadoras</a></li>
                     <li><a href="#">Directiva</a></li>
+                    <li><a href="{% url 'show contact' %}">Contacto</a></li>
                     {% if Profile %}
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>

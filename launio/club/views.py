@@ -25,3 +25,11 @@ def show_index(request):
 
 def show_contact(request):
     return render(request, 'contact.html')
+
+
+def register_user(request):
+    return render(request, 'register.html')
+
+
+def login_user(request):
+    return render(request, 'login.html')
