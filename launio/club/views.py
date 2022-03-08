@@ -45,3 +45,6 @@ def register_user(request):
 
 def login_user(request):
     return render(request, 'login.html')
+
+
+# def contact_page(request):

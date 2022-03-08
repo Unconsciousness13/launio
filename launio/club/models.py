@@ -15,10 +15,10 @@ LAST_NAME = models.CharField(max_length=MAX_LAST_NAME_LENGTH, validators=(
 ))
 
 AGE = models.IntegerField(
-        validators=(
-            MinValueValidator(0),
-        )
+    validators=(
+        MinValueValidator(0),
     )
+)
 
 
 class Profile(models.Model):
@@ -74,3 +74,11 @@ class Staff(models.Model):
     age = AGE
     photo = models.URLField()
     description = models.TextField()
+
+
+class Contact(models.Model):
+    first_name = FIRST_NAME
+    last_name = LAST_NAME
+    email = models.EmailField()
+    phone = models.IntegerField()
+    message = models.TextField()
