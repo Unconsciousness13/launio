@@ -24,3 +24,39 @@ class Profile(models.Model):
             MinValueValidator(0),
         )
     )
+
+
+class Gymnast(models.Model):
+    first_name = models.CharField(20)
+    last_name = models.CharField(20)
+    category = models.CharField(20)
+    age = models.IntegerField(validators=MinValueValidator(0))
+    photo = models.URLField()
+    description = models.TextField()
+
+
+class Trainers(models.Model):
+    first_name = models.CharField(20)
+    last_name = models.CharField(20)
+    category = models.CharField(20)
+    age = models.IntegerField(validators=MinValueValidator(0))
+    photo = models.URLField()
+    description = models.TextField()
+
+
+class Competitions(models.Model):
+    pass
+
+
+class Notes(models.Model):
+    pass
+
+
+class Staff(models.Model):
+    first_name = models.CharField(20)
+    last_name = models.CharField(20)
+    category = models.CharField(20)
+    age = models.IntegerField(validators=MinValueValidator(0))
+    photo = models.URLField()
+    description = models.TextField()
+
