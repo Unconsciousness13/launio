@@ -35,8 +35,8 @@
                         <li><a href="#">Prefil</a></li>
                         <li><a href="#">Cerrar la sesión</a></li>
                     {% else %}
-                        <li><a href="#">Registrarte</a></li>
-                        <li><a href="#">Iniciar sesión</a></li>
+                        <li><a href="{% url 'register page' %}">Registrarte</a></li>
+                        <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
                     {% endif %}
                 </ul>
             </nav>

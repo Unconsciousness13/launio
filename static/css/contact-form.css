@@ -102,6 +102,9 @@ ul {
     padding: 18px;
     border-radius: 3px;
 }
+.buttons-index-no-user a:nth-child(2){
+    margin-left: 10px;
+}
 
 .buttons-index-no-user a:hover,
 .buttons-index-no-user a:focus {
