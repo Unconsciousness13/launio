@@ -81,7 +81,7 @@ a {
     color: deeppink;
     border-bottom: deeppink;
     border-width: 1px;
-    border-bottom-style: inset;
+    /*border-bottom-style: inset;*/
 }
 
 .nav-toggler {
@@ -150,7 +150,7 @@ a {
     .header .nav {
         width: 100%;
         padding: 0;
-        max-height: 0px;
+        max-height: 0;
         overflow: hidden;
         visibility: hidden;
         transition: all 0.5s ease;
