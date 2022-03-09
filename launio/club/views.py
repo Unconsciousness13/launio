@@ -48,3 +48,14 @@ def login_user(request):
 
 
 # def contact_page(request):
+
+def trainers(request):
+    return render(request, 'trainers.html')
+
+
+def gymnasts(request):
+    return render(request, 'gymnasts.html')
+
+
+def directors(request):
+    return render(request, 'directors.html')

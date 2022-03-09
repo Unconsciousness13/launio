@@ -24,11 +24,11 @@
             </button>
             <nav class="nav">
                 <ul>
-{#                    class="active"#}
+                    {#                    class="active"#}
                     <li><a href="{% url 'show index' %}">Inicio</a></li>
-                    <li><a href="#">Gimnastas</a></li>
-                    <li><a href="#">Entrenadoras</a></li>
-                    <li><a href="#">Directiva</a></li>
+                    <li><a href="{% url 'gymnasts page' %}">Gimnastas</a></li>
+                    <li><a href="{% url 'trainers page' %}">Entrenadoras</a></li>
+                    <li><a href="{% url 'directors page' %}">Directiva</a></li>
                     <li><a href="{% url 'show contact' %}">Contacto</a></li>
                     {% if Profile %}
                         <li><a href="#">Competiciones</a></li>
