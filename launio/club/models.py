@@ -78,9 +78,10 @@ class NotesConjunto(models.Model):
 class Team(models.Model):
     pass
 
-# class Contact(models.Model):
-#     first_name = FIRST_NAME
-#     last_name = LAST_NAME
-#     email = models.EmailField()
-#     phone = models.IntegerField()
-#     message = models.TextField()
+
+class Contact(models.Model):
+    first_name = FIRST_NAME
+    last_name = LAST_NAME
+    email = models.EmailField()
+    phone = models.IntegerField()
+    message = models.TextField()

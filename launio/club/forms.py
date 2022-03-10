@@ -30,7 +30,8 @@ class CreateProfileForm(forms.ModelForm):
             "age": forms.NumberInput(attrs={
                 "type": "number", "name": "age", "id": "age",
                 "placeholder": "Age", "min": "0"
-            })
+            }),
+
         }
 
 
@@ -50,18 +51,18 @@ class CreateContactForm(forms.ModelForm):
             'message': 'Mensaje',
         }
 
-        # widgets = {
-        #     "username": forms.TextInput(attrs={
-        #         "type": "text", "name": "username", "id": "first_name",
-        #         "placeholder": "Username"
-        #     }),
-        #     "email": forms.EmailInput(attrs={
-        #         "type": "text", "name": "email", "id": "email",
-        #         "placeholder": "Email"
-        #     }),
-        #
-        #     "age": forms.NumberInput(attrs={
-        #         "type": "number", "name": "age", "id": "age",
-        #         "placeholder": "Age", "min": "0"
-        #     })
-        # }
+        widgets = {
+            "username": forms.TextInput(attrs={
+                "type": "text", "name": "username", "id": "first_name",
+                "placeholder": "Username"
+            }),
+            "email": forms.EmailInput(attrs={
+                "type": "text", "name": "email", "id": "email",
+                "placeholder": "Email"
+            }),
+
+            "age": forms.NumberInput(attrs={
+                "type": "number", "name": "age", "id": "age",
+                "placeholder": "Age", "min": "0"
+            })
+        }

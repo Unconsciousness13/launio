@@ -11,12 +11,11 @@
 
         <!-- Registration -->
         <section id="registerPage">
-            <form method="POST" action="home-as-user.html">
+            <form {% url 'register page' %} method="POST">
                 <fieldset>
                     <legend>Profile</legend>
-                    <!-- Form for Registration -->
-                    {{ form }}
                     {% csrf_token %}
+                    {{ form }}
                     <button type="submit" class="register">Enter</button>
                 </fieldset>
             </form>

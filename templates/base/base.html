@@ -30,12 +30,13 @@
                     <li><a href="{% url 'trainers page' %}">Entrenadoras</a></li>
                     <li><a href="{% url 'directors page' %}">Directiva</a></li>
                     <li><a href="{% url 'show contact' %}">Contacto</a></li>
-                    {% if Profile %}
+                    {% if profile %}
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>
                         <li><a href="#">Prefil</a></li>
-                        <li><a href="#">Cerrar la sesión</a></li>
-                    {% else %}
+                        <li><a href="{%  url 'logout user' %}">Cerrar la sesión</a></li>
+
+                    {% elif not profile %}
                         <li><a href="{% url 'register page' %}">Registrarte</a></li>
                         <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
                     {% endif %}

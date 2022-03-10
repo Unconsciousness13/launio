@@ -1,4 +1,7 @@
+from django.contrib.auth import forms as auth_forms
+from django.contrib.auth import views as auth_views
 from django.shortcuts import render, redirect
+from django.views import generic as views
 
 from launio.club.forms import CreateProfileForm
 from launio.club.models import Profile
@@ -13,17 +16,24 @@ def get_profile():
 
 def show_index(request):
     profile = get_profile()
+    # if not profile:
+    #     return redirect('show index')
+
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'home.html', context)
+
+
+def show_contact(request):
+    profile = get_profile()
     if not profile:
         return redirect('register page')
 
     context = {
         'profile': profile,
     }
-    return render(request, 'home-as-guest.html', context)
-
-
-def show_contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', context)
 
 
 def register_user(request):
@@ -50,12 +60,45 @@ def login_user(request):
 # def contact_page(request):
 
 def trainers(request):
-    return render(request, 'trainers.html')
+    profile = get_profile()
+    if not profile:
+        return redirect('register page')
+
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'trainers.html', context)
 
 
 def gymnasts(request):
-    return render(request, 'gymnasts.html')
+    profile = get_profile()
+    if not profile:
+        return redirect('register page')
+
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'gymnasts.html', context)
 
 
 def directors(request):
-    return render(request, 'directors.html')
+    profile = get_profile()
+    if not profile:
+        return redirect('register page')
+
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'directors.html', context)
+
+
+# Classes
+
+
+class UserLogoutView(auth_views.LogoutView):
+    pass
+#
+#
+# class UserRegistrationView(views.CreateView):
+#     form_class = auth_forms.UserCreationForm
+#     template_name = 'register.html'
