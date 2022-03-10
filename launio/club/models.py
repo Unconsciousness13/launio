@@ -40,6 +40,8 @@ class Profile(models.Model):
 
     age = AGE
 
+    profile_image = models.URLField()
+
 
 class Gymnast(models.Model):
     first_name = FIRST_NAME
