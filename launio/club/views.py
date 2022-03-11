@@ -1,5 +1,5 @@
+from django.urls import reverse_lazy
 from django.views import generic as views
-
 
 # def get_profile():
 #     profiles = Profile.objects.all()
@@ -96,9 +96,9 @@ from django.views import generic as views
 # class UserRegistrationView(views.CreateView):
 #     form_class = auth_forms.UserCreationForm
 #     template_name = 'register.html'
+
+
 class HomeView(views.TemplateView):
     template_name = 'home.html'
 
 
-class RegisterView(views.CreateView):
-    template_name = 'register.html'
