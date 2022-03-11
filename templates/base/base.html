@@ -26,19 +26,19 @@
                 <ul>
                     {#                    class="active"#}
                     <li><a href="{% url 'show index' %}">Inicio</a></li>
-                    <li><a href="{% url 'gymnasts page' %}">Gimnastas</a></li>
-                    <li><a href="{% url 'trainers page' %}">Entrenadoras</a></li>
-                    <li><a href="{% url 'directors page' %}">Directiva</a></li>
-                    <li><a href="{% url 'show contact' %}">Contacto</a></li>
+                    <li><a href="#">Gimnastas</a></li>
+                    <li><a href="#">Entrenadoras</a></li>
+                    <li><a href="#">Directiva</a></li>
+                    <li><a href="#">Contacto</a></li>
                     {% if profile %}
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>
                         <li><a href="#">Prefil</a></li>
-                        <li><a href="{%  url 'logout user' %}">Cerrar la sesión</a></li>
+                        <li><a href="#">Cerrar la sesión</a></li>
 
                     {% elif not profile %}
                         <li><a href="{% url 'register page' %}">Registrarte</a></li>
-                        <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
+                        <li><a href="#">Iniciar sesión</a></li>
                     {% endif %}
                 </ul>
             </nav>
