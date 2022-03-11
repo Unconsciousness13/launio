@@ -1,0 +1,14 @@
+.register-container {
+    background-color: red;
+}
+
+.register-container input{
+    border-color: #9c27b0;
+    display: block;
+    align-items: center;
+}
+.register-container button {
+    background-color: #9c27b0;
+    padding: 10px;
+    border-radius: 5px;
+}
