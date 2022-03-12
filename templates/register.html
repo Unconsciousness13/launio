@@ -12,12 +12,19 @@
         <!-- Registration -->
         <section class="register-container">
             <form method="POST">
-                <fieldset>
-                    {% csrf_token %}
-                    {{ form }}
 
-                    <button type="submit" class="btn">Enter</button>
-                </fieldset>
+                    {{ form }}
+                    {% csrf_token %}
+
+                    <div class="center">
+                        <button class="btn">
+                            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+                                <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line"/>
+                                <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line"/>
+                            </svg>
+                            <span>Confirmar</span>
+                        </button>
+                    </div>
             </form>
         </section>
     </div>

@@ -1,21 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
-#container-inline {
-    background-image: url("/images/launio_logo.jpg");
-}
 #welcome-message{
+
     text-align: center;
 }
 
 .register-container {
     background-color: transparent;
-    width: 20%;
-    margin: 0 10% 0 40%;
+    width: 37%;
+    height: 500px;
+    margin: 0 0 0 30%;
+    background-image: url(../images/club_photos/Logo.png);
 }
 
 .register-container input {
     border-color: #9c27b0;
     display: block;
 }
+
 
 
 .center {
@@ -29,10 +30,9 @@
     height: 60px;
     cursor: pointer;
     background: limegreen;
-    border: 1px solid deeppink;
+    border: 1px solid #ffffff;
     outline: none;
     transition: 1s ease-in-out;
-    border-radius: 8px;
 }
 
 svg {
@@ -40,7 +40,7 @@ svg {
     left: 0;
     top: 0;
     fill: none;
-    stroke: #fff;
+    stroke: #d90000;
     stroke-dasharray: 150 480;
     stroke-dashoffset: 150;
     transition: 1s ease-in-out;
@@ -49,7 +49,6 @@ svg {
 .btn:hover {
     transition: 1s ease-in-out;
     background: #c63df3;
-    border-radius: 10px;
 }
 
 .btn:hover svg {
