@@ -2,12 +2,10 @@
 {% load static %}
 {% block dynamic_content %}
     <div class="container-guest-page">
-        {#        <div class="container-club-info-div">#}
         <div class="logo-guest-view">
             <img src="{% static 'images/club_photos/Logo.png' %}" alt="Logo">
         </div>
         <div class="club-info-div">
-
             <h3>Historia</h3>
 
             <p>El Club Rítmica la Unió Viladecans se fundó en 2011 con la intención de poder fomentar la
@@ -47,17 +45,15 @@
                 "Enseñar la importancia del trabajo en equipo, compañerismo y el respeto por los demás"
 
                 "Fomentar la practica deportiva de la gimnasia rítmica.</p>
+            {% if not user.is_autenticated %}
+            <button class="btn">
+                <a href="{% url 'register page' %}">Registrarte</a>
+            </button>
+            <button class="btn">
+                <a href="#">Iniciar sesión</a>
+            </button>
+            {% endif %}
         </div>
-        {%  if not profile %}
-        <div class="buttons-index-no-user">
-            <a href="{% url 'register page' %}">Registrarte</a>
-
-            <a href="#">Iniciar sesión</a>
-        </div>
-        {%  endif %}
-
     </div>
-
-    {{ form }}
     {% csrf_token %}
 {% endblock %}
