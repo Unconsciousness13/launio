@@ -30,15 +30,15 @@
                     <li><a href="#">Entrenadoras</a></li>
                     <li><a href="#">Directiva</a></li>
                     <li><a href="#">Contacto</a></li>
-                    {% if profile %}
+                    {%  if  user.is_autenticated  %}
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>
                         <li><a href="#">Prefil</a></li>
                         <li><a href="#">Cerrar la sesión</a></li>
 
-                    {% elif not profile %}
+                    {% elif not user.is_autenticated %}
                         <li><a href="{% url 'register page' %}">Registrarte</a></li>
-                        <li><a href="#">Iniciar sesión</a></li>
+                        <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
                     {% endif %}
                 </ul>
             </nav>
