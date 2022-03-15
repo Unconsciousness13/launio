@@ -13,7 +13,7 @@ class RegisterForm(UserCreationForm):
     username = forms.CharField(max_length=30, required=True, help_text='Campo obligatorio')
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['username',
                   'first_name',
                   'last_name',

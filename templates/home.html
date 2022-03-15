@@ -47,12 +47,12 @@
                 "Fomentar la practica deportiva de la gimnasia rítmica.</p>
 
                 <div class="home-bouth-buttons>">
-                    {% if request.user.is_autenticated %}
+                    {% if not user.is_autenticated %}
                     <button class="btn">
                         <a href="{% url 'register page' %}">Registrarte</a>
                     </button>
                     <button class="btn">
-                        <a href="#">Iniciar sesión</a>
+                        <a href="{% url 'login page' %}">Iniciar sesión</a>
                     </button>
                     {% endif %}
                 </div>
