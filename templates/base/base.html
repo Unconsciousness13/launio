@@ -30,7 +30,7 @@
                     <li><a href="#">Entrenadoras</a></li>
                     <li><a href="#">Directiva</a></li>
                     <li><a href="#">Contacto</a></li>
-                    {%  if  user.is_autenticated  %}
+                    {%  if  not request.user.is_autenticated  %}
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>
                         <li><a href="#">Prefil</a></li>
