@@ -8,13 +8,12 @@ class RegisterForm(UserCreationForm):
         first_name = forms.CharField(max_length=30, required=True, help_text='Campo obligatorio')
         last_name = forms.CharField(max_length=30, required=True, help_text='Campo obligatorio')
         email = forms.EmailField(max_length=254, help_text='Correo electronico tiene que ser valido')
+        username = forms.CharField(max_length=30, required=True, help_text='Campo obligatorio')
 
         model = User
-        fields = ['first_name',
+        fields = ['username',
+                  'first_name',
                   'last_name',
                   'email',
                   'password1',
                   'password2', ]
-
-
-
