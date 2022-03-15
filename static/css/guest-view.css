@@ -48,3 +48,9 @@
     outline: 0;
     transition: background-color 2s ease-out;
 }
+
+.home-bouth-buttons {
+    position: relative;
+    display: inline-block;
+    margin-left: 50%;
+}

@@ -15,3 +15,6 @@ class RegisterForm(UserCreationForm):
                   'email',
                   'password1',
                   'password2', ]
+
+
+
