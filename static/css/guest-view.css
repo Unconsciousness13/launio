@@ -43,7 +43,7 @@
 
 .buttons-index-no-user a:hover,
 .buttons-index-no-user a:focus {
-    background: purple;
+    background: black;
     color: #ffffff;
     outline: 0;
     transition: background-color 2s ease-out;
@@ -53,4 +53,10 @@
     position: relative;
     display: inline-block;
     margin-left: 50%;
+}
+
+.home-header-stripe {
+    height: 250px;
+    width:100%;
+    background-image: url(https://img.olympicchannel.com/images/image/private/t_16-9_3200/primary/ft3eaexl9ghcepdcr0lk);
 }

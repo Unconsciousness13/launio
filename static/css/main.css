@@ -12,20 +12,3 @@ header {
 
 }
 
-
-/*.column {*/
-/*    float: left;*/
-/*    width: 40%;*/
-
-/*}*/
-
-/*!* Clear floats after the columns *!*/
-/*.row:after {*/
-/*    content: "";*/
-/*    display: table;*/
-/*    clear: both;*/
-/*}*/
-
-/*.club-info-div {*/
-/*    margin-top: 10%;*/
-/*}*/

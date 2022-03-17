@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
+    <div class="home-header-stripe">d</div>
     <div class="container-guest-page">
         <div class="logo-guest-view">
             <img src="{% static 'images/club_photos/Logo.png' %}" alt="Logo">
@@ -46,16 +47,16 @@
 
                 "Fomentar la practica deportiva de la gimnasia rítmica.</p>
 
-                <div class="home-bouth-buttons>">
-                    {% if not user.is_autenticated %}
-                    <button class="btn">
-                        <a href="{% url 'register page' %}">Registrarte</a>
-                    </button>
-                    <button class="btn">
-                        <a href="{% url 'login page' %}">Iniciar sesión</a>
-                    </button>
-                    {% endif %}
-                </div>
+            <div class="home-bouth-buttons>">
+                {% if not user.is_active %}
+                    <a href="{% url 'register page' %}">
+                        <button class="btn">Registrarte</button>
+                    </a>
+                    <a href="{% url 'login page' %}">
+                        <button class="btn">Iniciar sesión</button>
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% csrf_token %}

@@ -18,8 +18,10 @@
                 <a href="{% url 'show index' %}"><img id="logo-bar" src="{% static 'images/club_photos/Logo.png' %}"
                                                       alt="logo"></a>
             </div>
-            {% if request.user.is_autentiated %}
+            {% if user.is_active %}
                 <div class="user-nav-display">Hello {{ user.username }}</div>
+            {% else %}
+                <div>Hello Guest</div>
             {% endif %}
 
             <button type="button" class="nav-toggler">
@@ -33,13 +35,13 @@
                     <li><a href="#">Entrenadoras</a></li>
                     <li><a href="#">Directiva</a></li>
                     <li><a href="#">Contacto</a></li>
-                    {% if  user %}
+                    {% if  user.is_active %}
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>
                         <li><a href="#">Prefil</a></li>
                         <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
 
-                    {% elif user == None %}
+                    {% elif not user.is_active%}
                         <li><a href="{% url 'register page' %}">Registrarte</a></li>
                         <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
                     {% endif %}
