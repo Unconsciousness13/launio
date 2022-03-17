@@ -19,9 +19,7 @@
                                                       alt="logo"></a>
             </div>
             {% if user.is_active %}
-                <div class="user-nav-display">Hello {{ user.username }}</div>
-            {% else %}
-                <div>Hello Guest</div>
+                <div class="user-nav-display">Hola {{ user.username }}</div>
             {% endif %}
 
             <button type="button" class="nav-toggler">
@@ -32,7 +30,7 @@
                     {#                    class="active"#}
                     <li><a href="{% url 'show index' %}">Inicio</a></li>
                     <li><a href="#">Gimnastas</a></li>
-                    <li><a href="#">Entrenadoras</a></li>
+                    <li><a href="{% url 'show trainers' %}">Entrenadoras</a></li>
                     <li><a href="#">Directiva</a></li>
                     <li><a href="#">Contacto</a></li>
                     {% if  user.is_active %}

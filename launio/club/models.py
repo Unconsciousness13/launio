@@ -54,13 +54,12 @@ class Gymnast(models.Model):
 
 
 class Trainer(models.Model):
-    pass
-    # first_name = FIRST_NAME
-    # last_name = LAST_NAME
-    # category = MAX_LENGTH_CATEGORY
-    # age = AGE
-    # photo = models.URLField()
-    # description = models.TextField()
+    first_name = FIRST_NAME
+    last_name = LAST_NAME
+    category = MAX_LENGTH_CATEGORY
+    age = AGE
+    photo = models.URLField()
+    description = models.TextField()
 
 
 class Competition(models.Model):

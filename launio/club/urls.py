@@ -10,8 +10,9 @@ from django.urls import path
 #     path('gymnasts/', gymnasts, name='gymnasts page'),
 #     path('logout/', UserLogoutView.as_view(), name='logout user'),
 # )
-from launio.club.views import HomeView
+from launio.club.views import HomeView, EntrenadorasView
 
 urlpatterns = (
     path('', HomeView.as_view(), name='show index'),
+    path('trainers/', EntrenadorasView.as_view(), name='show trainers')
 )

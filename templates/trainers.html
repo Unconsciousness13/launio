@@ -1,4 +1,12 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
+    {% for t in trainers %}
+        <li>{{  t.first_name }}</li>
+        <li>{{  t.last_name }}</li>
+        <li>{{  t.age }}</li>
+        <li>{{  t.category }}</li>
+        <li>{{  t.photo }}</li>
+        <li>{{  t.description }}</li>
+    {% endfor %}
 {% endblock %}

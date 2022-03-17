@@ -1,5 +1,5 @@
-from django.shortcuts import redirect
 from django.views import generic as views
+
 
 # def get_profile():
 #     profiles = Profile.objects.all()
@@ -96,6 +96,7 @@ from django.views import generic as views
 # class UserRegistrationView(views.CreateView):
 #     form_class = auth_forms.UserCreationForm
 #     template_name = 'register.html'
+from launio.club.models import Trainer
 
 
 class HomeView(views.TemplateView):
@@ -112,4 +113,6 @@ class HomeView(views.TemplateView):
     #     return super().dispatch(request, *args, **kwargs)
 
 
-
+class EntrenadorasView(views.ListView):
+    model = Trainer
+    template_name = 'trainers.html'
