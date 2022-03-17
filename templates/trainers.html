@@ -1,12 +1,19 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-    {% for t in trainers %}
-        <li>{{  t.first_name }}</li>
-        <li>{{  t.last_name }}</li>
-        <li>{{  t.age }}</li>
-        <li>{{  t.category }}</li>
-        <li>{{  t.photo }}</li>
-        <li>{{  t.description }}</li>
-    {% endfor %}
+    <div class="trainers-body-container">
+        <div class="row">
+            {% for club_trainer in object_list %}
+                <div class="column">
+                    <ul>
+                        <li>{{ club_trainer.first_name }} {{ club_trainer.last_name }}</li>
+                        <li>Edad: {{ club_trainer.age }}</li>
+                        <li>Entrena: {{ club_trainer.category }}</li>
+                        <li><img src="{{ club_trainer.photo }}" alt="trainer photo"/></li>
+                        <li>{{ club_trainer.description }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

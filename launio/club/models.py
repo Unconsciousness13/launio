@@ -56,7 +56,7 @@ class Gymnast(models.Model):
 class Trainer(models.Model):
     first_name = FIRST_NAME
     last_name = LAST_NAME
-    category = MAX_LENGTH_CATEGORY
+    category = models.CharField(max_length=30)
     age = AGE
     photo = models.URLField()
     description = models.TextField()

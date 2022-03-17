@@ -1,0 +1,30 @@
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 50px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  border: 10px deeppink;
+}
+
+div.row div.column ul li img {
+  width: 250px;
+  height: 300px;
+}
+
+.trainers-body-container {
+  width: 80%;
+  margin: auto;
+}
+
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
