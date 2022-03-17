@@ -115,6 +115,7 @@ class HomeView(views.TemplateView):
 class EntrenadorasView(views.ListView):
     model = Trainer
     template_name = 'trainers.html'
+    ordering = 'age', 'last_name'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
