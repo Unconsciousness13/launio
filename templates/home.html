@@ -50,10 +50,10 @@
             <div class="home-bouth-buttons>">
                 {% if not user.is_active %}
                     <a href="{% url 'register page' %}">
-                        <button class="btn">Registrarte</button>
+                        <button class="home-reg-log-buttons">Registrarte</button>
                     </a>
                     <a href="{% url 'login page' %}">
-                        <button class="btn">Iniciar sesión</button>
+                        <button class="home-reg-log-buttons">Iniciar sesión</button>
                     </a>
                 {% endif %}
             </div>

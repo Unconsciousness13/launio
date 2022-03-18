@@ -1,27 +1,31 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-<div class="register-all">
-    <div id="welcome-message">
-        <h1>Bienvenidos a</h1>
-        <h1>Club Rítmica la Unió Viladecans !</h1>
-    </div>
+    <div class="register-all">
+        <div id="welcome-message">
+            <h1>Bienvenidos a</h1>
+            <h1>Club Rítmica la Unió Viladecans !</h1>
+        </div>
 
 
-    <!-- Registration -->
-    <section class="register-container">
-        <form method="POST">
+        <!-- Registration -->
+        {#    <section class="register-container">#}
+        <div class="register-page">
+            <div class="form">
+                <form method="POST" class="register-form">
+                    {{ form }}
+                    {% csrf_token %}
+                    <div class="center">
+                        <button class="btn">
+                            <span>Confirmar</span>
+                        </button>
+                    </div>
+                </form>
 
-            {{ form }}
-            {% csrf_token %}
-            <div class="center">
-                <button class="btn">
-                    <span>Confirmar</span>
-                </button>
             </div>
-        </form>
-    </section>
-</div>
+        </div>
+        {#    </section>#}
+{#    </div>#}
 {% endblock %}
 
 

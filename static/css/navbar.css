@@ -97,7 +97,7 @@ a {
 
 .nav-toggler:focus {
     outline: none;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 
 .nav-toggler span {
