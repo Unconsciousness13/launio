@@ -8,17 +8,16 @@ from validators.email_validator import UniqueUserEmailField
 class AddGymnastForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, label='Nombre')
     last_name = forms.CharField(max_length=30, required=True, label="Apellido")
-    photo
-    username = forms.CharField(max_length=30, required=True, label='Usuario')
+    photo = forms.ImageField()
+
 
     class Meta:
         model = get_user_model()
-        fields = ('username',
-                  'first_name',
+        fields = ('first_name',
                   'last_name',
-                  'email',
-                  'password1',
-                  'password2',)
+                  'photo',
+
+                  )
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)

@@ -18,33 +18,6 @@ LAST_NAME = models.CharField(max_length=MAX_LAST_NAME_LENGTH, validators=(
     MinValueValidator(2),
 ))
 
-AGE = models.IntegerField(
-    validators=(
-        MinValueValidator(0),
-    )
-)
-
-
-class Profile(models.Model):
-    USERNAME_MAX_LEN = 15
-
-    AGE_MIN_VALUE = 0
-
-    username = models.CharField(
-        max_length=USERNAME_MAX_LEN,
-        validators=(
-            MinLengthValidator(2),
-        )
-
-    )
-
-    email = models.EmailField(
-
-    )
-
-    age = AGE
-
-    profile_image = models.URLField()
 
 
 class Gymnast(models.Model):
@@ -53,7 +26,7 @@ class Gymnast(models.Model):
     last_name = LAST_NAME
     category = MAX_LENGTH_CATEGORY
     train = models.CharField(max_length=150)
-    age = AGE
+    birthdate = models.DateField()
     photo = models.ImageField(
         upload_to=IMAGE_UPLOAD_TI_DIR,
         null=True,
@@ -63,7 +36,6 @@ class Gymnast(models.Model):
         )
     )
     description = models.TextField()
-    trainer_id = models.ForeignKey('Trainer', on_delete=models.CASCADE)
 
     def train_split(self):
         return self.train.split(' ')
@@ -74,7 +46,7 @@ class Trainer(models.Model):
     first_name = FIRST_NAME
     last_name = LAST_NAME
     train = models.CharField(max_length=150)
-    age = AGE
+    birthdate = models.DateField()
     photo = models.ImageField(
         upload_to=IMAGE_UPLOAD_TI_DIR,
         null=True,
@@ -84,6 +56,7 @@ class Trainer(models.Model):
         )
     )
     description = models.TextField()
+    trained_gymnasts_id = models.ForeignKey('Gymnast', on_delete=models.CASCADE)
 
     def train_split(self):
         return self.train.split(' ')
