@@ -1,9 +1,9 @@
-from django.core.validators import MinValueValidator, MinLengthValidator
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from validators.image_validator import MaxFileSizeInMbValidator
 
-IMAGE_MAX_SIZE_IN_MB = 5
+IMAGE_MAX_SIZE_IN_MB = 1
 
 MAX_FIRST_NAME_LENGTH = 20
 MAX_LAST_NAME_LENGTH = 20
@@ -17,7 +17,6 @@ FIRST_NAME = models.CharField(max_length=MAX_FIRST_NAME_LENGTH, validators=(
 LAST_NAME = models.CharField(max_length=MAX_LAST_NAME_LENGTH, validators=(
     MinValueValidator(2),
 ))
-
 
 
 class Gymnast(models.Model):
@@ -56,7 +55,6 @@ class Trainer(models.Model):
         )
     )
     description = models.TextField()
-    trained_gymnasts_id = models.ForeignKey('Gymnast', on_delete=models.CASCADE)
 
     def train_split(self):
         return self.train.split(' ')
