@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+    <form method="POST">
+        {{ form }}
+        <div class="center">
+            <button class="btn">
+                <span>Confirmar</span>
+            </button>
+        </div>
+    </form>
+
+    {% csrf_token %}
+{% endblock %}

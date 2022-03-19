@@ -1,6 +1,6 @@
 from django.views import generic as views
 
-from launio.club.models import Trainer
+from launio.club.models import Trainer, Gymnast
 
 
 class HomeView(views.TemplateView):
@@ -20,9 +20,23 @@ class HomeView(views.TemplateView):
 class EntrenadorasView(views.ListView):
     model = Trainer
     template_name = 'trainers.html'
-    ordering = 'birthdate', 'last_name'
+    ordering = 'birthdate', 'train'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         return context
+
+
+class GymnastsView(views.ListView):
+    model = Gymnast
+    template_name = 'gymnasts.html'
+    ordering = 'birthdate', 'first_name'
+
+
+class AddGymnastView(views.FormView):
+    pass
+
+
+class AddTrainerView(views.FormView):
+    pass
