@@ -52,6 +52,7 @@ class Gymnast(models.Model):
     first_name = FIRST_NAME
     last_name = LAST_NAME
     category = MAX_LENGTH_CATEGORY
+    train = models.CharField(max_length=150)
     age = AGE
     photo = models.ImageField(
         upload_to=IMAGE_UPLOAD_TI_DIR,
@@ -64,12 +65,15 @@ class Gymnast(models.Model):
     description = models.TextField()
     trainer_id = models.ForeignKey('Trainer', on_delete=models.CASCADE)
 
+    def train_split(self):
+        return self.train.split(' ')
+
 
 class Trainer(models.Model):
     IMAGE_UPLOAD_TI_DIR = 'trainers/'
     first_name = FIRST_NAME
     last_name = LAST_NAME
-    category = models.CharField(max_length=30)
+    train = models.CharField(max_length=150)
     age = AGE
     photo = models.ImageField(
         upload_to=IMAGE_UPLOAD_TI_DIR,
@@ -80,6 +84,9 @@ class Trainer(models.Model):
         )
     )
     description = models.TextField()
+
+    def train_split(self):
+        return self.train.split(' ')
 
 
 class Competition(models.Model):
