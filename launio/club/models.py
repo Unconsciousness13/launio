@@ -1,6 +1,10 @@
 from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
 
+from validators.image_validator import MaxFileSizeInMbValidator
+
+IMAGE_MAX_SIZE_IN_MB = 5
+
 MAX_FIRST_NAME_LENGTH = 20
 MAX_LAST_NAME_LENGTH = 20
 
@@ -44,21 +48,37 @@ class Profile(models.Model):
 
 
 class Gymnast(models.Model):
-    pass
-    # first_name = FIRST_NAME
-    # last_name = LAST_NAME
-    # category = MAX_LENGTH_CATEGORY
-    # age = AGE
-    # photo = models.URLField()
-    # description = models.TextField()
+    IMAGE_UPLOAD_TI_DIR = 'gymnasts/'
+    first_name = FIRST_NAME
+    last_name = LAST_NAME
+    category = MAX_LENGTH_CATEGORY
+    age = AGE
+    photo = models.ImageField(
+        upload_to=IMAGE_UPLOAD_TI_DIR,
+        null=True,
+        blank=True,
+        validators=(
+            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        )
+    )
+    description = models.TextField()
+    trainer_id = models.ForeignKey('Trainer', on_delete=models.CASCADE)
 
 
 class Trainer(models.Model):
+    IMAGE_UPLOAD_TI_DIR = 'trainers/'
     first_name = FIRST_NAME
     last_name = LAST_NAME
     category = models.CharField(max_length=30)
     age = AGE
-    photo = models.URLField()
+    photo = models.ImageField(
+        upload_to=IMAGE_UPLOAD_TI_DIR,
+        null=True,
+        blank=True,
+        validators=(
+            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        )
+    )
     description = models.TextField()
 
 
