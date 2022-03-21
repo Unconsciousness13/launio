@@ -1,4 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
+    {{ form }}
+    {% csrf_token %}
 {% endblock %}

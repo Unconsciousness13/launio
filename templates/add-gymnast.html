@@ -3,6 +3,7 @@
 {% block dynamic_content %}
     <form method="POST">
         {{ form }}
+        {% csrf_token %}
         <div class="center">
             <button class="btn">
                 <span>Confirmar</span>
@@ -10,5 +11,5 @@
         </div>
     </form>
 
-    {% csrf_token %}
+
 {% endblock %}

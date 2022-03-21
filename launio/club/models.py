@@ -8,8 +8,6 @@ IMAGE_MAX_SIZE_IN_MB = 1
 MAX_FIRST_NAME_LENGTH = 20
 MAX_LAST_NAME_LENGTH = 20
 
-MAX_LENGTH_CATEGORY = 20
-
 FIRST_NAME = models.CharField(max_length=MAX_FIRST_NAME_LENGTH, validators=(
     MinValueValidator(2),
 ))
@@ -23,9 +21,12 @@ class Gymnast(models.Model):
     IMAGE_UPLOAD_TI_DIR = 'gymnasts/'
     first_name = FIRST_NAME
     last_name = LAST_NAME
-    category = MAX_LENGTH_CATEGORY
-    train = models.CharField(max_length=150)
-    birthdate = models.DateField()
+    category = models.CharField(max_length=50, blank=True,
+                                null=True)
+    train = models.CharField(max_length=150, blank=True,
+                             null=True)
+    birthdate = models.DateField(blank=True,
+                                 null=True)
     photo = models.ImageField(
         upload_to=IMAGE_UPLOAD_TI_DIR,
         null=True,

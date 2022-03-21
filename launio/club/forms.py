@@ -1,23 +1,23 @@
 from django import forms
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
 
-from validators.email_validator import UniqueUserEmailField
+from launio.club.models import Gymnast
 
 
-class AddGymnastForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=True, label='Nombre')
-    last_name = forms.CharField(max_length=30, required=True, label="Apellido")
-    photo = forms.ImageField()
-
-
+class AddGymnast(forms.ModelForm):
     class Meta:
-        model = get_user_model()
-        fields = ('first_name',
-                  'last_name',
-                  'photo',
+        model = Gymnast
+        fields = ('first_name', 'last_name', 'category', 'train', 'birthdate', 'photo', 'description')
 
-                  )
+    # widgets = {
+    #         'first_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+    #         'last_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+    #         'category': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+    #         'train': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+    #         'birthdate': forms.DateField(attrs={'class': 'add-gymnast-form-inputs'}),
+    #         'photo': forms.ImageField(attrs={'class': 'add-gymnast-form-inputs'}),
+    #         'description': forms.Textarea(attrs={'class': 'add-gymnast-form-inputs'}),
+    # }
+
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)
