@@ -7,7 +7,6 @@ IMAGE_MAX_SIZE_IN_MB = 1
 
 
 class Gymnast(models.Model):
-    IMAGE_UPLOAD_TI_DIR = 'gymnasts/'
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
@@ -19,7 +18,7 @@ class Gymnast(models.Model):
     birthdate = models.DateField(blank=True,
                                  null=True)
     photo = models.ImageField(
-        upload_to=IMAGE_UPLOAD_TI_DIR,
+        upload_to='gymnasts/',
         null=True,
         blank=True,
         validators=(
@@ -33,7 +32,6 @@ class Gymnast(models.Model):
 
 
 class Trainer(models.Model):
-    IMAGE_UPLOAD_TI_DIR = 'trainers/'
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
@@ -41,7 +39,7 @@ class Trainer(models.Model):
     train = models.CharField(max_length=150)
     birthdate = models.DateField()
     photo = models.ImageField(
-        upload_to=IMAGE_UPLOAD_TI_DIR,
+        upload_to='trainers/',
         null=True,
         blank=True,
         validators=(

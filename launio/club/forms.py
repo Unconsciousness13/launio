@@ -1,6 +1,6 @@
 from django import forms
 
-from launio.club.models import Gymnast
+from launio.club.models import Gymnast, Trainer
 
 
 class AddGymnast(forms.ModelForm):
@@ -8,15 +8,21 @@ class AddGymnast(forms.ModelForm):
         model = Gymnast
         fields = ('first_name', 'last_name', 'category', 'train', 'birthdate', 'photo', 'description')
 
-    # widgets = {
-    #         'first_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-    #         'last_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-    #         'category': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-    #         'train': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-    #         'birthdate': forms.DateField(attrs={'class': 'add-gymnast-form-inputs'}),
-    #         'photo': forms.ImageField(attrs={'class': 'add-gymnast-form-inputs'}),
-    #         'description': forms.Textarea(attrs={'class': 'add-gymnast-form-inputs'}),
-    # }
+
+class AddTrainer(forms.ModelForm):
+    class Meta:
+        model = Trainer
+        fields = ('first_name', 'last_name', 'train', 'birthdate', 'photo', 'description')
+
+# widgets = {
+#         'first_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+#         'last_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+#         'category': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+#         'train': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+#         'birthdate': forms.DateField(attrs={'class': 'add-gymnast-form-inputs'}),
+#         'photo': forms.ImageField(attrs={'class': 'add-gymnast-form-inputs'}),
+#         'description': forms.Textarea(attrs={'class': 'add-gymnast-form-inputs'}),
+# }
 
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):

@@ -2,7 +2,7 @@
 {% load static %}
 {% block dynamic_content %}
     <form method="POST">
-        {{ form }}
+        {{ form.as_p }}
         {% csrf_token %}
         <div class="center">
             <button class="btn">

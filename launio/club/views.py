@@ -1,6 +1,6 @@
 from django.views import generic as views
 
-from launio.club.forms import AddGymnast
+from launio.club.forms import AddGymnast, AddTrainer
 from launio.club.models import Trainer, Gymnast
 
 
@@ -47,4 +47,10 @@ class AddGymnastView(views.FormView):
 
 
 class AddTrainerView(views.FormView):
-    pass
+    template_name = 'add-trainer.html'
+    form_class = AddTrainer
+    success_url = '/trainers/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
