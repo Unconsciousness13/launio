@@ -1,26 +1,17 @@
-from django.core.validators import MinValueValidator
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 from validators.image_validator import MaxFileSizeInMbValidator
 
 IMAGE_MAX_SIZE_IN_MB = 1
 
-MAX_FIRST_NAME_LENGTH = 20
-MAX_LAST_NAME_LENGTH = 20
-
-FIRST_NAME = models.CharField(max_length=MAX_FIRST_NAME_LENGTH, validators=(
-    MinValueValidator(2),
-))
-
-LAST_NAME = models.CharField(max_length=MAX_LAST_NAME_LENGTH, validators=(
-    MinValueValidator(2),
-))
-
 
 class Gymnast(models.Model):
     IMAGE_UPLOAD_TI_DIR = 'gymnasts/'
-    first_name = FIRST_NAME
-    last_name = LAST_NAME
+    first_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
+    last_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
     category = models.CharField(max_length=50, blank=True,
                                 null=True)
     train = models.CharField(max_length=150, blank=True,
@@ -43,8 +34,10 @@ class Gymnast(models.Model):
 
 class Trainer(models.Model):
     IMAGE_UPLOAD_TI_DIR = 'trainers/'
-    first_name = FIRST_NAME
-    last_name = LAST_NAME
+    first_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
+    last_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
     train = models.CharField(max_length=150)
     birthdate = models.DateField()
     photo = models.ImageField(
@@ -78,8 +71,10 @@ class Team(models.Model):
 
 
 class Contact(models.Model):
-    first_name = FIRST_NAME
-    last_name = LAST_NAME
+    first_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
+    last_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
     email = models.EmailField()
     phone = models.IntegerField()
     message = models.TextField()

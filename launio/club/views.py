@@ -39,7 +39,11 @@ class AddGymnastView(views.FormView):
 
     template_name = 'add-gymnast.html'
     form_class = AddGymnast
-    success_url = 'gymnasts/'
+    success_url = '/gymnasts/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class AddTrainerView(views.FormView):
