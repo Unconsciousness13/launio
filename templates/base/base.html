@@ -27,23 +27,27 @@
             </button>
             <nav class="nav">
                 <ul>
-                    {#                    class="active"#}
                     <li><a href="{% url 'show index' %}">Inicio</a></li>
                     <li><a href="#">Gimnastas</a></li>
                     <li><a href="{% url 'show trainers' %}">Entrenadoras</a></li>
                     <li><a href="#">Directiva</a></li>
                     <li><a href="#">Contacto</a></li>
                     {% if  user.is_active %}
+
                         <li><a href="#">Competiciones</a></li>
                         <li><a href="#">Notas</a></li>
-                        <li><a href="#">Añadir Gimnasta</a></li>
-                        <li><a href="#">Añadir Entrenadora</a></li>
-                        <li><a href="#">Añadir Competicion</a></li>
-                        <li><a href="#">Añadir Nota</a></li>
-                        <li><a href="#">Prefil</a></li>
-                        <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
+                        {% if user.is_superuser %}
 
-                    {% elif not user.is_active%}
+                                    <li><a href="">Añadir Gimnasta</a></li>
+                                    <li><a href="">Añadir Entrenadora</a></li>
+                                    <li><a href="">Añadir Competicion</a></li>
+                                    <li><a href="">Añadir Nota</a></li>
+                        {% endif %}
+                        <ul>
+                            <li><a href="#">Prefil</a></li>
+                            <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
+                        </ul>
+                    {% elif not user.is_active %}
                         <li><a href="{% url 'register page' %}">Registrarte</a></li>
                         <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
                     {% endif %}

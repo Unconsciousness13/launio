@@ -12,4 +12,5 @@
     else{
     	nav.removeAttribute("style");
     }
- } 
+ }
+ 
