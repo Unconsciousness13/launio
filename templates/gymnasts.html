@@ -1,6 +1,33 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-    {{ form }}
-    {% csrf_token %}
+    <div class="trainers-body-container">
+        <div class="row">
+            {% for gymnast in object_list %}
+                <div class="column">
+                    <ul>
+                        <li>{{ gymnast.first_name }} {{ gymnast.last_name }}</li>
+                        <li>Fecha de nacimiento: {{ gymnast.birthdate }}</li>
+                        <li>Categoria: {{ gymnast.category }}</li>
+                        <ul>Entrena:
+                            {% for t in gymnast.train_split %}
+                                <li>* {{ t }} </li>
+                            {% endfor %}
+                        </ul>
+                        <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
+
+                        <li>{{ gymnast.description }}</li>
+                    </ul>
+                    {% if user.is_superuser %}
+                        <a href="">
+                            <button class="home-reg-log-buttons">Editar</button>
+                        </a>
+                        <a href="">
+                            <button class="home-reg-log-buttons">Borrar</button>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

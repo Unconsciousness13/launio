@@ -3,7 +3,7 @@ from django.db import models
 
 from validators.image_validator import MaxFileSizeInMbValidator
 
-IMAGE_MAX_SIZE_IN_MB = 1
+IMAGE_MAX_SIZE_IN_MB = 2
 
 
 class Gymnast(models.Model):
@@ -28,7 +28,7 @@ class Gymnast(models.Model):
     description = models.TextField()
 
     def train_split(self):
-        return self.train.split(' ')
+        return self.train.split(',')
 
 
 class Trainer(models.Model):
@@ -49,7 +49,7 @@ class Trainer(models.Model):
     description = models.TextField()
 
     def train_split(self):
-        return self.train.split(' ')
+        return self.train.split(',')
 
 
 class Competition(models.Model):

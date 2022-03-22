@@ -14,15 +14,25 @@ class AddTrainer(forms.ModelForm):
         model = Trainer
         fields = ('first_name', 'last_name', 'train', 'birthdate', 'photo', 'description')
 
-# widgets = {
-#         'first_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-#         'last_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-#         'category': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-#         'train': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
-#         'birthdate': forms.DateField(attrs={'class': 'add-gymnast-form-inputs'}),
-#         'photo': forms.ImageField(attrs={'class': 'add-gymnast-form-inputs'}),
-#         'description': forms.Textarea(attrs={'class': 'add-gymnast-form-inputs'}),
-# }
+        labels = {
+            'first_name': 'Nombre',
+            'last_name': 'Apellido',
+            'train': 'Categorias que entrena',
+            'birthdate': 'Fecha de nacimiento',
+            'photo': 'Foto',
+            'description': 'Descripcion',
+        }
+
+
+        # widgets = {
+        #     'first_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+        #     'last_name': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+        #     'category': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+        #     'train': forms.CharField(attrs={'class': 'add-gymnast-form-inputs'}),
+        #     'birthdate': forms.DateField(attrs={'class': 'add-gymnast-form-inputs'}),
+        #     'photo': forms.ImageField(attrs={'class': 'add-gymnast-form-inputs'}),
+        #     'description': forms.Textarea(attrs={'class': 'add-gymnast-form-inputs'}),
+        # }
 
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):

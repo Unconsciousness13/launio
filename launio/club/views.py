@@ -25,7 +25,6 @@ class EntrenadorasView(views.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         return context
 
 
@@ -33,6 +32,10 @@ class GymnastsView(views.ListView):
     model = Gymnast
     template_name = 'gymnasts.html'
     ordering = 'birthdate', 'first_name'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class AddGymnastView(views.FormView):
@@ -54,3 +57,4 @@ class AddTrainerView(views.FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
