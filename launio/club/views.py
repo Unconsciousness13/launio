@@ -39,7 +39,6 @@ class GymnastsView(views.ListView):
 
 
 class AddGymnastView(views.FormView):
-
     template_name = 'add-gymnast.html'
     form_class = AddGymnast
     success_url = '/gymnasts/'
@@ -58,3 +57,7 @@ class AddTrainerView(views.FormView):
         form.save()
         return super().form_valid(form)
 
+
+class DeleteGymnastView(views.DeleteView):
+    model = Gymnast
+    success_url = '/gymnasts/'
