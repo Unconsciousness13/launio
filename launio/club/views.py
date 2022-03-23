@@ -61,3 +61,5 @@ class AddTrainerView(views.FormView):
 class DeleteGymnastView(views.DeleteView):
     model = Gymnast
     success_url = '/gymnasts/'
+
+

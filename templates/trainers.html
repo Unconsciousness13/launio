@@ -11,6 +11,11 @@
                         <li>Entrena: {{ club_trainer.train }}</li>
                         <li><img src="{{ club_trainer.photo.url }}" alt="trainer photo"/></li>
                         <li>{{ club_trainer.description }}</li>
+                        {% if user.is_superuser %}
+                        <a href="">
+                            <button class="home-reg-log-buttons">Editar</button>
+                        </a>
+                        {% endif %}
                     </ul>
                 </div>
             {% endfor %}

@@ -11,8 +11,9 @@ class Gymnast(models.Model):
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
-    category = models.CharField(max_length=50, blank=True,
-                                null=True)
+    category = models.CharField(max_length=30, choices=[('prebenjamin', 'Pre-benjamín'), ('prebenjamin', 'Benjamín'),
+                                                        ('prebenjamin', 'Alevín'), ('prebenjamin', 'Infantil'),
+                                                        ('prebenjamin', 'Cadete')])
     train = models.CharField(max_length=150, blank=True,
                              null=True)
     birthdate = models.DateField(blank=True,

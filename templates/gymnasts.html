@@ -18,15 +18,16 @@
 
                         <li>{{ gymnast.description }}</li>
                     </ul>
+                    <a href="">
+                        <button class="home-reg-log-buttons">Ver mas</button>
+                    </a>
                     {% if user.is_superuser %}
                         <a href="">
                             <button class="home-reg-log-buttons">Editar</button>
                         </a>
-                        <a href="">
-                            <button class="home-reg-log-buttons">Borrar</button>
-                        </a>
                     {% endif %}
                 </div>
+
             {% endfor %}
         </div>
     </div>
