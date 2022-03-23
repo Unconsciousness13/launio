@@ -4,6 +4,7 @@
   padding: 30px;
   box-shadow: 1px 1px 1px 1px deeppink;
   margin: 10px;
+
 }
 
 /* Clear floats after the columns */
@@ -29,4 +30,25 @@ div.row div.column ul li img {
   .column {
     width: 100%;
   }
+}
+
+/*select css*/
+
+#id_category {
+  width: 100%;
+  min-width: 15ch;
+  /*max-width: 30ch;*/
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+/*end select css*/
+
+#id_description {
+  width: 100%;
+  margin-bottom: 10px;
 }
