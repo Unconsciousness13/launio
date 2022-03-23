@@ -7,17 +7,20 @@ IMAGE_MAX_SIZE_IN_MB = 2
 
 
 class Gymnast(models.Model):
+    CATEGORIAS = [('prebenjamin', 'Pre-benjamín'), ('prebenjamin', 'Benjamín'),
+                  ('prebenjamin', 'Alevín'), ('prebenjamin', 'Infantil'),
+                  ('prebenjamin', 'Cadete')]
+
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
-    category = models.CharField(max_length=30, choices=[('prebenjamin', 'Pre-benjamín'), ('prebenjamin', 'Benjamín'),
-                                                        ('prebenjamin', 'Alevín'), ('prebenjamin', 'Infantil'),
-                                                        ('prebenjamin', 'Cadete')])
+    category = models.CharField(max_length=30, choices=CATEGORIAS)
     train = models.CharField(max_length=150, blank=True,
                              null=True)
     birthdate = models.DateField(blank=True,
                                  null=True)
+    # entrenadora = models.ForeignKey()
     photo = models.ImageField(
         upload_to='gymnasts/',
         null=True,
@@ -54,7 +57,9 @@ class Trainer(models.Model):
 
 
 class Competition(models.Model):
-    pass
+    club_name_competition = models.CharField(max_length=50, null=False)
+    place = models.CharField(max_length=60)
+    
 
 
 class NotesIndividual(models.Model):
@@ -66,7 +71,7 @@ class NotesConjunto(models.Model):
 
 
 class Team(models.Model):
-    pass
+    categoria = models.CharField(max_length=50)
 
 
 class Contact(models.Model):
