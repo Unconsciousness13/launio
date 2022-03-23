@@ -8,7 +8,7 @@
                     <ul>
                         <li>{{ club_trainer.first_name }} {{ club_trainer.last_name }}</li>
                         <li>Fecha de nacimiento: {{ club_trainer.birthdate|date:"d M, Y" }}</li>
-                        <ul>Entrena: {% for t in club_trainer.train_split %}
+                        <ul>Entrena categorias: {% for t in club_trainer.train_split %}
                                 <li>* {{ t }} </li>
                             {% endfor %}</ul>
                         <li><img src="{{ club_trainer.photo.url }}" alt="trainer photo"/></li>
