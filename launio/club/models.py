@@ -57,21 +57,34 @@ class Trainer(models.Model):
 
 
 class Competition(models.Model):
-    club_name_competition = models.CharField(max_length=50, null=False)
-    place = models.CharField(max_length=60)
-    
+    competition_club_organisation = models.CharField(max_length=50, null=False)
+    competition_name = models.CharField(max_length=50, null=False)
+    competition_place = models.CharField(max_length=60)
+    competition_date = models.DateField()
 
 
 class NotesIndividual(models.Model):
-    pass
+    nota_competition = models.DecimalField(max_digits=5, decimal_places=2)
+    competition_id = models.ForeignKey('Competition', on_delete=models.CASCADE, )
+    gymnast_id = models.ForeignKey('Gymnast', on_delete=models.CASCADE, )
 
 
-class NotesConjunto(models.Model):
-    pass
+class NotesTeam(models.Model):
+    nota_competition = models.DecimalField(max_digits=5, decimal_places=2)
+    competition_id = models.ForeignKey('Competition', on_delete=models.CASCADE, )
+    team_id = models.ForeignKey('Team', on_delete=models.CASCADE, )
+    trainers = models.CharField(max_length=150)
+
+    def train_split(self):
+        return self.trainers.split(',')
 
 
 class Team(models.Model):
-    categoria = models.CharField(max_length=50)
+    category = models.CharField(max_length=50)
+    trainers = models.CharField(max_length=150)
+
+    def train_split(self):
+        return self.trainers.split(',')
 
 
 class Contact(models.Model):
