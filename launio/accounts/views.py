@@ -7,7 +7,7 @@ from launio.accounts.forms import RegisterForm
 
 class UserRegisterView(gen_views.CreateView):
     form_class = RegisterForm
-    success_url = reverse_lazy('show index')
+    success_url = reverse_lazy('login page')
     template_name = 'register.html'
 
 
