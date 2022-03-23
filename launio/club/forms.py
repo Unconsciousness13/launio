@@ -7,6 +7,16 @@ class AddGymnast(forms.ModelForm):
     class Meta:
         model = Gymnast
         fields = ('first_name', 'last_name', 'category', 'train', 'birthdate', 'photo', 'description')
+        labels = {
+            'first_name': 'Nombre',
+            'last_name': 'Apellido',
+            'category': 'Categoria',
+            'train': 'Tipo de entreno',
+            'birthdate': 'Fecha de nacimiento',
+            'photo': 'Foto',
+            'description': 'Descripcion',
+        }
+
 
 
 class AddTrainer(forms.ModelForm):
