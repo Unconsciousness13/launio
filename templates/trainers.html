@@ -7,8 +7,10 @@
                 <div class="column">
                     <ul>
                         <li>{{ club_trainer.first_name }} {{ club_trainer.last_name }}</li>
-                        <li>Fecha de nacimiento: {{ club_trainer.birthdate }}</li>
-                        <li>Entrena: {{ club_trainer.train }}</li>
+                        <li>Fecha de nacimiento: {{ club_trainer.birthdate|date:"d M, Y" }}</li>
+                        <ul>Entrena: {% for t in club_trainer.train_split %}
+                                <li>* {{ t }} </li>
+                            {% endfor %}</ul>
                         <li><img src="{{ club_trainer.photo.url }}" alt="trainer photo"/></li>
                         <li>{{ club_trainer.description }}</li>
                         {% if user.is_superuser %}

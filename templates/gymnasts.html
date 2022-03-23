@@ -7,7 +7,7 @@
                 <div class="column">
                     <ul>
                         <li>{{ gymnast.first_name }} {{ gymnast.last_name }}</li>
-                        <li>Fecha de nacimiento: {{ gymnast.birthdate }}</li>
+                        <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>
                         <li>Categoria: {{ gymnast.category }}</li>
                         <ul>Entrena:
                             {% for t in gymnast.train_split %}
