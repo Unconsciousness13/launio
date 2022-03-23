@@ -6,14 +6,14 @@
             {% for gymnast in object_list %}
                 <div class="column">
                     <ul>
-                        <li>{{ gymnast.first_name }} {{ gymnast.last_name }}</li>
-                        <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>
-                        <li>Categoria: {{ gymnast.category }}</li>
-                        <ul>Entrena:
-                            {% for t in gymnast.train_split %}
-                                <li>* {{ t }} </li>
-                            {% endfor %}
-                        </ul>
+                        <li><h1>{{ gymnast.first_name }} {{ gymnast.last_name }}</h1></li>
+{#                        <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>#}
+{#                        <li>Categoria: {{ gymnast.category }}</li>#}
+{#                        <ul>Entrena:#}
+{#                            {% for t in gymnast.train_split %}#}
+{#                                <li>* {{ t }} </li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
                         <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
                     </ul>
                     <a href="">
