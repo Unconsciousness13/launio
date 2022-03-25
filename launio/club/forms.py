@@ -38,17 +38,38 @@ class AddNoteTeam(forms.ModelForm):
         model = NotesTeam
         fields = ('nota_competition', 'competition', 'team', 'competition_place_on_board')
 
+        labels = {
+            'nota_competition': 'Nota',
+            'competition': 'Elejir competicion',
+            'team': 'Categoria',
+            'competition_place_on_board': 'Puesto',
+        }
+
 
 class AddNoteIndividual(forms.ModelForm):
     class Meta:
         model = NotesIndividual
         fields = '__all__'
 
+        labels = {
+            'nota_competition': 'Nota',
+            'competition': 'Elejir competicion',
+            'gymnast': 'Gimnasta',
+            'competition_place_on_board': 'Puesto',
+        }
+
 
 class AddCompetition(forms.ModelForm):
     class Meta:
         model = Competition
         fields = '__all__'
+
+        labels = {
+            'competition_club_organisation': 'Club organizando la competicion',
+            'competition_name': 'Nombre de la competicion',
+            'competition_place': 'Lugar(poblacion)',
+            'competition_date': 'Fecha de competicion',
+        }
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)

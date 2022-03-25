@@ -20,7 +20,6 @@ class Gymnast(models.Model):
                              null=True)
     birthdate = models.DateField(blank=True,
                                  null=True)
-    # entrenadora = models.ForeignKey()
     photo = models.ImageField(
         upload_to='gymnasts/',
         null=True,
@@ -65,11 +64,9 @@ class Competition(models.Model):
 
 class NotesIndividual(models.Model):
     nota_competition = models.DecimalField(max_digits=5, decimal_places=2, null=False)
-    # competition = models.ForeignKey('Competition', on_delete=models.CASCADE, )
-    competition = models.ManyToManyField(Competition)
+    competition = models.ForeignKey('Competition', on_delete=models.CASCADE, )
     gymnast = models.ForeignKey('Gymnast', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)
-
 
 
 class NotesTeam(models.Model):
@@ -79,17 +76,12 @@ class NotesTeam(models.Model):
     competition_place_on_board = models.IntegerField(null=False)
 
 
-
-
 class Team(models.Model):
     CATEGORIAS = [('Pre-benjamín', 'Pre-benjamín'), ('Benjamín', 'Benjamín'),
                   ('Alevín', 'Alevín'), ('Infantil', 'Infantil'),
                   ('Cadete', 'Cadete')]
     category = models.CharField(max_length=30, choices=CATEGORIAS)
-    trainers = models.CharField(max_length=150)
 
-    def train_split(self):
-        return self.trainers.split(',')
 
 #
 # class Contact(models.Model):

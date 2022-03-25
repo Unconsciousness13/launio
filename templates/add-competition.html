@@ -1,4 +1,18 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
+    <h1 style="text-align: center">Añadir Competicion</h1>
+    <div class="form">
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <div class="center">
+                <button class="btn">
+                    <span>Confirmar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+
 {% endblock %}
