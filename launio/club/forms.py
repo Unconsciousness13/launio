@@ -35,19 +35,19 @@ class AddTrainer(forms.ModelForm):
 
 class AddNoteTeam(forms.ModelForm):
     class Meta:
-        model: NotesTeam
-        fields = '__all__'
+        model = NotesTeam
+        fields = ('nota_competition', 'competition', 'team', 'competition_place_on_board')
 
 
 class AddNoteIndividual(forms.ModelForm):
     class Meta:
-        model: NotesIndividual
+        model = NotesIndividual
         fields = '__all__'
 
 
 class AddCompetition(forms.ModelForm):
     class Meta:
-        model: Competition
+        model = Competition
         fields = '__all__'
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):

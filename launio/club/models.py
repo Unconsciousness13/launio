@@ -60,25 +60,32 @@ class Competition(models.Model):
     competition_club_organisation = models.CharField(max_length=50, null=False)
     competition_name = models.CharField(max_length=50, null=False)
     competition_place = models.CharField(max_length=60, null=False)
-    competition_date = models.DateField()
+    competition_date = models.DateField(null=False)
 
 
 class NotesIndividual(models.Model):
     nota_competition = models.DecimalField(max_digits=5, decimal_places=2, null=False)
-    competition_id = models.ForeignKey('Competition', on_delete=models.CASCADE, )
-    gymnast_id = models.ForeignKey('Gymnast', on_delete=models.CASCADE, )
+    # competition = models.ForeignKey('Competition', on_delete=models.CASCADE, )
+    competition = models.ManyToManyField(Competition)
+    gymnast = models.ForeignKey('Gymnast', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)
+
 
 
 class NotesTeam(models.Model):
     nota_competition = models.DecimalField(max_digits=5, decimal_places=2, null=False)
-    competition_id = models.ForeignKey('Competition', on_delete=models.CASCADE, )
-    team_id = models.ForeignKey('Team', on_delete=models.CASCADE, )
+    competition = models.ForeignKey('Competition', on_delete=models.CASCADE, )
+    team = models.ForeignKey('Team', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)
 
 
+
+
 class Team(models.Model):
-    category = models.CharField(max_length=50)
+    CATEGORIAS = [('Pre-benjamín', 'Pre-benjamín'), ('Benjamín', 'Benjamín'),
+                  ('Alevín', 'Alevín'), ('Infantil', 'Infantil'),
+                  ('Cadete', 'Cadete')]
+    category = models.CharField(max_length=30, choices=CATEGORIAS)
     trainers = models.CharField(max_length=150)
 
     def train_split(self):
