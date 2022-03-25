@@ -1,6 +1,6 @@
 from django import forms
 
-from launio.club.models import Gymnast, Trainer
+from launio.club.models import Gymnast, Trainer, NotesTeam, NotesIndividual, Competition
 
 
 class AddGymnast(forms.ModelForm):
@@ -32,6 +32,23 @@ class AddTrainer(forms.ModelForm):
             'description': 'Descripcion',
         }
 
+
+class AddNoteTeam(forms.ModelForm):
+    class Meta:
+        model: NotesTeam
+        fields = '__all__'
+
+
+class AddNoteIndividual(forms.ModelForm):
+    class Meta:
+        model: NotesIndividual
+        fields = '__all__'
+
+
+class AddCompetition(forms.ModelForm):
+    class Meta:
+        model: Competition
+        fields = '__all__'
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)
