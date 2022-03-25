@@ -1,4 +1,10 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
+    <a href="{% url 'add notes individual' %}">
+        <button class="home-reg-log-buttons">Añadir Nota Individual</button>
+    </a>
+    <a href="{% url 'add notes team' %}">
+        <button class="home-reg-log-buttons">Añadir Nota Conjunto</button>
+    </a>
 {% endblock %}

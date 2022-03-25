@@ -1,6 +1,6 @@
 from django.views import generic as views
 
-from launio.club.forms import AddGymnast, AddTrainer
+from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddNoteTeam
 from launio.club.models import Trainer, Gymnast
 
 
@@ -63,3 +63,25 @@ class DeleteGymnastView(views.DeleteView):
     success_url = '/gymnasts/'
 
 
+class AddNotesView(views.TemplateView):
+    template_name = 'add-notes.html'
+
+
+class AddNotesIndividualView(views.FormView):
+    template_name = 'add-notes-individual.html'
+    form_class = AddNoteIndividual
+    success_url = '/add-note/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+class AddNotesTeamView(views.FormView):
+    template_name = 'add-notes-team.html'
+    form_class = AddNoteTeam
+    success_url = '/add-note/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

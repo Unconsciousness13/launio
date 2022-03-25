@@ -59,19 +59,19 @@ class Trainer(models.Model):
 class Competition(models.Model):
     competition_club_organisation = models.CharField(max_length=50, null=False)
     competition_name = models.CharField(max_length=50, null=False)
-    competition_place = models.CharField(max_length=60)
+    competition_place = models.CharField(max_length=60, null=False)
     competition_date = models.DateField()
 
 
 class NotesIndividual(models.Model):
-    nota_competition = models.DecimalField(max_digits=5, decimal_places=2)
+    nota_competition = models.DecimalField(max_digits=5, decimal_places=2, null=False)
     competition_id = models.ForeignKey('Competition', on_delete=models.CASCADE, )
     gymnast_id = models.ForeignKey('Gymnast', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)
 
 
 class NotesTeam(models.Model):
-    nota_competition = models.DecimalField(max_digits=5, decimal_places=2)
+    nota_competition = models.DecimalField(max_digits=5, decimal_places=2, null=False)
     competition_id = models.ForeignKey('Competition', on_delete=models.CASCADE, )
     team_id = models.ForeignKey('Team', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)

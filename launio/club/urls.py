@@ -1,7 +1,7 @@
 from django.urls import path
 
 from launio.club.views import HomeView, EntrenadorasView, GymnastsView, AddGymnastView, AddTrainerView, \
-    DeleteGymnastView
+    DeleteGymnastView, AddNotesView, AddNotesIndividualView, AddNotesTeamView
 
 urlpatterns = (
     path('', HomeView.as_view(), name='show index'),
@@ -11,4 +11,7 @@ urlpatterns = (
     path('addtrainer/', AddTrainerView.as_view(), name='add trainer'),
     # path('deletegymnast/<int:pk>', DeleteGymnastView.as_view(), 'delete gymnast'),
     path('<pk>/delete/', DeleteGymnastView.as_view()),
+    path('add-notes/', AddNotesView.as_view(), name='add notes'),
+    path('add-notes-individual/', AddNotesIndividualView.as_view(), name='add notes individual'),
+    path('add-notes-team/', AddNotesTeamView.as_view(), name='add notes team'),
 )
