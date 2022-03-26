@@ -1,17 +1,18 @@
 from django import forms
 
-from launio.club.models import Gymnast, Trainer, NotesTeam, NotesIndividual, Competition
+from launio.club.models import Gymnast, Trainer, NotesTeam, NotesIndividual, Competition, Team
 
 
 class AddGymnast(forms.ModelForm):
     class Meta:
         model = Gymnast
-        fields = ('first_name', 'last_name', 'category', 'train', 'birthdate', 'photo', 'description')
+        fields = ('first_name', 'last_name', 'category', 'team', 'train', 'birthdate', 'photo', 'description')
         labels = {
             'first_name': 'Nombre',
             'last_name': 'Apellido',
             'category': 'Categoria',
             'train': 'Tipo de entreno',
+            'team': 'Conjunto',
             'birthdate': 'Fecha de nacimiento',
             'photo': 'Foto',
             'description': 'Descripcion',
@@ -46,6 +47,19 @@ class AddNoteTeam(forms.ModelForm):
         }
 
 
+# class AddNoteTeam(forms.ModelForm):
+#     class Meta:
+#         model = NotesTeam
+#         fields = ('nota_competition', 'competition', 'team', 'competition_place_on_board')
+#         widgets = {
+#             'team': forms.Select()
+#         }
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['team'].choices = Team.CATEGORIAS
+
+
 class AddNoteIndividual(forms.ModelForm):
     class Meta:
         model = NotesIndividual
@@ -70,6 +84,14 @@ class AddCompetition(forms.ModelForm):
             'competition_place': 'Lugar(poblacion)',
             'competition_date': 'Fecha de competicion',
         }
+
+
+class AddTeam(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = '__all__'
+
+
 # class CreateContactForm(forms.ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)

@@ -1,7 +1,8 @@
+from django.shortcuts import render
 from django.views import generic as views
 
-from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddNoteTeam, AddCompetition
-from launio.club.models import Trainer, Gymnast
+from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
+from launio.club.models import Trainer, Gymnast, Team
 
 
 class HomeView(views.TemplateView):
@@ -77,17 +78,49 @@ class AddNotesIndividualView(views.FormView):
         return super().form_valid(form)
 
 
-class AddNotesTeamView(views.FormView):
+class AddNotesTeamView(views.View):
     template_name = 'add-notes-team.html'
     form_class = AddNoteTeam
     success_url = '/add-notes/'
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+
+    def get(self, request):
+        form = self.form_class(request.GET)
+        return render(request, 'add-notes-team.html', context={'form': form})
+
+    # def form_valid(self, form):
+    #     form.save()
+    #     return super().form_valid(form)
 
 
 class AddCompetitionView(views.FormView):
     template_name = 'add-competition.html'
     form_class = AddCompetition
     success_url = '/gymnasts/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+class AddTeamView(views.FormView):
+    template_name = 'add-team.html'
+    form_class = AddTeam
+    success_url = '/teams/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+class TeamsView(views.ListView):
+    model = Team
+    template_name = 'teams.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

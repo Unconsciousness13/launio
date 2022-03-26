@@ -10,7 +10,6 @@ class Gymnast(models.Model):
     CATEGORIAS = [('Pre-benjamín', 'Pre-benjamín'), ('Benjamín', 'Benjamín'),
                   ('Alevín', 'Alevín'), ('Infantil', 'Infantil'),
                   ('Cadete', 'Cadete')]
-
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
@@ -29,9 +28,13 @@ class Gymnast(models.Model):
         )
     )
     description = models.TextField()
-
+    team = models.ForeignKey('Team', on_delete=models.CASCADE)
+    notes = models.ForeignKey('NotesIndividual', on_delete=models.CASCADE)
     def train_split(self):
         return self.train.split(',')
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
 
 class Trainer(models.Model):
@@ -54,12 +57,18 @@ class Trainer(models.Model):
     def train_split(self):
         return self.train.split(',')
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Competition(models.Model):
     competition_club_organisation = models.CharField(max_length=50, null=False)
     competition_name = models.CharField(max_length=50, null=False)
     competition_place = models.CharField(max_length=60, null=False)
     competition_date = models.DateField(null=False)
+
+    def __str__(self):
+        return self.competition_name
 
 
 class NotesIndividual(models.Model):
@@ -77,11 +86,20 @@ class NotesTeam(models.Model):
 
 
 class Team(models.Model):
-    CATEGORIAS = [('Pre-benjamín', 'Pre-benjamín'), ('Benjamín', 'Benjamín'),
-                  ('Alevín', 'Alevín'), ('Infantil', 'Infantil'),
-                  ('Cadete', 'Cadete')]
-    category = models.CharField(max_length=30, choices=CATEGORIAS)
+    name = models.CharField(max_length=30, unique=True)
+    photo = models.ImageField(
+        upload_to='gymnasts/',
+        null=True,
+        blank=True,
+        validators=(
+            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        )
+    )
+    description = models.TextField()
+    notes = models.ForeignKey('NotesTeam', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
 #
 # class Contact(models.Model):
