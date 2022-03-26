@@ -7,7 +7,7 @@ from launio.club.views import HomeView, TrainersView, GymnastsView, AddGymnastVi
 urlpatterns = (
     path('', HomeView.as_view(), name='show index'),
     path('trainers/', TrainersView.as_view(), name='show trainers'),
-    path('gymnasts/', GymnastsView.as_view(), name="show gymnast"),
+    path('gymnasts/', GymnastsView.as_view(), name="show gymnasts"),
     path('addgymnast/', AddGymnastView.as_view(), name='add gymnast'),
     path('addtrainer/', AddTrainerView.as_view(), name='add trainer'),
     # path('deletegymnast/<int:pk>', DeleteGymnastView.as_view(), 'delete gymnast'),

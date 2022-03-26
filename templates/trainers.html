@@ -6,17 +6,15 @@
             {% for club_trainer in object_list %}
                 <div class="column">
                     <ul>
-                        <li>{{ club_trainer.first_name }} {{ club_trainer.last_name }}</li>
+                        <li><h1>{{ club_trainer.first_name }} {{ club_trainer.last_name }}</h1></li>
                         <li>Fecha de nacimiento: {{ club_trainer.birthdate|date:"d M, Y" }}</li>
-                        <ul>Entrena categorias: {% for t in club_trainer.train_split %}
-                                <li>* {{ t }} </li>
-                            {% endfor %}</ul>
+                        <li>Entrena categorias: {{ club_trainer.train }}</li>
                         <li><img src="{{ club_trainer.photo.url }}" alt="trainer photo"/></li>
                         <li>{{ club_trainer.description }}</li>
                         {% if user.is_superuser %}
-                        <a href="">
-                            <button class="home-reg-log-buttons">Editar</button>
-                        </a>
+                            <a href="">
+                                <button class="home-reg-log-buttons">Editar</button>
+                            </a>
                         {% endif %}
                     </ul>
                 </div>

@@ -7,17 +7,16 @@
                 <div class="column">
                     <ul>
                         <li><h1>{{ gymnast.first_name }} {{ gymnast.last_name }}</h1></li>
-                        {#                        <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>#}
-                        {#                        <li>Categoria: {{ gymnast.category }}</li>#}
-                        {#                        <ul>Entrena:#}
-                        {#                            {% for t in gymnast.train_split %}#}
-                        {#                                <li>* {{ t }} </li>#}
-                        {#                            {% endfor %}#}
-                        {#                        </ul>#}
+                        <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>
+                        <li>Categoria: {{ gymnast.category }}</li>
+                        <ul>Entrena:
+                            {% for t in gymnast.train_split %}
+                                <li>* {{ t }} </li>
+                            {% endfor %}
+                        </ul>
                         <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
                     </ul>
-                    <a href="{% url 'detail gymnast' slug=gymnast.slug %}">
-                        
+                    <a href="{% url 'detail gymnast' slug %}">
                         <button class="home-reg-log-buttons">Ver mas</button>
                     </a>
                     {% if user.is_superuser %}

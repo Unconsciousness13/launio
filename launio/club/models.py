@@ -10,13 +10,16 @@ class Gymnast(models.Model):
     CATEGORIAS = [('Pre-benjamín', 'Pre-benjamín'), ('Benjamín', 'Benjamín'),
                   ('Alevín', 'Alevín'), ('Infantil', 'Infantil'),
                   ('Cadete', 'Cadete')]
+    TRAINING_TYPES = [('Individual', 'Individual'), ('Conjunto', 'Conjunto'),
+                      ('Individual y Conjunto', 'Individual y Conjunto')]
+
+    slug = models.SlugField(null=True)
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     category = models.CharField(max_length=30, choices=CATEGORIAS)
-    train = models.CharField(max_length=150, blank=True,
-                             null=True)
+    train = models.CharField(max_length=150, choices=TRAINING_TYPES)
     birthdate = models.DateField(blank=True,
                                  null=True)
     photo = models.ImageField(
@@ -30,19 +33,22 @@ class Gymnast(models.Model):
     description = models.TextField()
     team = models.ForeignKey('Team', on_delete=models.CASCADE)
 
-    def train_split(self):
-        return self.train.split(',')
-
     def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+    def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
 
 class Trainer(models.Model):
+    TRAINING_TYPES = [('Individual', 'Individual'), ('Conjunto', 'Conjunto'),
+                      ('Individual y Conjunto', 'Individual y Conjunto')]
+
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
-    train = models.CharField(max_length=150)
+    train = models.CharField(max_length=150, choices=TRAINING_TYPES)
     birthdate = models.DateField()
     photo = models.ImageField(
         upload_to='trainers/',
@@ -53,9 +59,6 @@ class Trainer(models.Model):
         )
     )
     description = models.TextField()
-
-    def train_split(self):
-        return self.train.split(',')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
