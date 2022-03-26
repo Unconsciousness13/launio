@@ -13,7 +13,7 @@ class Gymnast(models.Model):
     TRAINING_TYPES = [('Individual', 'Individual'), ('Conjunto', 'Conjunto'),
                       ('Individual y Conjunto', 'Individual y Conjunto')]
 
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=True, )
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(

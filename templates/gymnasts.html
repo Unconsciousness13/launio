@@ -17,7 +17,7 @@
                         <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
                     </ul>
                     <a href="{% url 'detail gymnast' slug=gymnast.slug %}">
-                        
+
                         <button class="home-reg-log-buttons">Ver mas</button>
                     </a>
                     {% if user.is_superuser %}
