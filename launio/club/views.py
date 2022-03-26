@@ -18,7 +18,7 @@ class HomeView(views.TemplateView):
     #     return super().dispatch(request, *args, **kwargs)
 
 
-class EntrenadorasView(views.ListView):
+class TrainersView(views.ListView):
     model = Trainer
     template_name = 'trainers.html'
     ordering = 'birthdate', 'train'
@@ -128,4 +128,10 @@ class TeamsView(views.ListView):
 
 class EditGymnastView(views.UpdateView):
     model = Gymnast
-    fields = 
+    form_class = AddGymnast
+    template_name = 'add-gymnast.html'
+    success_url = '/gymnasts/'
+
+
+class GymnastDetailView(views.DetailView):
+    pass

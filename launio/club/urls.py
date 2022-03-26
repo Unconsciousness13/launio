@@ -1,12 +1,12 @@
 from django.urls import path
 
-from launio.club.views import HomeView, EntrenadorasView, GymnastsView, AddGymnastView, AddTrainerView, \
+from launio.club.views import HomeView, TrainersView, GymnastsView, AddGymnastView, AddTrainerView, \
     DeleteGymnastView, AddNotesView, AddNotesIndividualView, AddNotesTeamView, AddCompetitionView, AddTeamView, \
-    TeamsView
+    TeamsView, EditGymnastView, GymnastDetailView
 
 urlpatterns = (
     path('', HomeView.as_view(), name='show index'),
-    path('trainers/', EntrenadorasView.as_view(), name='show trainers'),
+    path('trainers/', TrainersView.as_view(), name='show trainers'),
     path('gymnasts/', GymnastsView.as_view(), name="show gymnast"),
     path('addgymnast/', AddGymnastView.as_view(), name='add gymnast'),
     path('addtrainer/', AddTrainerView.as_view(), name='add trainer'),
@@ -17,6 +17,8 @@ urlpatterns = (
     path('add-notes-team/', AddNotesTeamView.as_view(), name='add notes team'),
     path('add-competition/', AddCompetitionView.as_view(), name='add competition'),
     path('add-team/', AddTeamView.as_view(), name='add team'),
-    path('teams/', TeamsView.as_view(), name='add team')
+    path('teams/', TeamsView.as_view(), name='show teams'),
+    path('edit/<slug:slug>/', EditGymnastView.as_view(), name=' edit gymnast'),
+    path('<slug:slug>/', GymnastDetailView.as_view(), name='detail gymnast')
 
 )
