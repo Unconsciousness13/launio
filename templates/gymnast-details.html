@@ -9,19 +9,15 @@
                         <li><h1>{{ gymnast.first_name }} {{ gymnast.last_name }}</h1></li>
                         <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>
                         <li>Categoria: {{ gymnast.category }}</li>
-                        <ul>Entrena:
-                            {% for t in gymnast.train_split %}
-                                <li>* {{ t }} </li>
-                            {% endfor %}
-                        </ul>
+                        <li>Entrena: {{ gymnast.train }}</li>
                         <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
                     </ul>
-                    <a href="{% url 'detail gymnast' slug %}">
-                        <button class="home-reg-log-buttons">Ver mas</button>
+                    <a href="">
+                        <button class="home-reg-log-buttons">Editar</button>
                     </a>
                     {% if user.is_superuser %}
                         <a href="">
-                            <button class="home-reg-log-buttons">Editar</button>
+                            <button class="home-reg-log-buttons">Borrar</button>
                         </a>
                     {% endif %}
                 </div>
