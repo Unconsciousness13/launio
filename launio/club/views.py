@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views import generic as views
 
 from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
@@ -64,6 +63,16 @@ class DeleteGymnastView(views.DeleteView):
     success_url = '/gymnasts/'
 
 
+class DeleteTrainerView(views.DeleteView):
+    model = Trainer
+    success_url = '/trainers/'
+
+
+class DeleteTeamView(views.DeleteView):
+    model = Team
+    success_url = '/teams/'
+
+
 class AddNotesView(views.TemplateView):
     template_name = 'add-notes.html'
 
@@ -78,23 +87,14 @@ class AddNotesIndividualView(views.FormView):
         return super().form_valid(form)
 
 
-class AddNotesTeamView(views.View):
+class AddNotesTeamView(views.FormView):
     template_name = 'add-notes-team.html'
     form_class = AddNoteTeam
     success_url = '/add-notes/'
 
-    def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            form.save()
-
-    def get(self, request):
-        form = self.form_class(request.GET)
-        return render(request, 'add-notes-team.html', context={'form': form})
-
-    # def form_valid(self, form):
-    #     form.save()
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class AddCompetitionView(views.FormView):
@@ -124,3 +124,8 @@ class TeamsView(views.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+class EditGymnastView(views.UpdateView):
+    model = Gymnast
+    fields = 

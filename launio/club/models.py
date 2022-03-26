@@ -29,7 +29,7 @@ class Gymnast(models.Model):
     )
     description = models.TextField()
     team = models.ForeignKey('Team', on_delete=models.CASCADE)
-    notes = models.ForeignKey('NotesIndividual', on_delete=models.CASCADE)
+
     def train_split(self):
         return self.train.split(',')
 
@@ -96,7 +96,6 @@ class Team(models.Model):
         )
     )
     description = models.TextField()
-    notes = models.ForeignKey('NotesTeam', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
