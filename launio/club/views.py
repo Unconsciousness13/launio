@@ -62,6 +62,7 @@ class AddTrainerView(views.FormView):
 
 class DeleteGymnastView(views.DeleteView):
     model = Gymnast
+    template_name = 'gymnast_confirm_delete.html'
     success_url = '/gymnasts/'
 
 
@@ -150,19 +151,3 @@ class GymnastDetailView(TemplateView):
         context['notes-team'] = NotesTeam
 
         return context
-    # model = Gymnast
-    # template_name = 'gymnast-details.html'
-    #
-    # # context_object_name = 'gymnast'
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #
-    #     # post = Gymnast.objects.filter(slug=self.kwargs.get('slug'))
-    #
-    #     return context
-    #
-    # def get_gymnast_notes_individual(self):
-    #     for com in Competition.competition_name:
-    #         if Gymnast.pk == NotesIndividual.gymnast:
-    #             return f'Competicion: {com} - Nota: {NotesIndividual.nota_competition} Posicion - {NotesIndividual.competition_place_on_board}'

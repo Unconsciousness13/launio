@@ -10,19 +10,22 @@
                     <li>Categoria: {{ gymnast.category }}</li>
                     <li>Entrena: {{ gymnast.train }}</li>
                     <li>Conjunto: {{ gymnast.team }}</li>
-                    {%  if gymnast.photo %}
-                    <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
-                    {%  endif %}
+                    {% if gymnast.photo %}
+                        <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
+                    {% endif %}
                     <li>{{ gymnast.description }}</li>
-                    {% for com in competition.competition_name %}
-                        <li>{{ com }}</li>
-                    {% endfor %}
+                    {#                    {% for com in competition.competition_name %}#}
+                    {#                        <ul>#}
+                    {#                        <li>{{ com.as_p }}</li>#}
+                    {#                        </ul>#}
+                    {#                    {% endfor %}#}
                 </ul>
-                <a href="">
-                    <button class="home-reg-log-buttons">Editar</button>
-                </a>
+
                 {% if user.is_superuser %}
-                    <a href="">
+                    <a href="{% url 'edit gymnast' gymnast.pk %}">
+                        <button class="home-reg-log-buttons">Editar</button>
+                    </a>
+                    <a href="{% url 'delete gymnast' gymnast.pk %}">
                         <button class="home-reg-log-buttons">Borrar</button>
                     </a>
                 {% endif %}

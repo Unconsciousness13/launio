@@ -10,15 +10,14 @@ urlpatterns = (
     path('gymnasts/', GymnastsView.as_view(), name="show gymnasts"),
     path('addgymnast/', AddGymnastView.as_view(), name='add gymnast'),
     path('addtrainer/', AddTrainerView.as_view(), name='add trainer'),
-    # path('deletegymnast/<int:pk>', DeleteGymnastView.as_view(), 'delete gymnast'),
-    path('<pk>/delete/', DeleteGymnastView.as_view()),
+    path('delete-gymnast/<int:pk>', DeleteGymnastView.as_view(), name='delete gymnast'),
     path('add-notes/', AddNotesView.as_view(), name='add notes'),
     path('add-notes-individual/', AddNotesIndividualView.as_view(), name='add notes individual'),
     path('add-notes-team/', AddNotesTeamView.as_view(), name='add notes team'),
     path('add-competition/', AddCompetitionView.as_view(), name='add competition'),
     path('add-team/', AddTeamView.as_view(), name='add team'),
     path('teams/', TeamsView.as_view(), name='show teams'),
-    path('edit/<int:pk>/', EditGymnastView.as_view(), name=' edit gymnast'),
+    path('edit/<int:pk>/', EditGymnastView.as_view(), name='edit gymnast'),
     path('gymnast-details/<int:pk>/', GymnastDetailView.as_view(), name='detail gymnast')
 
 )

@@ -1,9 +1,10 @@
-{% extends 'base/base.html' %}
-{% load static %}
-{% block dynamic_content %}
-    <h1>Borar Gymnasta</h1>
-    <form method="post">{% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}"?</p>
-        <input type="submit" value="Confirm">
-    </form>
-{% endblock %}
+{#{% extends 'base/base.html' %}#}
+{#{% load static %}#}
+{#{% block dynamic_content %}#}
+{#    <h1>Borar Gymnasta</h1>#}
+{#    <form method="post">{% csrf_token %}#}
+{#        <p>Are you sure you want to delete "{{ object }}"?</p>#}
+{#        {{ form }}#}
+{#        <input type="submit" value="Confirm">#}
+{#    </form>#}
+{#{% endblock %}#}
