@@ -136,7 +136,8 @@ class EditGymnastView(views.UpdateView):
 class GymnastDetailView(views.DetailView):
     model = Gymnast
     template_name = 'gymnast-details.html'
-    context_object_name = 'gymnast'
+
+    # context_object_name = 'gymnast'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
