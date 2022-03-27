@@ -7,14 +7,9 @@
                 <div class="column">
                     <ul>
                         <li><h1>{{ gymnast.full_name }}</h1></li>
-                        {#                        <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>#}
-                        {#                        <li>Categoria: {{ gymnast.category }}</li>#}
-                        {#                        <ul>Entrena:#}
-                        {#                            {% for t in gymnast.train_split %}#}
-                        {#                                <li>* {{ t }} </li>#}
-                        {#                            {% endfor %}#}
-                        {#                        </ul>#}
+                        {% if gymnast.photo %}
                         <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
+                        {%  endif %}
                     </ul>
                     <a href="{% url 'detail gymnast' gymnast.pk %}">
 

@@ -9,9 +9,14 @@
                     <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>
                     <li>Categoria: {{ gymnast.category }}</li>
                     <li>Entrena: {{ gymnast.train }}</li>
+                    <li>Conjunto: {{ gymnast.team }}</li>
+                    {%  if gymnast.photo %}
                     <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
+                    {%  endif %}
                     <li>{{ gymnast.description }}</li>
-
+                    {% for com in competition.competition_name %}
+                        <li>{{ com }}</li>
+                    {% endfor %}
                 </ul>
                 <a href="">
                     <button class="home-reg-log-buttons">Editar</button>

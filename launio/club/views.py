@@ -1,7 +1,9 @@
+from django.shortcuts import get_object_or_404
 from django.views import generic as views
+from django.views.generic import TemplateView
 
 from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
-from launio.club.models import Trainer, Gymnast, Team
+from launio.club.models import Trainer, Gymnast, Team, NotesTeam, NotesIndividual, Competition
 
 
 class HomeView(views.TemplateView):
@@ -132,16 +134,35 @@ class EditGymnastView(views.UpdateView):
     template_name = 'add-gymnast.html'
     success_url = '/gymnasts/'
 
+    # class GymnastDetailView(views.DetailView):
 
-class GymnastDetailView(views.DetailView):
-    model = Gymnast
+
+class GymnastDetailView(TemplateView):
     template_name = 'gymnast-details.html'
-
-    # context_object_name = 'gymnast'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        # post = Gymnast.objects.filter(slug=self.kwargs.get('slug'))
+        gymnast = get_object_or_404(Gymnast, **kwargs)
+        context['gymnast'] = gymnast
+        context['competition'] = Competition
+        context['team'] = Team
+        context['nota-individual'] = NotesIndividual
+        context['notes-team'] = NotesTeam
 
         return context
+    # model = Gymnast
+    # template_name = 'gymnast-details.html'
+    #
+    # # context_object_name = 'gymnast'
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #
+    #     # post = Gymnast.objects.filter(slug=self.kwargs.get('slug'))
+    #
+    #     return context
+    #
+    # def get_gymnast_notes_individual(self):
+    #     for com in Competition.competition_name:
+    #         if Gymnast.pk == NotesIndividual.gymnast:
+    #             return f'Competicion: {com} - Nota: {NotesIndividual.nota_competition} Posicion - {NotesIndividual.competition_place_on_board}'

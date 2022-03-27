@@ -18,7 +18,7 @@ urlpatterns = (
     path('add-competition/', AddCompetitionView.as_view(), name='add competition'),
     path('add-team/', AddTeamView.as_view(), name='add team'),
     path('teams/', TeamsView.as_view(), name='show teams'),
-    path('gymnast-edit/<int:pk>/', EditGymnastView.as_view(), name=' edit gymnast'),
+    path('edit/<int:pk>/', EditGymnastView.as_view(), name=' edit gymnast'),
     path('gymnast-details/<int:pk>/', GymnastDetailView.as_view(), name='detail gymnast')
 
 )
