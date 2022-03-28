@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CR la Unió Viladecans</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}"/>
+
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="logo">
+                <a href="{% url 'show index' %}"><img id="logo-bar" src="{% static 'images/club_photos/Logo.png' %}"
+                                                      alt="logo"></a>
+            </div>
+            {% if user.is_active %}
+                <div class="user-nav-display">Hola {{ user.username }}</div>
+            {% endif %}
+
+            <button type="button" class="nav-toggler">
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul>
+                    <li><a href="{% url 'show index' %}">Inicio</a></li>
+                    <li><a href="{% url 'show gymnasts' %}">Gimnastas</a></li>
+                    <li><a href="">Conjuntos</a></li>
+                    <li><a href="{% url 'show trainers' %}">Entrenadoras</a></li>
+                    <li><a href="#">Directiva</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    {% if  user.is_active %}
+                        {% if user.is_superuser %}
+
+                            <li><a href="{% url 'add gymnast' %}">Añadir Gimnasta</a></li>
+                            <li><a href="{% url 'add trainer' %}">Añadir Entrenadora</a></li>
+                            <li><a href="{% url 'add competition' %}">Añadir Competicion</a></li>
+                            <li><a href="{% url 'add notes' %}">Añadir Nota</a></li>
+                        {% endif %}
+                        <ul>
+                            <li><a href="#">Prefil</a></li>
+                            <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
+                        </ul>
+                    {% elif not user.is_active %}
+                        <li><a href="{% url 'register page' %}">Registrarte</a></li>
+                        <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<script src="{% static 'js/script.js' %}"></script>
+{% block dynamic_content %}
+{% endblock %}
+
+<footer>
+    <div>
+        <a href="https://www.pako.es" target="new" style="color: white">&copy;Pako™ 2022. All rights reserved.</a>
+    </div>
+</footer>
+</body>
+
+
+</html>

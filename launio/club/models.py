@@ -33,9 +33,6 @@ class Gymnast(models.Model):
     description = models.TextField()
     team = models.ForeignKey('Team', on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.first_name} {self.last_name}'
-
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
