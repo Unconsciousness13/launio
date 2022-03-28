@@ -12,9 +12,13 @@
                         <li><img src="{{ club_trainer.photo.url }}" alt="trainer photo"/></li>
                         <li>{{ club_trainer.description }}</li>
                         {% if user.is_superuser %}
-                            <a href="">
+                            <a href="{% url 'edit trainer' club_trainer.pk %}">
                                 <button class="home-reg-log-buttons">Editar</button>
                             </a>
+                            <a href="{% url 'delete trainer' club_trainer.pk %}">
+                                <button class="home-reg-log-buttons">Borrar</button>
+                            </a>
+
                         {% endif %}
                     </ul>
                 </div>

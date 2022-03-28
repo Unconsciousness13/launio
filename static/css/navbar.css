@@ -5,6 +5,7 @@
     width: 60px;
     position: relative;
 }
+
 :root {
     --color-1: black;
 }
@@ -27,6 +28,11 @@ ul {
 
 a {
     text-decoration: none;
+}
+
+
+.nav {
+    margin-right: -200px;
 }
 
 .container {
@@ -75,16 +81,13 @@ a {
     font-size: 18px;
     text-transform: capitalize;
     color: #ffffff;
-    /*padding: 10px 0;*/
     transition: all 0.5s ease;
 }
 
 .header .nav ul li a.active,
 .header .nav ul li a:hover {
     color: deeppink;
-    border-bottom: deeppink;
-    border-width: 1px;
-    box-shadow:  0 0 5px pink;
+    box-shadow: 0 0 10px deeppink;
 
     /*border-bottom-style: inset;*/
 }
@@ -176,30 +179,24 @@ a {
         margin: 0;
     }
 }
+
 .user-nav-display {
     color: white;
 }
 
-/*drop down test*/
-/*ul li ul {*/
-/*    display: none;*/
-/*}*/
 
-/*ul li a ul:hover {*/
-/*    display: inline-block;*/
-/*}*/
-
-.nav ul li  a{
-    padding:5px;
+.nav ul li a {
+    padding: 5px;
     border-radius: 3px;
-    margin:0;
+    margin: 0;
 }
 
-.form  form p select{
-    width:320px;
+.form form p select {
+    width: 320px;
     height: 35px;
     background: white;
 }
+
 form {
     margin-bottom: 50px;
 }

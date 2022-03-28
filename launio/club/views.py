@@ -62,12 +62,20 @@ class AddTrainerView(views.FormView):
 
 class DeleteGymnastView(views.DeleteView):
     model = Gymnast
-    template_name = 'gymnast_confirm_delete.html'
+    template_name = 'gymnast-confirm-delete.html'
     success_url = '/gymnasts/'
 
 
 class DeleteTrainerView(views.DeleteView):
     model = Trainer
+    template_name = 'delete-trainer-confirm.html'
+    success_url = '/trainers/'
+
+
+class EditTrainerView(views.UpdateView):
+    model = Trainer
+    form_class = AddTrainer
+    template_name = 'trainer-edit.html'
     success_url = '/trainers/'
 
 
