@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 #logo-bar {
     height: 60px;
     width: 60px;
@@ -8,8 +10,9 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #e8eef3;
+
 }
 
 * {
@@ -176,13 +179,10 @@ a {
 }
 
 /*drop down test*/
+ul li ul {
+    display: none;
+}
 
-
-
-
-
-
-
-
-
-
+ul li a ul:hover {
+    display: inline-block;
+}
