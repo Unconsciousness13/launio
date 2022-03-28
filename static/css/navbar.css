@@ -67,7 +67,7 @@ a {
 
 .header .nav ul li {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .header .nav ul li a {
@@ -84,6 +84,8 @@ a {
     color: deeppink;
     border-bottom: deeppink;
     border-width: 1px;
+    box-shadow:  0 0 5px pink;
+
     /*border-bottom-style: inset;*/
 }
 
@@ -179,10 +181,25 @@ a {
 }
 
 /*drop down test*/
-ul li ul {
-    display: none;
+/*ul li ul {*/
+/*    display: none;*/
+/*}*/
+
+/*ul li a ul:hover {*/
+/*    display: inline-block;*/
+/*}*/
+
+.nav ul li  a{
+    padding:5px;
+    border-radius: 3px;
+    margin:0;
 }
 
-ul li a ul:hover {
-    display: inline-block;
+.form  form p select{
+    width:320px;
+    height: 35px;
+    background: white;
+}
+form {
+    margin-bottom: 50px;
 }
