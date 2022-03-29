@@ -1,14 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from launio.club import models
 from launio.club.models import *
-
-admin.site.register(Gymnast)
-admin.site.register(Team)
-admin.site.register(Competition)
-admin.site.register(NotesTeam)
-admin.site.register(NotesIndividual)
+# from django.db import models
+#
+#
 # @admin.register(models.Gymnast)
 # class GymnastAdmin(admin.ModelAdmin):
 #     pass
@@ -33,3 +29,9 @@ admin.site.register(NotesIndividual)
 # class NotesIndividualAdmin(admin.ModelAdmin):
 #     pass
 
+
+admin.site.register(Gymnast)
+admin.site.register(Team)
+admin.site.register(Competition)
+admin.site.register(NotesTeam)
+admin.site.register(NotesIndividual)
