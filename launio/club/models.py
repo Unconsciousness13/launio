@@ -36,6 +36,9 @@ class Gymnast(models.Model):
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Trainer(models.Model):
     TRAINING_TYPES = [('Individual', 'Individual'), ('Conjunto', 'Conjunto'),
@@ -77,12 +80,18 @@ class NotesIndividual(models.Model):
     gymnast = models.ForeignKey('Gymnast', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)
 
+    def __str__(self):
+        return f'{self.gymnast.first_name} {self.gymnast.last_name} {self.competition}'
+
 
 class NotesTeam(models.Model):
     nota_competition = models.DecimalField(max_digits=5, decimal_places=2, null=False)
     competition = models.ForeignKey('Competition', on_delete=models.CASCADE, )
     team = models.ForeignKey('Team', on_delete=models.CASCADE, )
     competition_place_on_board = models.IntegerField(null=False)
+
+    def __str__(self):
+        return f'{self.team} {self.competition}'
 
 
 class Team(models.Model):
