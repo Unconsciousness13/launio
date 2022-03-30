@@ -3,7 +3,7 @@ from django.views import generic as views
 from django.views.generic import TemplateView
 
 from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
-from launio.club.models import Trainer, Gymnast, Team, NotesIndividual, NotesTeam
+from launio.club.models import Trainer, Gymnast, Team, NotesIndividual, NotesTeam, Competition
 
 
 class HomeView(views.TemplateView):
@@ -153,7 +153,7 @@ class GymnastDetailView(TemplateView):
         context = super(GymnastDetailView, self).get_context_data(**kwargs)
         gymnast = get_object_or_404(Gymnast, **kwargs)
         context['gymnast'] = gymnast
-        # context['competitions'] = Competition.objects.filter(gymnast.id)
+        context['competitions'] = Competition.objects.all()
         context['team'] = Team.objects.filter(gymnast=gymnast.id)
         context['notesIndividual'] = NotesIndividual.objects.filter(gymnast=gymnast.id)
         context['notes_team'] = NotesTeam.objects.filter(team=gymnast.id)
