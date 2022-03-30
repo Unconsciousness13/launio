@@ -2,7 +2,7 @@ from django.urls import path
 
 from launio.club.views import HomeView, TrainersView, GymnastsView, AddGymnastView, AddTrainerView, \
     DeleteGymnastView, AddNotesView, AddNotesIndividualView, AddNotesTeamView, AddCompetitionView, AddTeamView, \
-    TeamsView, EditGymnastView, GymnastDetailView, EditTrainerView, DeleteTrainerView
+    TeamsView, EditGymnastView, GymnastDetailView, EditTrainerView, DeleteTrainerView, ContactView
 
 urlpatterns = (
     path('', HomeView.as_view(), name='show index'),
@@ -20,6 +20,7 @@ urlpatterns = (
     path('teams/', TeamsView.as_view(), name='show teams'),
     path('edit-gymnast/<int:pk>/', EditGymnastView.as_view(), name='edit gymnast'),
     path('edit-trainer/<int:pk>/', EditTrainerView.as_view(), name='edit trainer'),
-    path('gymnast-details/<int:pk>/', GymnastDetailView.as_view(), name='detail gymnast')
+    path('gymnast-details/<int:pk>/', GymnastDetailView.as_view(), name='detail gymnast'),
+    path('contact-us/', ContactView.as_view(), name='contact')
 
 )

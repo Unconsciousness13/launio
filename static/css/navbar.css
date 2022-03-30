@@ -191,12 +191,22 @@ a {
     margin: 0;
 }
 
-.form form p select {
-    width: 320px;
-    height: 35px;
-    background: white;
+
+
+/*// test //*/
+/*.hidden-sub-menu {*/
+/*    display:none*/
+/*}*/
+/*.hidden-sub-menu:hover {*/
+/*    display:inline-block;*/
+/*}*/
+
+.nav ul li ul {
+    display: none;
 }
 
-form {
-    margin-bottom: 50px;
+.nav ul li ul:active {
+    display: block;
+    width:130px;
+    position: absolute;
 }

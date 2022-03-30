@@ -109,12 +109,12 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
-#
-# class Contact(models.Model):
-#     first_name = models.CharField(max_length=30, validators=(
-#         MinLengthValidator(2),))
-#     last_name = models.CharField(max_length=30, validators=(
-#         MinLengthValidator(2),))
-#     email = models.EmailField()
-#     phone = models.IntegerField()
-#     message = models.TextField()
+
+class Contact(models.Model):
+    first_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
+    last_name = models.CharField(max_length=30, validators=(
+        MinLengthValidator(2),))
+    email = models.EmailField()
+    phone = models.IntegerField()
+    message = models.TextField()

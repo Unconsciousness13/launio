@@ -7,6 +7,7 @@
     <title>CR la Unió Viladecans</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
     <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 <body>
@@ -31,19 +32,24 @@
                     <li><a href="{% url 'show gymnasts' %}">Gimnastas</a></li>
                     <li><a href="">Conjuntos</a></li>
                     <li><a href="{% url 'show trainers' %}">Entrenadoras</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="{% url 'contact' %}">Contacto</a></li>
+
                     {% if  user.is_active %}
                         {% if user.is_superuser %}
-                            <ul>
-                                <li><a href="{% url 'add gymnast' %}">Añadir Gimnasta</a></li>
-                                <li><a href="{% url 'add trainer' %}">Añadir Entrenadora</a></li>
-                                <li><a href="{% url 'add competition' %}">Añadir Competicion</a></li>
-                                <li><a href="{% url 'add notes' %}">Añadir Nota</a></li>
+                            <li><a>Anadir<i class='bx bxs-chevron-down'></i></a>
+                                <ul>
+                                    <li><a href="{% url 'add gymnast' %}">Añadir Gimnasta</a></li>
+                                    <li><a href="{% url 'add trainer' %}">Añadir Entrenadora</a></li>
+                                    <li><a href="{% url 'add competition' %}">Añadir Competicion</a></li>
+                                    <li><a href="{% url 'add notes' %}">Añadir Nota</a></li>
+                                </ul>
+                            </li>
                         {% endif %}
-                        <ul>
-                            <li><a href="#">Prefil</a></li>
-                            <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
-                        </ul>
+                        <li><a href="">Prefil<i class='bx bxs-chevron-down'></i></a>
+                            <ul>
+                                <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
+                            </ul>
+                        </li>
                     {% elif not user.is_active %}
                         <li><a href="{% url 'register page' %}">Registrarte</a></li>
                         <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
@@ -63,69 +69,4 @@
     </div>
 </footer>
 </body>
-
-
 </html>
-
-
-
-{#{% load static %}#}
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="utf-8">#}
-{#    <title>Responsive Drop-down Menu Bar</title>#}
-{#    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>#}
-{#    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}"/>#}
-{#    <script src="https://kit.fontawesome.com/a076d05399.js"></script>#}
-{#    <link rel="stylesheet" href="file:///E:/fontawesome/css/all.css">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
-{#    <script src="file:///E:/jquery.js"></script>#}
-{#</head>#}
-{#<body>#}
-{#<nav>#}
-{#    <div class="logo"><a href="{% url 'show index' %}"><img id="logo-bar"#}
-{#                                                            src="{% static 'images/club_photos/Logo.png' %}"#}
-{#                                                            alt="logo"></a></div>#}
-{#    <label for="btn" class="icon">#}
-{#        <span class="fa fa-bars"></span>#}
-{#    </label>#}
-{#    <input type="checkbox" id="btn">#}
-{#    <ul>#}
-{#        <li><a href="#">Inicio</a></li>#}
-{#        <li>#}
-{#            <label for="btn-1" class="show">Anadir +</label>#}
-{#            <a href="#">Anadir</a>#}
-{#            <input type="checkbox" id="btn-1">#}
-{#            <ul>#}
-{#                <li><a href="#">Gimnasta</a></li>#}
-{#                <li><a href="#">Conjunto</a></li>#}
-{#                <li><a href="#">Entrenadora</a></li>#}
-{#                <li><a href="#">Competicion</a></li>#}
-{##}
-{#            </ul>#}
-{#        </li>#}
-{#        <li><a href="#">Gimnastas</a></li>#}
-{#        <li><a href="#">Entrenadoras</a></li>#}
-{#        <li><a href="#">Contacto</a></li>#}
-{#        <li><a href="#">Prefil</a></li>#}
-{#    </ul>#}
-{#</nav>#}
-{#<div class="content">#}
-{#    {% block dynamic_content %}#}
-{#    {% endblock %}#}
-{#</div>#}
-{##}
-{#<footer>#}
-{#    <div>#}
-{#        <a href="https://www.pako.es" target="new" style="color: white">&copy;Pako™ 2022. All rights reserved.</a>#}
-{#    </div>#}
-{#</footer>#}
-{#<script>#}
-{#    $('.icon').click(function () {#}
-{#        $('span').toggleClass("cancel");#}
-{#    });#}
-{#</script>#}
-{#</body>#}
-{#</html>#}
-{##}

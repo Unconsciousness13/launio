@@ -21,7 +21,7 @@
     outline: 0;
     background: #f2f2f2;
     width: 100%;
-    border: 0;
+    /*border: 0;*/
     margin: 0 0 15px;
     padding: 15px;
     box-sizing: border-box;
@@ -61,7 +61,6 @@
 /*.form .register-form {*/
 /*    display: none;*/
 /*}*/
-
 
 
 /*button {*/
@@ -160,4 +159,23 @@ button:after {
     100% {
         background-position: 0 0;
     }
+}
+
+
+.form select, .form input {
+    /*border: solid 1px deeppink;*/
+    /*border-radius: 4px;*/
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+
+
+.form form p select {
+    width: 320px;
+    height: 35px;
+    background: white;
+}
+
+form {
+    margin-bottom: 50px;
 }

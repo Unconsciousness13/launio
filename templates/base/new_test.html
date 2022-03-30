@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CR la Unió Viladecans</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/testnav.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}"/>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+<nav>
+    <div class="navbar">
+        <div class="logo"><a href="{% url 'show index' %}">
+            <img id="logo-bar"
+                 src="{% static 'images/club_photos/Logo.png' %}"
+                 alt="logo">
+        </a></div>
+        <div class="nav-links">
+            <ul class="links">
+                <li><a href="{% url 'show index' %}">Inicio</a></li>
+                <li><a href="{% url 'show gymnasts' %}">Gimnastas</a></li>
+                <li><a href="">Conjuntos</a></li>
+                <li><a href="{% url 'show trainers' %}">Entrenadoras</a></li>
+                <li><a href="#">Directiva</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="">Anadir</a><i class='bx bxs-chevron-down'></i></li>
+                {% if  user.is_active %}
+                    {% if user.is_superuser %}
+                        <li><a href="{% url 'add gymnast' %}">Añadir Gimnasta</a></li>
+                        <li><a href="{% url 'add trainer' %}">Añadir Entrenadora</a></li>
+                        <li><a href="{% url 'add competition' %}">Añadir Competicion</a></li>
+                        <li><a href="{% url 'add notes' %}">Añadir Nota</a></li>
+                    {% endif %}
+                    <ul>
+                        <li><a href="#">Prefil</a></li>
+                        <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
+                    </ul>
+                {% elif not user.is_active %}
+                    <li><a href="{% url 'register page' %}">Registrarte</a></li>
+                    <li><a href="{% url 'login page' %}">Iniciar sesión</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block dynamic_content %}
+
+{% endblock %}
+
+<footer>
+    <div>
+        <a href="https://www.pako.es" target="new" style="color: white">&copy;Pako™ 2022. All rights reserved.</a>
+    </div>
+</footer>
+<script src="{% static 'js/navscript.js' %}"></script>
+</body>
+
+
+</html>
+
+{#<!DOCTYPE html>#}
+{#<html lang="en" dir="ltr">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <!-- <title> Responsive Drop Down Navigation Menu | CodingLab </title>-->#}
+{#    <link rel="stylesheet" href="style.css">#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/testnav.css' %}"/>#}
+{#    #}
+{#    <!-- Boxicons CDN Link -->#}
+{#    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#</head>#}
+{#<body>#}
+{#<nav>#}
+{#    <div class="navbar">#}
+{#        <i class='bx bx-menu'></i>#}
+{#        <div class="logo"><a href="#">CodingLab</a></div>#}
+{#        <div class="nav-links">#}
+{#            <div class="sidebar-logo">#}
+{#                <span class="logo-name">CodingLab</span>#}
+{#                <i class='bx bx-x'></i>#}
+{#            </div>#}
+{#            <ul class="links">#}
+{#                <li><a href="#">HOME</a></li>#}
+{#                <li>#}
+{#                    <a href="#">HTML & CSS</a>#}
+{#                    <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>#}
+{#                    <ul class="htmlCss-sub-menu sub-menu">#}
+{#                        <li><a href="#">Web Design</a></li>#}
+{#                        <li><a href="#">Login Forms</a></li>#}
+{#                        <li><a href="#">Card Design</a></li>#}
+{#                        <li class="more">#}
+{#                <span><a href="#">More</a>#}
+{#                <i class='bx bxs-chevron-right arrow more-arrow'></i>#}
+{#              </span>#}
+{#                            <ul class="more-sub-menu sub-menu">#}
+{#                                <li><a href="#">Neumorphism</a></li>#}
+{#                                <li><a href="#">Pre-loader</a></li>#}
+{#                                <li><a href="#">Glassmorphism</a></li>#}
+{#                            </ul>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a href="#">JAVASCRIPT</a>#}
+{#                    <i class='bx bxs-chevron-down js-arrow arrow '></i>#}
+{#                    <ul class="js-sub-menu sub-menu">#}
+{#                        <li><a href="#">Dynamic Clock</a></li>#}
+{#                        <li><a href="#">Form Validation</a></li>#}
+{#                        <li><a href="#">Card Slider</a></li>#}
+{#                        <li><a href="#">Complete Website</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
+{#                <li><a href="#">ABOUT US</a></li>#}
+{#                <li><a href="#">CONTACT US</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#        <div class="search-box">#}
+{#            <i class='bx bx-search'></i>#}
+{#            <div class="input-box">#}
+{#                <input type="text" placeholder="Search...">#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</nav>#}
+{#<script src="{% static 'js/navscript.js' %}"></script>#}
+{#</body>#}
+{#</html>#}
