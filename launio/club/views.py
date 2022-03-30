@@ -152,10 +152,11 @@ class GymnastDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(GymnastDetailView, self).get_context_data(**kwargs)
         gymnast = get_object_or_404(Gymnast, **kwargs)
+        # team = get_object_or_404(Team, **kwargs)
         context['gymnast'] = gymnast
         context['competitions'] = Competition.objects.all()
-        context['team'] = Team.objects.filter(gymnast=gymnast.id)
+        context['team'] = Team.objects.filter(gymnast=gymnast.team_id)
         context['notesIndividual'] = NotesIndividual.objects.filter(gymnast=gymnast.id)
-        context['notes_team'] = NotesTeam.objects.filter(team=gymnast.id)
+        context['notes_team'] = NotesTeam.objects.filter(team=gymnast.team_id)
 
         return context

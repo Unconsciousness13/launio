@@ -45,6 +45,28 @@
                         </tr>
                     {% endfor %}
                 </table>
+
+
+                 <h2>Notas Conjunto</h2>
+                <table style="width:100%">
+                    <tr>
+                        <th>Competicion</th>
+                        <th>Fecha</th>
+                        <th>Nota</th>
+                        <th>Clasificadas</th>
+                    </tr>
+                    {% for n in notes_team %}
+                        <tr>
+{#                            {%  if gymnast.team.pk == n.team.pk %}#}
+                            <td>{{ n.competition }}</td>
+                            <td>{{ n.competition.competition_date }}</td>
+                            <td>{{ n.nota_competition }}</td>
+                            <td>{{ n.competition_place_on_board }}</td>
+{#                            {% endif %}#}
+
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>
