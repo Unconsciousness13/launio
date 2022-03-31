@@ -47,19 +47,6 @@ class AddNoteTeam(forms.ModelForm):
         }
 
 
-# class AddNoteTeam(forms.ModelForm):
-#     class Meta:
-#         model = NotesTeam
-#         fields = ('nota_competition', 'competition', 'team', 'competition_place_on_board')
-#         widgets = {
-#             'team': forms.Select()
-#         }
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['team'].choices = Team.CATEGORIAS
-
-
 class AddNoteIndividual(forms.ModelForm):
     class Meta:
         model = NotesIndividual
@@ -98,7 +85,7 @@ class CreateContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = ('first_name', 'last_name', 'email', 'phone', 'message')
+        fields = ('first_name', 'last_name', 'email',  'message')
 
         labels = {
             'first_name': 'Nombre',
@@ -108,18 +95,3 @@ class CreateContactForm(forms.ModelForm):
             'message': 'Mensaje',
         }
 
-        widgets = {
-            "username": forms.TextInput(attrs={
-                "type": "text", "name": "username", "id": "first_name",
-                "placeholder": "Username"
-            }),
-            "email": forms.EmailInput(attrs={
-                "type": "text", "name": "email", "id": "email",
-                "placeholder": "Email"
-            }),
-
-            "age": forms.NumberInput(attrs={
-                "type": "number", "name": "age", "id": "age",
-                "placeholder": "Age", "min": "0"
-            })
-        }

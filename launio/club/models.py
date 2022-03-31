@@ -115,6 +115,6 @@ class Contact(models.Model):
         MinLengthValidator(2),))
     last_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(2),))
-    email = models.EmailField()
-    phone = models.IntegerField()
+    email = models.EmailField(null=True)
+    phone = models.IntegerField(null=True)
     message = models.TextField()

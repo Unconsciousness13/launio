@@ -1,8 +1,11 @@
-from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic as views
 from django.views.generic import TemplateView
 
-from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
+from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam, \
+    CreateContactForm
 from launio.club.models import Trainer, Gymnast, Team, NotesIndividual, NotesTeam, Competition, Contact
 
 
@@ -182,34 +185,34 @@ class TeamDetailView(TemplateView):
         return context
 
 
-class ContactView(views.TemplateView):
-    template_name = 'launio/contact.html'
-    # form_class = Contact
-    # success_url = '/launio/contact-us/'
-    #
-    # def form_valid(self, form):
-    #     form.save()
-    #     return super().form_valid(form)
+# class ContactView(views.TemplateView):
+#     template_name = 'launio/contact.html'
+#     # form_class = Contact
+#     # success_url = '/launio/contact-us/'
+#     #
+#     # def form_valid(self, form):
+#     #     form.save()
+#     #     return super().form_valid(form)
 
 
-# def contact_view(request):
-#     if request.method == 'POST':
-#         form = Contact(request.POST)
-#         if form.is_valid():
-#             subject = "Website Inquiry"
-#             body = {
-#                 'first_name': form.cleaned_data['first_name'],
-#                 'last_name': form.cleaned_data['last_name'],
-#                 'email': form.cleaned_data['email_address'],
-#                 'message': form.cleaned_data['message'],
-#             }
-#             message = "\n".join(body.values())
-#
-#             try:
-#                 send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
-#             except BadHeaderError:
-#                 return HttpResponse('Invalid header found.')
-#             return redirect("main:homepage")
-#
-#     form = ContactForm()
-#     return render(request, "main/contact.html", {'form': form})
+def contact_view(request):
+    if request.method == 'POST':
+        form = CreateContactForm(request.POST)
+        if form.is_valid():
+            subject = "Enviado desde el web !"
+            body = {
+                'first_name': form.cleaned_data['first_name'],
+                'last_name': form.cleaned_data['last_name'],
+                'email': form.cleaned_data['email_address'],
+                'message': form.cleaned_data['message'],
+            }
+            message = "\n".join(body.values())
+
+            try:
+                send_mail(subject, message, 'pakounicredit@gmail.com', ['pakounicredit@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect("show index")
+
+    form = CreateContactForm()
+    return render(request, "launio/contact.html", {'form': form })
