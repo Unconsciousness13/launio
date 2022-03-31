@@ -4,7 +4,7 @@
     <div class="form">
         <h1>Borar Entrenadora</h1>
         <form method="post">{% csrf_token %}
-            <p>Are you sure you want to delete <h2>{{ trainer.first_name }} {{ trainer.last_name }}?</h2></p>
+            <p>Estás seguro de que quieres borrar <h2>{{ trainer.first_name }} {{ trainer.last_name }}?</h2></p>
             <div class="center">
                 <button class="btn">
                     <span>Confirmar</span>

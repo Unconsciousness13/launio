@@ -27,10 +27,10 @@
                 <span></span>
             </button>
             <nav class="nav">
-                <ul>
+                <ul class="links">
                     <li><a href="{% url 'show index' %}">Inicio</a></li>
                     <li><a href="{% url 'show gymnasts' %}">Gimnastas</a></li>
-                    <li><a href="">Conjuntos</a></li>
+                    <li><a href="{% url 'show teams' %}">Conjuntos</a></li>
                     <li><a href="{% url 'show trainers' %}">Entrenadoras</a></li>
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
 
@@ -39,6 +39,7 @@
                             <li><a>Anadir<i class='bx bxs-chevron-down'></i></a>
                                 <ul>
                                     <li><a href="{% url 'add gymnast' %}">Añadir Gimnasta</a></li>
+                                    <li><a href="{% url 'add team' %}">Añadir Conjunto</a></li>
                                     <li><a href="{% url 'add trainer' %}">Añadir Entrenadora</a></li>
                                     <li><a href="{% url 'add competition' %}">Añadir Competicion</a></li>
                                     <li><a href="{% url 'add notes' %}">Añadir Nota</a></li>
@@ -46,7 +47,7 @@
                             </li>
                         {% endif %}
                         <li><a href="">Prefil<i class='bx bxs-chevron-down'></i></a>
-                            <ul>
+                            <ul class="links">
                                 <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
                             </ul>
                         </li>

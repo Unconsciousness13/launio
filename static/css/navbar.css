@@ -201,12 +201,21 @@ a {
 /*    display:inline-block;*/
 /*}*/
 
-.nav ul li ul {
-    display: none;
-}
+/*.nav ul li ul  {*/
+/*    display: none;*/
+/*}*/
 
-.nav ul li ul:active {
-    display: block;
-    width:130px;
-    position: absolute;
-}
+/*ul.links:nth-child(1) > li:nth-child(6) > a:nth-child(1):hover >  {*/
+/*     display: block;*/
+/*}*/
+/*.nav ul li ul:hover  {*/
+/*    display: block;*/
+/*}*/
+
+/*ul.links:nth-child(1) > li:nth-child(6) > ul:nth-child(2) {*/
+/*    display: none;*/
+/*}*/
+
+/*ul.links:nth-child(1) > li:nth-child(6) > a:nth-child(1) {*/
+/*    display: block;*/
+/*}*/

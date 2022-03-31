@@ -3,7 +3,7 @@ from django.views import generic as views
 from django.views.generic import TemplateView
 
 from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
-from launio.club.models import Trainer, Gymnast, Team, NotesIndividual, NotesTeam, Competition
+from launio.club.models import Trainer, Gymnast, Team, NotesIndividual, NotesTeam, Competition, Contact
 
 
 class HomeView(views.TemplateView):
@@ -80,8 +80,16 @@ class EditTrainerView(views.UpdateView):
     success_url = '/trainers/'
 
 
+class EditTeamView(views.UpdateView):
+    model = Team
+    form_class = AddTeam
+    template_name = 'launio/team-edit.html'
+    success_url = '/teams/'
+
+
 class DeleteTeamView(views.DeleteView):
     model = Team
+    template_name = 'launio/team-confirm-delete.html'
     success_url = '/teams/'
 
 
@@ -144,8 +152,6 @@ class EditGymnastView(views.UpdateView):
     template_name = 'launio/add-gymnast.html'
     success_url = '/gymnasts/'
 
-    # class GymnastDetailView(views.DetailView):
-
 
 class GymnastDetailView(TemplateView):
     template_name = 'launio/gymnast-details.html'
@@ -153,12 +159,25 @@ class GymnastDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(GymnastDetailView, self).get_context_data(**kwargs)
         gymnast = get_object_or_404(Gymnast, **kwargs)
-        # team = get_object_or_404(Team, **kwargs)
         context['gymnast'] = gymnast
         context['competitions'] = Competition.objects.all()
         context['team'] = Team.objects.filter(gymnast=gymnast.team_id)
         context['notesIndividual'] = NotesIndividual.objects.filter(gymnast=gymnast.id)
         context['notes_team'] = NotesTeam.objects.filter(team=gymnast.team_id)
+
+        return context
+
+
+class TeamDetailView(TemplateView):
+    template_name = 'launio/team-details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TeamDetailView, self).get_context_data(**kwargs)
+        team = get_object_or_404(Team, **kwargs)
+        context['team'] = team
+        context['gymnast'] = Gymnast.objects.filter(team_id=team.id)
+        context['competitions'] = Competition.objects.all()
+        context['notes_team'] = NotesTeam.objects.filter(team=team.id)
 
         return context
 
@@ -171,3 +190,26 @@ class ContactView(views.TemplateView):
     # def form_valid(self, form):
     #     form.save()
     #     return super().form_valid(form)
+
+
+# def contact_view(request):
+#     if request.method == 'POST':
+#         form = Contact(request.POST)
+#         if form.is_valid():
+#             subject = "Website Inquiry"
+#             body = {
+#                 'first_name': form.cleaned_data['first_name'],
+#                 'last_name': form.cleaned_data['last_name'],
+#                 'email': form.cleaned_data['email_address'],
+#                 'message': form.cleaned_data['message'],
+#             }
+#             message = "\n".join(body.values())
+#
+#             try:
+#                 send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
+#             except BadHeaderError:
+#                 return HttpResponse('Invalid header found.')
+#             return redirect("main:homepage")
+#
+#     form = ContactForm()
+#     return render(request, "main/contact.html", {'form': form})

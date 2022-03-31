@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+    <div class="trainers-body-container">
+        <div class="row">
+            <div class="column">
+                <ul>
+                    <li><h1>{{ team.name }}</h1></li>
+                    {%  if team.photo %}
+                    <li><img src="{{ team.photo.url }}" alt="team photo"/></li>
+                    {% endif %}
+                    {% for g in gymnast %}
+                        <li><a href="{%  url 'detail gymnast' g.pk %}">{{ g.full_name }}</a></li>
+                    {% endfor %}
+                    <br>
+                    <li>{{ team.description }}</li>
+                </ul>
+
+                {% if user.is_superuser %}
+                    <a href="{% url 'edit team' team.pk %}">
+                        <button class="home-reg-log-buttons">Editar</button>
+                    </a>
+                    <a href="{% url 'delete team' team.pk %}">
+                        <button class="home-reg-log-buttons">Borrar</button>
+                    </a>
+                {% endif %}
+            </div>
+
+
+            <table>
+                <caption style="font-size: 30px">Notas Conjunto</caption>
+                <tr>
+                    <th>Competicion</th>
+                    <th>Fecha</th>
+                    <th>Nota</th>
+                    <th>Clasificadas</th>
+                </tr>
+                {% for n in notes_team %}
+                    <tr>
+                        <td>{{ n.competition }}</td>
+                        <td>{{ n.competition.competition_date }}</td>
+                        <td>{{ n.nota_competition }}</td>
+                        <td>{{ n.competition_place_on_board }}</td>
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    </div>
+{% endblock %}
