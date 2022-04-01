@@ -37,18 +37,23 @@
                     {% if  user.is_active %}
                         {% if user.is_superuser %}
                             <li><a>Anadir<i class='bx bxs-chevron-down'></i></a>
-                                <ul>
-                                    <li><a href="{% url 'add gymnast' %}">Añadir Gimnasta</a></li>
-                                    <li><a href="{% url 'add team' %}">Añadir Conjunto</a></li>
-                                    <li><a href="{% url 'add trainer' %}">Añadir Entrenadora</a></li>
-                                    <li><a href="{% url 'add competition' %}">Añadir Competicion</a></li>
-                                    <li><a href="{% url 'add notes' %}">Añadir Nota</a></li>
+                                <ul class="hidden">
+                                    <li><a href="{% url 'add gymnast' %}">Gimnasta</a></li>
+                                    <li><a href="{% url 'add team' %}">Conjunto</a></li>
+                                    <li><a href="{% url 'add trainer' %}">Entrenadora</a></li>
+                                    <li><a href="{% url 'add competition' %}">Competicion</a></li>
+                                    <li><a>Añadir Nota<i class='bx bxs-chevron-down'></i></a>
+                                        <ul class="hidden">
+                                            <li><a href="{% url 'add notes individual' %}">Individual</a></li>
+                                            <li><a href="{% url 'add notes team' %}">Conjunto</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                         {% endif %}
                         <li><a href="">Prefil<i class='bx bxs-chevron-down'></i></a>
                             <ul class="links">
-                                <li><a href="{% url 'logout' %}">Cerrar la sesión</a></li>
+                                <li><a href="{% url 'logout' %}">Salir</a></li>
                             </ul>
                         </li>
                     {% elif not user.is_active %}
@@ -69,10 +74,5 @@
         <a href="https://www.pako.es" target="new" style="color: white">&copy;Pako™ 2022. All rights reserved.</a>
     </div>
 </footer>
-{#<script>#}
-{#    $('.icon').click(function () {#}
-{#        $('span').toggleClass("cancel");#}
-{#    });#}
-{#</script>#}
 </body>
 </html>
