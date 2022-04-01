@@ -12,7 +12,7 @@
 }
 
 .club-info-div {
-    margin-top: 20px;
+    margin: 100px ;
     width: -moz-fit-content;
     width: fit-content;
     font-size: 20px;
@@ -21,10 +21,8 @@
     padding: 15px;
 }
 
-.container-guest-page {
-    position: absolute;
-    width: 100%;
-    padding: 5%;
+.main-container {
+    margin: 100px auto;
 }
 
 
