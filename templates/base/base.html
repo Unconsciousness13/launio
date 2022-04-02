@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+<div id="loader">Loading ...</div>
 <header class="header">
     <div class="container">
         <div class="row align-items-center justify-content-between">
@@ -66,8 +66,13 @@
         </div>
     </div>
 </header>
+<div id="myDiv" class="animate-bottom">
+</div>
 <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/loader.js' %}"></script>
+
 {% block dynamic_content %}
+
 
 {% endblock %}
 
