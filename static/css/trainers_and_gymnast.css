@@ -30,6 +30,9 @@ div.row div.column ul li img {
   .column {
     width: 100%;
   }
+  .row {
+    width: 100%;
+  }
 }
 
 /*select css*/
@@ -57,6 +60,8 @@ div.row div.column ul li img {
 table {
   width: 100%;
   border-collapse: collapse;
+  margin: 5px auto;
+  position:relative;
 }
 /* Zebra striping */
 tr:nth-of-type(odd) {
@@ -71,4 +76,20 @@ td, th {
   padding: 6px;
   border: 1px solid #ccc;
   text-align: left;
+}
+
+/*coloring notes and places*/
+
+.nota {
+  color: blue;
+}
+
+.competition-place {
+  color: limegreen;
+}
+
+.name-in-team-info {
+  text-decoration: none;
+  color: deeppink;
+  font-size: 18px;
 }
