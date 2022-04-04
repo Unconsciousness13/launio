@@ -269,3 +269,10 @@ a {
 ul.links > li > ul {
     z-index: 1000;
 }
+
+
+#user-name-navbar {
+    color:deeppink;
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif
+}

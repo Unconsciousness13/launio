@@ -85,13 +85,10 @@ class CreateContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = ('first_name', 'email',  'message')
+        fields = ('first_name', 'email_address', 'message')
 
         labels = {
             'first_name': 'Nombre',
-            'last_name': 'Apellido',
             'email': 'Email',
-            'phone': 'Numero de telefono',
             'message': 'Mensaje',
         }
-

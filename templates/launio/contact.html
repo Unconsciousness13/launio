@@ -10,15 +10,19 @@
         <div class="wrapper">
 
             <div class="company-info">
-                <h3>Rítmica la Unió Viladecans</h3>
+                <h3>Rítmica la Unió Barcelona</h3>
+                {% if message_name %}
+                    <h2> Gracias {{ message_name }}</h2>
+                    <p>Hemos recibido su mensaje,contestaremos en breve..</p><br><br><br>
+                {% endif %}
+
 
                 <ul>
-                    <li><i class="fa fa-road"></i> C/Pompeu Fabra, 5
-
-                        08840 Viladecans
+                    <li><i class="fa fa-road"></i> C/Some Street, 15
+                        08840 Barcelona
                     </li>
-                    <li><i class="fa fa-phone"></i>+34 636 685 673</li>
-                    <li><i class="fa fa-envelope"></i>c.ritmicaunioviladecans@gmail.com</li>
+                    <li><i class="fa fa-phone"></i>+34 111 111 111</li>
+                    <li><i class="fa fa-envelope"></i>club@club.com</li>
                 </ul>
                 <ul class="ul-social-icons">
                     <li><a class="social-icons" href="https://pako.es" target="new"><img
@@ -38,7 +42,7 @@
             </div>
 
             <div class="contact">
-                <form id="contact-form">
+                <form id="contact-form" method="POST">
                     {{ form.as_p }}
                     {% csrf_token %}
 

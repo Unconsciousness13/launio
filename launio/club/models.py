@@ -120,8 +120,5 @@ class Team(models.Model):
 class Contact(models.Model):
     first_name = models.CharField(max_length=30, validators=(
         MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
-    last_name = models.CharField(max_length=30, validators=(
-        MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
-    email = models.EmailField(null=True)
-    phone = models.IntegerField(null=True)
+    email_address = models.EmailField(null=True)
     message = models.TextField(null=True)

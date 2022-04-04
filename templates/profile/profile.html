@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-    <h1>Hola {{ user.username }} {{ user.last_name }}</h1>
+    <h1>Hola {{ profile.username }} {{ profile.last_name }}</h1>
     <div>{{ profile.email }}</div>
 {% endblock %}

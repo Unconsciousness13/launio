@@ -45,6 +45,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# AUTH_USER_MODEL = 'accounts.User'
+
 ROOT_URLCONF = 'launio.urls'
 
 TEMPLATES = [
@@ -127,4 +129,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'home.html'
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pakotestpako@gmail.com'
+EMAIL_HOST_PASSWORD = 'TestTest2022'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
