@@ -156,6 +156,7 @@ a {
         overflow: hidden;
         visibility: hidden;
         transition: all 0.5s ease;
+
     }
 
     .header .nav.open {
@@ -264,3 +265,7 @@ a {
 
 }
 
+/*Ul submenus display always over the content*/
+ul.links > li > ul {
+    z-index: 1000;
+}
