@@ -103,7 +103,7 @@ class AddNotesView(views.TemplateView):
 class AddNotesIndividualView(views.FormView):
     template_name = 'launio/add-notes-individual.html'
     form_class = AddNoteIndividual
-    success_url = '/add-notes/'
+    success_url = '/'
 
     def form_valid(self, form):
         form.save()
@@ -113,7 +113,7 @@ class AddNotesIndividualView(views.FormView):
 class AddNotesTeamView(views.FormView):
     template_name = 'launio/add-notes-team.html'
     form_class = AddNoteTeam
-    success_url = '/add-notes/'
+    success_url = '/'
 
     def form_valid(self, form):
         form.save()
