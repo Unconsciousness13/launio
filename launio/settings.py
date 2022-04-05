@@ -49,6 +49,8 @@ MIDDLEWARE = [
 ]
 
 # AUTH_USER_MODEL = 'accounts.User'
+# Auth User Model
+AUTH_USER_MODEL = 'accounts.NewUser'
 
 ROOT_URLCONF = 'launio.urls'
 
@@ -140,5 +142,4 @@ EMAIL_HOST_PASSWORD = 'TestTest2022'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-# Auth User Model
-AUTH_USER_MODEL = 'accounts.NewUser'
+

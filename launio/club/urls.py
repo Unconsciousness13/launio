@@ -27,6 +27,6 @@ urlpatterns = (
     path('gymnast-details/<int:pk>/', GymnastDetailView.as_view(), name='detail gymnast'),
     path('team-details/<int:pk>/', TeamDetailView.as_view(), name='detail team'),
     path('contact-us/', contact_view, name='contact'),
-    # path('profile/<int:pk>/', ProfilePageView.as_view(), name='profile view'),
+
 
 )

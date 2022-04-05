@@ -9,7 +9,7 @@
 
     <div class="register-page">
         <div class="form">
-            <form method="POST" class="register-form">
+            <form method="POST" class="register-form" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
                 <div class="center">

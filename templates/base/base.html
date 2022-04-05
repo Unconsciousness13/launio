@@ -21,7 +21,9 @@
                                                       alt="logo"></a>
             </div>
             {% if user.is_active %}
-                <div class="user-nav-display">Hola <a id="user-name-navbar">{{ user.user_name }}</a></div>
+                <div class="user-nav-display">Hola <a id="user-name-navbar">{{ user.user_name }}</a>
+
+                </div>
             {% endif %}
 
             <button type="button" class="nav-toggler">
@@ -52,9 +54,19 @@
                                 </ul>
                             </li>
                         {% endif %}
-                        <li><a>Prefil<i class='bx bxs-chevron-down'></i></a>
+
+
+
+
+                        <li>
+                            {% if user.profile_image %}
+                                <div class="img-nav-bar"><img src="{{ user.profile_image.url }}" alt="profile photo"/>
+                                </div>
+                            {% else %}
+                                <a>Prefil<i class='bx bxs-chevron-down'></i></a>
+                            {% endif %}
                             <ul class="links">
-{#                                <li><a href="{% url 'profile view' user.pk %}">Editar</a></li>#}
+                                <li><a href="{% url 'profile view' user.pk %}">Ver Prefil</a></li>
                                 <li><a href="{% url 'logout' %}">Salir</a></li>
 
                             </ul>

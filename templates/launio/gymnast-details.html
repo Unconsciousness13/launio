@@ -26,6 +26,7 @@
                     </a>
                 {% endif %}
             </div>
+            {% if user.is_active %}
             <div class="notes-individual">
                 <h2>Notas Individual</h2>
                 <table>
@@ -76,6 +77,7 @@
                     {% endfor %}
                 </table>
             </div>
+            {%  endif %}
         </div>
     </div>
 {% endblock %}
