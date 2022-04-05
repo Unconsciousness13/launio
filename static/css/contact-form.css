@@ -157,3 +157,13 @@ ul {
     height: 50px;
     background-color: black;
 }
+
+#msg {
+    font-size: 25px;
+    background: #4CAF50;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+    margin: 15px;
+}

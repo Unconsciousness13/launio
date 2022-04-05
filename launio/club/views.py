@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
 from django.http import BadHeaderError
 from django.http import HttpResponse
@@ -157,6 +158,10 @@ class EditGymnastView(views.UpdateView):
     template_name = 'launio/add-gymnast.html'
     success_url = '/gymnasts/'
 
+    @staticmethod
+    def message_display(request):
+        return messages.success(request, 'Updated Successful')
+
 
 class GymnastDetailView(TemplateView):
     template_name = 'launio/gymnast-details.html'
@@ -201,9 +206,11 @@ def contact_view(request):
 
             try:
                 send_mail(subject, message, 'pakotestpako@gmail.com', ['pakotestpako@gmail.com'])
+                messages.success(request, 'Su mensaje ha sido enviado !')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return redirect("show index")
+            return redirect("contact")
 
     form = CreateContactForm()
+
     return render(request, "launio/contact.html", {'form': form})

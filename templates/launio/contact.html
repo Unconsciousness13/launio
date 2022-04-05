@@ -6,6 +6,10 @@
     <div class="contact-form">
 
         <h1 class="brand"><span>Contacta con nosotros</span></h1>
+            {% include 'launio/messages.html' %}
+            {% block content %}
+            {% endblock content %}
+
 
         <div class="wrapper">
 
@@ -50,6 +54,13 @@
         </div>
     </div>
 {% endblock %}
+<script>
+    setTimeout(function () {
+        if ($('#msg').length > 0) {
+            $('#msg').remove();
+        }
+    }, 2000)
+</script>
 
 
 
