@@ -4,7 +4,6 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy
 
-from validators.email_validator import UniqueUserEmailField
 from validators.image_validator import MaxFileSizeInMbValidator
 
 IMAGE_MAX_SIZE_IN_MB = 2
@@ -38,7 +37,8 @@ class CustomAccountManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(gettext_lazy('email address'), unique=True)
-    user_name = models.CharField(max_length=80, unique=True)
+    user_name = models.CharField(max_length=80, unique=True, validators=(
+        MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
     first_name = models.CharField(max_length=80, validators=(
         MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
     last_name = models.CharField(max_length=80, validators=(
