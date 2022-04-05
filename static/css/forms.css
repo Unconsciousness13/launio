@@ -34,17 +34,20 @@
     outline: 0;
     background: #4CAF50;
     width: 100%;
-    border: 0;
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+    border: 1px solid white;
+
 }
 
 .form button:hover, .form button:active, .form button:focus {
     background: deeppink;
+    border: 1px solid white;
+
 }
 
 .form .message {
@@ -82,6 +85,9 @@ button:hover, .form button:active, .form button:focus {
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+    border-radius: 10px;
+    border: 1px solid white;
+
 
 }
 
@@ -96,9 +102,12 @@ button:hover, .form button:active, .form button:focus {
 
 
 button {
-    width: 220px;
-    height: 50px;
-    border: none;
+    width: 50px;
+    height: 65px;
+    /*border: none;*/
+    border: 1px solid white;
+    border-radius: 10px;
+
     outline: none;
     color: #fff;
     background: deeppink;
@@ -107,6 +116,7 @@ button {
     z-index: 0;
     /*font-family:  Arial, Helvetica, sans-serif;*/
     font-size: 18px;
+
 }
 
 button:before {
@@ -147,6 +157,9 @@ button:after {
     background: deeppink;
     left: 0;
     top: 0;
+    border-radius: 10px;
+    border: 1px solid white;
+
 }
 
 @keyframes glowing {
@@ -167,7 +180,6 @@ button:after {
     /*border-radius: 4px;*/
     box-shadow: 1px 1px 1px 1px black;
 }
-
 
 
 .form form p select {
