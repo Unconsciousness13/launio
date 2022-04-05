@@ -21,7 +21,7 @@
                                                       alt="logo"></a>
             </div>
             {% if user.is_active %}
-                <div class="user-nav-display">Hola <a id="user-name-navbar">{{ user.username }}</a></div>
+                <div class="user-nav-display">Hola <a id="user-name-navbar">{{ user.user_name }}</a></div>
             {% endif %}
 
             <button type="button" class="nav-toggler">
@@ -54,7 +54,7 @@
                         {% endif %}
                         <li><a>Prefil<i class='bx bxs-chevron-down'></i></a>
                             <ul class="links">
-                                <li><a href="{% url 'profile view' user.pk %}">Editar</a></li>
+{#                                <li><a href="{% url 'profile view' user.pk %}">Editar</a></li>#}
                                 <li><a href="{% url 'logout' %}">Salir</a></li>
 
                             </ul>

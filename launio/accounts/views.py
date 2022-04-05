@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -5,10 +6,8 @@ from django.views import generic as gen_views
 from django.views.generic import TemplateView
 
 from launio.accounts.forms import RegisterForm
-from launio.accounts.models import Profile
 
-
-# from launio.accounts.models import User
+User = get_user_model()
 
 
 class UserRegisterView(gen_views.CreateView):
@@ -32,7 +31,7 @@ class ProfilePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
-        profile = get_object_or_404(Profile, **kwargs)
+        profile = get_object_or_404(User, **kwargs)
         context['profile'] = profile
 
         return context

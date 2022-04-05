@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +23,9 @@ DJANGO_APPS = ('django.contrib.admin',
                'django.contrib.contenttypes',
                'django.contrib.sessions',
                'django.contrib.messages',
-               'django.contrib.staticfiles',)
+               'django.contrib.staticfiles',
+               # 'django.contrib.auth.models.User',
+               )
 
 THIRD_PARTY_APPS = ()
 
@@ -129,7 +132,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'home.html'
 
-
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -138,3 +140,5 @@ EMAIL_HOST_PASSWORD = 'TestTest2022'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+# Auth User Model
+AUTH_USER_MODEL = 'accounts.NewUser'
