@@ -158,10 +158,6 @@ class EditGymnastView(views.UpdateView):
     template_name = 'launio/add-gymnast.html'
     success_url = '/gymnasts/'
 
-    @staticmethod
-    def message_display(request):
-        return messages.success(request, 'Updated Successful')
-
 
 class GymnastDetailView(TemplateView):
     template_name = 'launio/gymnast-details.html'
