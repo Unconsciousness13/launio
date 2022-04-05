@@ -1,7 +1,14 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy
+
+from validators.email_validator import UniqueUserEmailField
+from validators.image_validator import MaxFileSizeInMbValidator
+
+IMAGE_MAX_SIZE_IN_MB = 2
+MIN_NAMES_LENGTH_VALIDATOR = 2
 
 
 class CustomAccountManager(BaseUserManager):
@@ -32,9 +39,14 @@ class CustomAccountManager(BaseUserManager):
 class NewUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(gettext_lazy('email address'), unique=True)
     user_name = models.CharField(max_length=80, unique=True)
-    first_name = models.CharField(max_length=80)
-    last_name = models.CharField(max_length=80)
-    profile_image = models.ImageField(null=True, blank=True)
+    first_name = models.CharField(max_length=80, validators=(
+        MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
+    last_name = models.CharField(max_length=80, validators=(
+        MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
+    profile_image = models.ImageField(null=True, blank=True, validators=(
+        MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+    ),
+                                      )
     start_time = models.DateTimeField(default=timezone.now)
     about = models.TextField(gettext_lazy('about'), max_length=400, blank=True, null=True)
 
