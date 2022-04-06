@@ -16,16 +16,6 @@ class HomeView(views.TemplateView):
     template_name = 'launio/home.html'
 
 
-class TrainersView(views.ListView):
-    model = Trainer
-    template_name = 'launio/trainers.html'
-    ordering = 'birthdate', 'train'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
-
 class GymnastsView(views.ListView):
     model = Gymnast
     template_name = 'launio/gymnasts.html'
@@ -46,6 +36,34 @@ class AddGymnastView(views.FormView):
         return super().form_valid(form)
 
 
+class EditGymnastView(views.UpdateView):
+    model = Gymnast
+    form_class = AddGymnast
+    template_name = 'launio/add-gymnast.html'
+    success_url = '/gymnasts/'
+
+
+class DeleteGymnastView(views.DeleteView):
+    model = Gymnast
+    template_name = 'launio/gymnast-confirm-delete.html'
+    success_url = '/gymnasts/'
+
+
+class GymnastDetailView(TemplateView):
+    template_name = 'launio/gymnast-details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GymnastDetailView, self).get_context_data(**kwargs)
+        gymnast = get_object_or_404(Gymnast, **kwargs)
+        context['gymnast'] = gymnast
+        context['competitions'] = Competition.objects.all()
+        context['team'] = Team.objects.filter(gymnast=gymnast.team_id)
+        context['notesIndividual'] = NotesIndividual.objects.filter(gymnast=gymnast.id)
+        context['notes_team'] = NotesTeam.objects.filter(team=gymnast.team_id)
+
+        return context
+
+
 class AddTrainerView(views.FormView):
     template_name = 'launio/add-trainer.html'
     form_class = AddTrainer
@@ -56,10 +74,11 @@ class AddTrainerView(views.FormView):
         return super().form_valid(form)
 
 
-class DeleteGymnastView(views.DeleteView):
-    model = Gymnast
-    template_name = 'launio/gymnast-confirm-delete.html'
-    success_url = '/gymnasts/'
+class EditTrainerView(views.UpdateView):
+    model = Trainer
+    form_class = AddTrainer
+    template_name = 'launio/trainer-edit.html'
+    success_url = '/trainers/'
 
 
 class DeleteTrainerView(views.DeleteView):
@@ -68,11 +87,24 @@ class DeleteTrainerView(views.DeleteView):
     success_url = '/trainers/'
 
 
-class EditTrainerView(views.UpdateView):
+class TrainersView(views.ListView):
     model = Trainer
-    form_class = AddTrainer
-    template_name = 'launio/trainer-edit.html'
-    success_url = '/trainers/'
+    template_name = 'launio/trainers.html'
+    ordering = 'birthdate', 'train'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class AddTeamView(views.FormView):
+    template_name = 'launio/add-team.html'
+    form_class = AddTeam
+    success_url = '/teams/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 class EditTeamView(views.UpdateView):
@@ -86,6 +118,29 @@ class DeleteTeamView(views.DeleteView):
     model = Team
     template_name = 'launio/team-confirm-delete.html'
     success_url = '/teams/'
+
+
+class TeamsView(views.ListView):
+    model = Team
+    template_name = 'launio/teams.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class TeamDetailView(TemplateView):
+    template_name = 'launio/team-details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TeamDetailView, self).get_context_data(**kwargs)
+        team = get_object_or_404(Team, **kwargs)
+        context['team'] = team
+        context['gymnast'] = Gymnast.objects.filter(team_id=team.id)
+        context['competitions'] = Competition.objects.all()
+        context['notes_team'] = NotesTeam.objects.filter(team=team.id)
+
+        return context
 
 
 class AddNotesView(views.TemplateView):
@@ -120,61 +175,6 @@ class AddCompetitionView(views.FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-
-
-class AddTeamView(views.FormView):
-    template_name = 'launio/add-team.html'
-    form_class = AddTeam
-    success_url = '/teams/'
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
-
-class TeamsView(views.ListView):
-    model = Team
-    template_name = 'launio/teams.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
-
-class EditGymnastView(views.UpdateView):
-    model = Gymnast
-    form_class = AddGymnast
-    template_name = 'launio/add-gymnast.html'
-    success_url = '/gymnasts/'
-
-
-class GymnastDetailView(TemplateView):
-    template_name = 'launio/gymnast-details.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(GymnastDetailView, self).get_context_data(**kwargs)
-        gymnast = get_object_or_404(Gymnast, **kwargs)
-        context['gymnast'] = gymnast
-        context['competitions'] = Competition.objects.all()
-        context['team'] = Team.objects.filter(gymnast=gymnast.team_id)
-        context['notesIndividual'] = NotesIndividual.objects.filter(gymnast=gymnast.id)
-        context['notes_team'] = NotesTeam.objects.filter(team=gymnast.team_id)
-
-        return context
-
-
-class TeamDetailView(TemplateView):
-    template_name = 'launio/team-details.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(TeamDetailView, self).get_context_data(**kwargs)
-        team = get_object_or_404(Team, **kwargs)
-        context['team'] = team
-        context['gymnast'] = Gymnast.objects.filter(team_id=team.id)
-        context['competitions'] = Competition.objects.all()
-        context['notes_team'] = NotesTeam.objects.filter(team=team.id)
-
-        return context
 
 
 def contact_view(request):
