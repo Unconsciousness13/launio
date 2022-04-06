@@ -27,57 +27,58 @@
                 {% endif %}
             </div>
             {% if user.is_active %}
-            <div class="notes-individual">
-                <h2>Notas Individual</h2>
-                <table>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Competicion</th>
-                        <th>Poblacion</th>
-                        <th>Club</th>
-                        <th>Nota</th>
-                        <th>Clasificada</th>
-                    </tr>
-                    {% for n in notesIndividual %}
+                <div class="notes-individual">
+                    <h2>Notas Individual</h2>
+                    <table>
                         <tr>
-                            <td>{{ n.competition.competition_date }}</td>
-                            <td>{{ n.competition }}</td>
-                            <td>{{ n.competition.competition_place}}</td>
-                            <td>{{ n.competition.competition_club_organisation}}</td>
-                            <td class="nota">{{ n.nota_competition }}</td>
-                            <td class="competition-place">{{ n.competition_place_on_board }}</td>
-
+                            <th>Fecha</th>
+                            <th>Competicion</th>
+                            <th>Poblacion</th>
+                            <th>Club</th>
+                            <th>Nota</th>
+                            <th>Clasificada</th>
                         </tr>
-                    {% endfor %}
-                </table>
+                        {% for n in notesIndividual %}
+                            <tr>
+                                <td>{{ n.competition.competition_date }}</td>
+                                <td>{{ n.competition }}</td>
+                                <td>{{ n.competition.competition_place }}</td>
+                                <td>{{ n.competition.competition_club_organisation }}</td>
+                                <td class="nota">{{ n.nota_competition }}</td>
+                                <td class="competition-place">{{ n.competition_place_on_board }}</td>
 
+                            </tr>
+                        {% endfor %}
+                    </table>
 
-                 <h2>Notas Conjunto</h2>
-                <table>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Competicion</th>
-                        <th>Poblacion</th>
-                        <th>Club</th>
-                        <th>Nota</th>
-                        <th>Clasificadas</th>
-                    </tr>
-                    {% for n in notes_team %}
-                        <tr>
-{#                            {%  if gymnast.team.pk == n.team.pk %}#}
-                            <td>{{ n.competition.competition_date }}</td>
-                            <td>{{ n.competition }}</td>
-                            <td>{{ n.competition.competition_place }}</td>
-                            <td>{{ n.competition.competition_club_organisation}}</td>
-                            <td class="nota">{{ n.nota_competition }}</td>
-                            <td class="competition-place">{{ n.competition_place_on_board }}</td>
-{#                            {% endif %}#}
+                    {% if not gymnast.team.name == 'Sin conjunto' or gymnast.team.name == 'Sin Conjunto' %}
+                        <h2>Notas Conjunto</h2>
+                        <table>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Competicion</th>
+                                <th>Poblacion</th>
+                                <th>Club</th>
+                                <th>Nota</th>
+                                <th>Clasificadas</th>
+                            </tr>
+                            {% for n in notes_team %}
+                                <tr>
+                                    {#                            {%  if gymnast.team.pk == n.team.pk %}#}
+                                    <td>{{ n.competition.competition_date }}</td>
+                                    <td>{{ n.competition }}</td>
+                                    <td>{{ n.competition.competition_place }}</td>
+                                    <td>{{ n.competition.competition_club_organisation }}</td>
+                                    <td class="nota">{{ n.nota_competition }}</td>
+                                    <td class="competition-place">{{ n.competition_place_on_board }}</td>
+                                    {#                            {% endif %}#}
 
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-            {%  endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

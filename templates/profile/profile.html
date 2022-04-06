@@ -8,16 +8,16 @@
         {% if profile.profile_image %}
             <div class="profile-image"><img src="{{ profile.profile_image.url }}" alt="profile photo"/></div>
         {% endif %}
-        <p>Profile created: {{ profile.start_time }}</p>
-        <p>{{ profile.about }}</p>
+        <h3>Prefil creado: {{ profile.start_time|date:'D d M Y' }}</h3>
+        <h4>Sobre mi:</h4><h4> {{ profile.about }}</h4>
 
         {% if user.is_active %}
             <a href="{% url 'profile edit' profile.pk %}">
                 <button class="home-reg-log-buttons">Editar</button>
             </a>
-            {#        <a href="{% url 'delete gymnast' profile.pk %}">#}
-            {#            <button class="home-reg-log-buttons">Borrar</button>#}
-            {#        </a>#}
+            <a href="{% url 'profile delete' profile.pk %}">
+                <button class="home-reg-log-buttons">Borrar</button>
+            </a>
         {% endif %}
     </div>
 {% endblock %}

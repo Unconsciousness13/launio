@@ -3,6 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as gen_views
+from django.views import generic as views
 from django.views.generic import TemplateView
 
 from launio.accounts.forms import RegisterForm, UpdateForm
@@ -38,42 +39,6 @@ class ProfilePageView(TemplateView):
         return context
 
 
-# class ProfileEditView(gen_views.UpdateView):
-#     model = get_user_model()
-#     form_class = RegisterForm
-#     template_name = 'profile/profile-edit.html'
-#     context_object_name = 'NewUser'
-#
-#     def get_success_url(self):
-#         pk = self.kwargs["pk"]
-#         return reverse("profile view", kwargs={"pk": pk})
-#     # success_url = f'/profile/{profile.pk}'
-
-
-# def profile_edit_view(request, id):
-#     instance = get_object_or_404(NewUser, id=id)
-#     form = UpdateForm(request.POST or None, instance=instance)
-#     if form.is_valid():
-#         form.save()
-#         return redirect('profile view')
-#     return render(request, 'profile/profile-edit.html', {'form': form})
-
-
-# class ProfileEditView(gen_views.UpdateView):
-#     template_name = 'profile/profile-edit.html'
-#     context_object_name = 'NewUser'
-#     model = NewUser
-#     form_class = UpdateForm
-#
-#     def get_success_url(self):
-#         return reverse('profile view', kwargs={'pk': self.get_object().id})
-#
-#     def get_context_data(self, **kwargs):
-#         profile = NewUser.objects.get(id)
-#         context = super(ProfileEditView, self).get_context_data(**kwargs)
-#         context['user_form'] = UpdateForm(instance=self.object.profile)
-#         return context
-
 def profile_edit(request, pk):
     profile = NewUser.objects.get(pk=pk)
     if request.method == 'POST':
@@ -90,3 +55,9 @@ def profile_edit(request, pk):
         'profile': profile,
     }
     return render(request, 'profile/profile-edit.html', context)
+
+
+class DeleteProfileView(views.DeleteView):
+    model = NewUser
+    template_name = 'profile/profile-delete-confirm.html'
+    success_url = '/'

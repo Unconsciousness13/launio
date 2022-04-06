@@ -13,22 +13,19 @@
 
 @media (max-width: 991px) {
     .club-info-div {
-    margin: auto ;
-    width: -moz-fit-content;
-    width: fit-content;
-    font-size: 20px;
-}
+        margin: 0;
+        width: -moz-fit-content;
+        width: fit-content;
+        font-size: 20px;
+    }
 }
 
 
 .club-info-div {
-    margin: 100px ;
+    margin: 100px;
     width: -moz-fit-content;
     width: fit-content;
     font-size: 20px;
-}
-.club-info-div p {
-    padding: 15px;
 }
 
 .main-container {
@@ -36,17 +33,8 @@
 }
 
 
-
-.home-reg-log-buttons{
+.home-reg-log-buttons {
     width: 130px;
     height: 50px;
 }
-
-
-
-
-
-
-/*//////////////////////////////////////////////////*/
-
 
