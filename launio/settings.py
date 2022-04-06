@@ -140,6 +140,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pakotestpako@gmail.com'
 EMAIL_HOST_PASSWORD = 'TestTest2022'
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+# EMAIL_USE_SSL = False
 
 
