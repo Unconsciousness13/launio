@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils import timezone
@@ -65,3 +66,17 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.user_name
+
+    def clean(self):
+        invalid_chars_first_name = [ch for ch in self.first_name if not ch.isalnum() or not ch.isalpha()]
+        invalid_chars_last_name = [ch for ch in self.last_name if not ch.isalnum() or not ch.isalpha()]
+        invalid_chars_username = [ch for ch in self.user_name if not ch.isalnum() or ch == '_' or ch == '-']
+        if invalid_chars_first_name:
+            raise ValidationError(f'El nombre tiene que contener solo letras,pero contiene: {invalid_chars_first_name}')
+        if invalid_chars_last_name:
+            raise ValidationError(
+                f'El apellido tiene que contener solo letras,pero contiene: {invalid_chars_last_name}')
+        if invalid_chars_username:
+            raise ValidationError(
+                f'El usuario tiene que contener solo letras o numeros: {invalid_chars_last_name}')
+

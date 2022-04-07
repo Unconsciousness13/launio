@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+    <center style="margin: 50px auto">
+    <h1>Pagina no encontrada !</h1>
+    <br>
+    <a href="{% url 'show index' %}">
+        <button class="home-reg-log-buttons">Volver al inicio</button>
+    </a>
+    </center>
+{% endblock %}

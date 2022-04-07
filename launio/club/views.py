@@ -36,13 +36,6 @@ class AddGymnastView(views.FormView):
         return super().form_valid(form)
 
 
-class EditGymnastView(views.UpdateView):
-    model = Gymnast
-    form_class = AddGymnast
-    template_name = 'launio/add-gymnast.html'
-    success_url = '/gymnasts/'
-
-
 class DeleteGymnastView(views.DeleteView):
     model = Gymnast
     template_name = 'launio/gymnast-confirm-delete.html'
@@ -175,6 +168,13 @@ class AddCompetitionView(views.FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+class EditGymnastView(views.UpdateView):
+    model = Gymnast
+    form_class = AddGymnast
+    template_name = 'launio/add-gymnast.html'
+    success_url = '/gymnasts/'
 
 
 def contact_view(request):
