@@ -27,6 +27,7 @@ class GymnastsView(views.ListView):
 
 
 class AddGymnastView(views.FormView):
+    permission_required = ('is_superuser',)
     template_name = 'launio/add-gymnast.html'
     form_class = AddGymnast
     success_url = '/gymnasts/'
