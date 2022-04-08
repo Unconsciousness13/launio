@@ -29,7 +29,8 @@ class UserLoginView(auth_views.LoginView):
         return super().get_success_url()
 
 
-class ProfilePageView(TemplateView):
+class ProfilePageView(PermissionRequiredMixin, TemplateView):
+    permission_required = ('Can add new user', 'Can change new user', 'Can delete new user' 'Can view new user')
     template_name = 'profile/profile.html'
 
     def get_context_data(self, **kwargs):
@@ -59,7 +60,7 @@ def profile_edit(request, pk):
 
 
 class DeleteProfileView(PermissionRequiredMixin, views.DeleteView):
-    permission_required = ('Can add new user', 'Can change new user', 'Can delete new user')
+    permission_required = ('Can add new user', 'Can change new user', 'Can delete new user' 'Can view new user')
     model = NewUser
     template_name = 'profile/profile-delete-confirm.html'
     success_url = '/'
