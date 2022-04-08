@@ -2,6 +2,10 @@ import os
 import sys
 from pathlib import Path
 
+import cloudinary
+import cloudinary.api
+import cloudinary.uploader
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -166,3 +170,10 @@ EMAIL_HOST_PASSWORD = 'TestTest2022'
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
 #
+
+
+cloudinary.config(
+    cloud_name="hifaleo6q",
+    api_key="998672844657439",
+    api_secret="v6QJWAvAKWRHbrB2HpMt0AhJ0R4"
+)

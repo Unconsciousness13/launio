@@ -7,6 +7,9 @@ from django.utils.translation import gettext_lazy
 
 from validators.image_validator import MaxFileSizeInMbValidator
 
+
+from cloudinary.models import CloudinaryField
+
 IMAGE_MAX_SIZE_IN_MB = 2
 MIN_NAMES_LENGTH_VALIDATOR = 2
 
@@ -45,13 +48,13 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
     last_name = models.CharField(max_length=80, validators=(
         MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
-    profile_image = models.ImageField(
-        upload_to='profile/',
-        null=True,
-        blank=True,
-        validators=(
-            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
-        )
+    profile_image = CloudinaryField('image'
+        # upload_to='profile/',
+        # null=True,
+        # blank=True,
+        # validators=(
+        #     MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        # )
     )
     start_time = models.DateTimeField(default=timezone.now)
     about = models.TextField(gettext_lazy('about'), max_length=400, blank=True, null=True)

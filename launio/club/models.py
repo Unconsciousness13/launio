@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
@@ -24,13 +25,13 @@ class Gymnast(models.Model):
     train = models.CharField(max_length=150, choices=TRAINING_TYPES)
     birthdate = models.DateField(blank=True,
                                  null=True)
-    photo = models.ImageField(
-        upload_to='gymnasts/',
-        null=True,
-        blank=True,
-        validators=(
-            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
-        )
+    photo = CloudinaryField('image'
+        # upload_to='gymnasts/',
+        # null=True,
+        # blank=True,
+        # validators=(
+        #     MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        # )
     )
     description = models.TextField(null=True)
     team = models.ForeignKey('Team', on_delete=models.CASCADE)
@@ -52,13 +53,14 @@ class Trainer(models.Model):
         MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
     train = models.CharField(max_length=150, choices=TRAINING_TYPES)
     birthdate = models.DateField(null=False)
-    photo = models.ImageField(
-        upload_to='trainers/',
-        null=True,
-        blank=True,
-        validators=(
-            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
-        )
+    photo = CloudinaryField(
+        'image'
+        # upload_to='trainers/',
+        # null=True,
+        # blank=True,
+        # validators=(
+        #     MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        # )
     )
     description = models.TextField(null=False)
 
@@ -103,13 +105,13 @@ class NotesTeam(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length=30, validators=(
         MinLengthValidator(MIN_NAMES_LENGTH_VALIDATOR),))
-    photo = models.ImageField(
-        upload_to='gymnasts/',
-        null=True,
-        blank=True,
-        validators=(
-            MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
-        )
+    photo = CloudinaryField('image'
+        # upload_to='gymnasts/',
+        # null=True,
+        # blank=True,
+        # validators=(
+        #     MaxFileSizeInMbValidator(IMAGE_MAX_SIZE_IN_MB),
+        # )
     )
     description = models.TextField(null=True)
 
