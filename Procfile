@@ -1,1 +1,1 @@
-web: gunicorn launio.wsgi
+web: gunicorn launio.wsgi.py
