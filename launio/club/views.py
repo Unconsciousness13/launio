@@ -28,7 +28,7 @@ class GymnastsView(views.ListView):
 
 
 class AddGymnastView(PermissionRequiredMixin, views.FormView):
-    permission_required = ('Can add gymnast',)
+    permission_required = ('Can add gymnast', 'Can change gymnast')
     template_name = 'launio/add-gymnast.html'
     form_class = AddGymnast
     success_url = '/gymnasts/'
@@ -38,7 +38,16 @@ class AddGymnastView(PermissionRequiredMixin, views.FormView):
         return super().form_valid(form)
 
 
-class DeleteGymnastView(views.DeleteView):
+class EditGymnastView(PermissionRequiredMixin, views.UpdateView):
+    permission_required = ('Can add gymnast', 'Can change gymnast')
+    model = Gymnast
+    form_class = AddGymnast
+    template_name = 'launio/add-gymnast.html'
+    success_url = '/gymnasts/'
+
+
+class DeleteGymnastView(PermissionRequiredMixin, views.DeleteView):
+    permission_required = ('Can add gymnast', 'Can change gymnast', 'Can delete gymnast')
     model = Gymnast
     template_name = 'launio/gymnast-confirm-delete.html'
     success_url = '/gymnasts/'
@@ -59,7 +68,8 @@ class GymnastDetailView(TemplateView):
         return context
 
 
-class AddTrainerView(views.FormView):
+class AddTrainerView(PermissionRequiredMixin, views.FormView):
+    permission_required = ('Can add trainer', 'Can change trainer', 'Can delete trainer')
     template_name = 'launio/add-trainer.html'
     form_class = AddTrainer
     success_url = '/trainers/'
@@ -69,14 +79,16 @@ class AddTrainerView(views.FormView):
         return super().form_valid(form)
 
 
-class EditTrainerView(views.UpdateView):
+class EditTrainerView(PermissionRequiredMixin, views.UpdateView):
+    permission_required = ('Can add trainer', 'Can change trainer', 'Can delete trainer')
     model = Trainer
     form_class = AddTrainer
     template_name = 'launio/trainer-edit.html'
     success_url = '/trainers/'
 
 
-class DeleteTrainerView(views.DeleteView):
+class DeleteTrainerView(PermissionRequiredMixin, views.DeleteView):
+    permission_required = ('Can add trainer', 'Can change trainer', 'Can delete trainer')
     model = Trainer
     template_name = 'launio/delete-trainer-confirm.html'
     success_url = '/trainers/'
@@ -92,7 +104,8 @@ class TrainersView(views.ListView):
         return context
 
 
-class AddTeamView(views.FormView):
+class AddTeamView(PermissionRequiredMixin, views.FormView):
+    permission_required = ('Can add team', 'Can change team', 'Can delete team')
     template_name = 'launio/add-team.html'
     form_class = AddTeam
     success_url = '/teams/'
@@ -102,14 +115,16 @@ class AddTeamView(views.FormView):
         return super().form_valid(form)
 
 
-class EditTeamView(views.UpdateView):
+class EditTeamView(PermissionRequiredMixin, views.UpdateView):
+    permission_required = ('Can add team', 'Can change team', 'Can delete team')
     model = Team
     form_class = AddTeam
     template_name = 'launio/team-edit.html'
     success_url = '/teams/'
 
 
-class DeleteTeamView(views.DeleteView):
+class DeleteTeamView(PermissionRequiredMixin, views.DeleteView):
+    permission_required = ('Can add team', 'Can change team', 'Can delete team')
     model = Team
     template_name = 'launio/team-confirm-delete.html'
     success_url = '/teams/'
@@ -138,11 +153,13 @@ class TeamDetailView(TemplateView):
         return context
 
 
-class AddNotesView(views.TemplateView):
+class AddNotesView(PermissionRequiredMixin, views.TemplateView):
+    permission_required = ('Can add notes', 'Can change notes', 'Can delete notes')
     template_name = 'launio/add-notes.html'
 
 
-class AddNotesIndividualView(views.FormView):
+class AddNotesIndividualView(PermissionRequiredMixin, views.FormView):
+    permission_required = ('Can add notes individual', 'Can change notes individual', 'Can delete notes individual')
     template_name = 'launio/add-notes-individual.html'
     form_class = AddNoteIndividual
     success_url = '/'
@@ -152,7 +169,8 @@ class AddNotesIndividualView(views.FormView):
         return super().form_valid(form)
 
 
-class AddNotesTeamView(views.FormView):
+class AddNotesTeamView(PermissionRequiredMixin, views.FormView):
+    permission_required = ('Can add notes team', 'Can change notes team', 'Can delete notes team')
     template_name = 'launio/add-notes-team.html'
     form_class = AddNoteTeam
     success_url = '/'
@@ -162,7 +180,8 @@ class AddNotesTeamView(views.FormView):
         return super().form_valid(form)
 
 
-class AddCompetitionView(views.FormView):
+class AddCompetitionView(PermissionRequiredMixin, views.FormView):
+    permission_required = ('Can add competition', 'Can change competition', 'Can delete competition')
     template_name = 'launio/add-competition.html'
     form_class = AddCompetition
     success_url = '/gymnasts/'
@@ -170,13 +189,6 @@ class AddCompetitionView(views.FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-
-
-class EditGymnastView(views.UpdateView):
-    model = Gymnast
-    form_class = AddGymnast
-    template_name = 'launio/add-gymnast.html'
-    success_url = '/gymnasts/'
 
 
 def contact_view(request):
