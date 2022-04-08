@@ -1,1 +1,1 @@
-web: gunicorn launio.wsgi.py
+web: gunicorn --pythonpath launio.wsgi.py
