@@ -13,21 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-kbe&e#9o$96%)qwo*z&w4ey_2*w=e)lk47#==_++cj!we6d=am'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.getenv('DEBUG', 'False') == 'True'
 DEBUG = True
 
 
-if DEBUG is False:
-    ALLOWED_HOSTS = [
-        '127.0.0.1:8000',
-        '*',
-    ]
-
-if DEBUG is True:
-    ALLOWED_HOSTS = []
-
-
-TEMPLATE_DEBUG = DEBUG
-
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+#
+# TEMPLATE_DEBUG = DEBUG
 
 # Application definition
 DJANGO_APPS = ('django.contrib.admin',
@@ -153,4 +145,3 @@ EMAIL_HOST_USER = 'pakotestpako@gmail.com'
 EMAIL_HOST_PASSWORD = 'TestTest2022'
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
-
