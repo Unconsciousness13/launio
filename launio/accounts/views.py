@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as gen_views
@@ -57,7 +58,8 @@ def profile_edit(request, pk):
     return render(request, 'profile/profile-edit.html', context)
 
 
-class DeleteProfileView(views.DeleteView):
+class DeleteProfileView(PermissionRequiredMixin, views.DeleteView):
+    permission_required = ('Can add new user', 'Can change new user', 'Can delete new user')
     model = NewUser
     template_name = 'profile/profile-delete-confirm.html'
     success_url = '/'
