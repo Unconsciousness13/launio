@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.mail import send_mail, BadHeaderError
 from django.http import BadHeaderError
 from django.http import HttpResponse
@@ -6,7 +7,6 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.views import generic as views
 from django.views.generic import TemplateView
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from launio.club.forms import AddGymnast, AddTrainer, AddNoteIndividual, AddCompetition, AddNoteTeam, AddTeam
 from launio.club.models import Trainer, Gymnast, Team, NotesIndividual, NotesTeam, Competition
@@ -27,7 +27,7 @@ class GymnastsView(views.ListView):
         return context
 
 
-class AddGymnastView(views.FormView):
+class AddGymnastView(PermissionRequiredMixin, views.FormView):
     permission_required = ('Can add gymnast',)
     template_name = 'launio/add-gymnast.html'
     form_class = AddGymnast
