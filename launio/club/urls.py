@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.urls import path
 
 from launio.club.views import HomeView, TrainersView, GymnastsView, AddGymnastView, AddTrainerView, \
@@ -10,7 +9,7 @@ urlpatterns = (
     path('', HomeView.as_view(), name='show index'),
 
     path('gymnasts/', GymnastsView.as_view(), name="show gymnasts"),
-    path('addgymnast/', login_required(AddGymnastView.as_view()), name='add gymnast'),
+    path('addgymnast/', AddGymnastView.as_view(), name='add gymnast'),
     path('edit-gymnast/<int:pk>/', EditGymnastView.as_view(), name='edit gymnast'),
     path('delete-gymnast/<int:pk>', DeleteGymnastView.as_view(), name='delete gymnast'),
     path('gymnast-details/<int:pk>/', GymnastDetailView.as_view(), name='detail gymnast'),
