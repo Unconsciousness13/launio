@@ -83,24 +83,23 @@ WSGI_APPLICATION = 'launio.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'defaulth': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2mt9jipdphbfh',
-        'USER': 'gzenihebnxhgon',
-        'PASSWORD': 'c232f3554a135554eda834eb417ff83e1ede919ec3d7dbbce0b775e6459fcbb3',
-        'HOST': 'ec2-52-30-67-143.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    }
-    
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'club_db',
-    #     'USER': 'postgres',
-    #     'PASSWORD': '1234',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '5432',
-    # }
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'd2mt9jipdphbfh',
+    'USER': 'gzenihebnxhgon',
+    'PASSWORD': 'c232f3554a135554eda834eb417ff83e1ede919ec3d7dbbce0b775e6459fcbb3',
+    'HOST': 'ec2-52-30-67-143.eu-west-1.compute.amazonaws.com',
+    'PORT': '5432',
 }
+
+# 'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'club_db',
+#     'USER': 'postgres',
+#     'PASSWORD': '1234',
+#     'HOST': '127.0.0.1',
+#     'PORT': '5432',
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
