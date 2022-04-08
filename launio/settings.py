@@ -16,9 +16,8 @@ SECRET_KEY = 'django-insecure-kbe&e#9o$96%)qwo*z&w4ey_2*w=e)lk47#==_++cj!we6d=am
 # DEBUG = os.getenv('DEBUG', 'False') == 'True'
 DEBUG = True
 
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-#
 # TEMPLATE_DEBUG = DEBUG
 
 # Application definition
@@ -119,7 +118,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
