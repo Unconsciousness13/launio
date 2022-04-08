@@ -83,15 +83,7 @@ WSGI_APPLICATION = 'launio.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'club_db',
-    #     'USER': 'postgres',
-    #     'PASSWORD': '1234',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '5432',
-    # }   'default':
-    {
+    'defaulth': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd2mt9jipdphbfh',
         'USER': 'gzenihebnxhgon',
@@ -99,6 +91,15 @@ DATABASES = {
         'HOST': 'ec2-52-30-67-143.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'club_db',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '1234',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '5432',
+    # }
 }
 
 # Password validation
