@@ -36,7 +36,7 @@ class ProfilePageView(PermissionRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = get_object_or_404(NewUser, **kwargs)
-        context['profile'] = profile
+        context['profile'] = profile.objects.get(profile.pk)
 
         return context
 
