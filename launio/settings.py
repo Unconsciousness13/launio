@@ -19,12 +19,10 @@ SECRET_KEY = 'django-insecure-kbe&e#9o$96%)qwo*z&w4ey_2*w=e)lk47#==_++cj!we6d=am
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-ALLOWED_HOSTS = [
-    '127.0.0.1:8000',
-    'launio.herokuapp.com',
-]
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')  // Upload this
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # TEMPLATE_DEBUG = DEBUG
 
 # Application definition
@@ -87,27 +85,33 @@ WSGI_APPLICATION = 'launio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2mt9jipdphbfh',
-        'USER': 'gzenihebnxhgon',
-        'PASSWORD': 'c232f3554a135554eda834eb417ff83e1ede919ec3d7dbbce0b775e6459fcbb3',
-        'HOST': 'ec2-52-30-67-143.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432'
+DATABASES = None
+
+if APP_ENVIRONMENT == 'Production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': os.getenv('DB_HOST'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+
+        },
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'club_db',
+            'USER': 'postgres',
+            'PASSWORD': '1234',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        },
 
-# 'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'club_db',
-#     'USER': 'postgres',
-#     'PASSWORD': '1234',
-#     'HOST': '127.0.0.1',
-#     'PORT': '5432',
-# }
-
-
+    }
+print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
