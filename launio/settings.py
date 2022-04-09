@@ -6,6 +6,7 @@ import cloudinary
 import cloudinary.api
 import cloudinary.uploader
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,7 +16,7 @@ BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-kbe&e#9o$96%)qwo*z&w4ey_2*w=e)lk47#==_++cj!we6d=am'
+SECRET_KEY = None
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
@@ -88,6 +89,9 @@ WSGI_APPLICATION = 'launio.wsgi.application'
 DATABASES = None
 
 if APP_ENVIRONMENT == 'Production':
+
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -100,6 +104,9 @@ if APP_ENVIRONMENT == 'Production':
         },
     }
 else:
+
+    SECRET_KEY = '*'
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -111,7 +118,6 @@ else:
         },
 
     }
-print(DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -168,8 +174,8 @@ LOGOUT_REDIRECT_URL = 'home.html'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'pakotestpako@gmail.com'
-EMAIL_HOST_PASSWORD = 'TestTest2022'
+EMAIL_HOST_USER = os.getenv('APP_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('APP_EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
 #

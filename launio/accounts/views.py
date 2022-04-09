@@ -29,14 +29,14 @@ class UserLoginView(auth_views.LoginView):
         return super().get_success_url()
 
 
-class ProfilePageView(PermissionRequiredMixin, TemplateView):
-    permission_required = ('Can add new user', 'Can change new user', 'Can delete new user' 'Can view new user')
+class ProfilePageView(TemplateView):
+    # permission_required = ('Can add new user', 'Can change new user', 'Can delete new user' 'Can view new user')
     template_name = 'profile/profile.html'
 
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = get_object_or_404(NewUser, **kwargs)
-        context['profile'] = profile.objects.get(profile.pk)
+        context['profile'] = profile
 
         return context
 
