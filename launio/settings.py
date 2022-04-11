@@ -26,7 +26,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'launio.herokuapp.com']
 # TEMPLATE_DEBUG = DEBUG
 
 # Application definition
