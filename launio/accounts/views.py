@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as gen_views
 from django.views import generic as views
@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 from launio.accounts.forms import RegisterForm, UpdateForm
 from launio.accounts.models import NewUser
 
-User = get_user_model
+User = get_user_model()
 
 
 class UserRegisterView(gen_views.CreateView):
@@ -35,14 +35,9 @@ class ProfilePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
-        profile = get_object_or_404(NewUser, **kwargs)
-        curr_u = self.request.user.pk
-        if not curr_u == profile.pk:
-            redirect('errors/404.html')
-
-        else:
-            context['profile'] = profile
-            return context
+        profile = NewUser.objects.get(pk=self.request.user.pk)
+        context['profile'] = profile
+        return context
 
 
 def profile_edit(request, pk):
