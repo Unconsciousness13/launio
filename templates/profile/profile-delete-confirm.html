@@ -4,7 +4,7 @@
     <div class="form">
         <h1>Borar prefil</h1>
         <form method="post">{% csrf_token %}
-            <p>{{ profile.user_name }}¿Estás seguro de que quieres borrar el prefil?</p>
+            <p><b>{{ profile.user_name }}</b> ¿Estás seguro de que quieres borrar el prefil?</p>
             <div class="center">
                 <button class="btn">
                     <span>Confirmar</span>
