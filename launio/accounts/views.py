@@ -36,29 +36,31 @@ class ProfilePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = get_object_or_404(NewUser, **kwargs)
-        if not User.pk == profile.pk:
+        if not profile.pk:
             redirect('errors/500.html')
         context['profile'] = profile
-
         return context
 
 
 def profile_edit(request, pk):
     profile = NewUser.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = UpdateForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('profile view', profile.pk)
-    else:
-        form = UpdateForm(instance=profile)
+    if request.user.pk == profile.pk:
+        if request.method == 'POST':
+            form = UpdateForm(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                form.save()
+                return redirect('profile view', profile.pk)
+        else:
+            form = UpdateForm(instance=profile)
 
-    context = {
-        'form': form,
-        'pk': pk,
-        'profile': profile,
-    }
-    return render(request, 'profile/profile-edit.html', context)
+        context = {
+            'form': form,
+            'pk': pk,
+            'profile': profile,
+        }
+        return render(request, 'profile/profile-edit.html', context)
+    else:
+        redirect('errors/500.html')
 
 
 class DeleteProfileView(PermissionRequiredMixin, views.DeleteView):

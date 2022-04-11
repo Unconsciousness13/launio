@@ -22,7 +22,8 @@ BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+# DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = False
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -58,7 +59,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
 
 AUTH_USER_MODEL = 'accounts.NewUser'
 
@@ -174,7 +174,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('APP_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('APP_EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
-
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
