@@ -36,6 +36,8 @@ class ProfilePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = get_object_or_404(NewUser, **kwargs)
+        if not User.pk == profile.pk:
+            redirect('errors/500.html')
         context['profile'] = profile
 
         return context
@@ -60,7 +62,7 @@ def profile_edit(request, pk):
 
 
 class DeleteProfileView(PermissionRequiredMixin, views.DeleteView):
-    permission_required = ('Can add new user', 'Can change new user', 'Can delete new user' 'Can view new user')
+    permission_required = 'Can delete new user'
     model = NewUser
     template_name = 'profile/profile-delete-confirm.html'
     success_url = '/'

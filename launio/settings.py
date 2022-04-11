@@ -19,14 +19,12 @@ BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '0'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')  // Upload this
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # TEMPLATE_DEBUG = DEBUG
 
@@ -37,7 +35,6 @@ DJANGO_APPS = ('django.contrib.admin',
                'django.contrib.sessions',
                'django.contrib.messages',
                'django.contrib.staticfiles',
-               # 'django.contrib.auth.models.User',
                )
 
 THIRD_PARTY_APPS = ()
@@ -62,8 +59,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-# AUTH_USER_MODEL = 'accounts.User'
-# Auth User Model
+
 AUTH_USER_MODEL = 'accounts.NewUser'
 
 ROOT_URLCONF = 'launio.urls'
@@ -173,15 +169,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'home.html'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-# EMAIL_HOST_USER = os.getenv('APP_EMAIL_HOST_USER')
 EMAIL_HOST_USER = os.getenv('APP_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('APP_EMAIL_HOST_PASSWORD')
-# EMAIL_HOST_PASSWORD = os.environ['APP_EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
+
 
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME'),
