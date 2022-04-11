@@ -1,6 +1,4 @@
-#.env
-#.idea
-#staticfiles
+.idea
 .env
 staticfiles/admin/css/autocomplete.4a81fc4242d0.css
 staticfiles/admin/css/autocomplete.4a81fc4242d0.css.gz
