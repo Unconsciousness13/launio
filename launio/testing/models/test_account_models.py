@@ -9,6 +9,8 @@ class NewUserTests(TestCase):
         'first_name': 'Pako',
         'last_name': 'Iliev',
         'user_name': 'PaKo',
+        'email': 'pako@pako.es',
+        'id': 1,
     }
 
     def test_profile_create__when_first_name_contain_only_letters__expect_success(self):
@@ -44,3 +46,22 @@ class NewUserTests(TestCase):
         profile = NewUser(**self.VALID_USER_DATA)
         profile.save()
         self.assertEqual(str(profile.user_name), profile.__str__())
+
+    def test_profile_if_superuser(self):
+        profile = NewUser(**self.VALID_USER_DATA)
+        profile.is_superuser = True
+        profile.save()
+        self.assertTrue(profile.is_superuser, True)
+
+    def test_profile_if_not_superuser(self):
+        profile = NewUser(**self.VALID_USER_DATA)
+        profile.is_superuser = False
+        profile.save()
+        self.assertFalse(profile.is_superuser, False)
+
+    def test_if_user_email_is_correct(self):
+        profile = NewUser(**self.VALID_USER_DATA)
+        profile.save()
+        self.assertEqual(profile.email, 'pako@pako.es')
+
+
