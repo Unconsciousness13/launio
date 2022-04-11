@@ -30,7 +30,6 @@ class UserLoginView(auth_views.LoginView):
 
 
 class ProfilePageView(TemplateView):
-    # permission_required = ('Can add new user', 'Can change new user', 'Can delete new user' 'Can view new user')
     template_name = 'profile/profile.html'
 
     def get_context_data(self, **kwargs):
@@ -61,11 +60,16 @@ def profile_edit(request, pk):
         redirect('errors/500.html')
 
 
-class DeleteProfileView(PermissionRequiredMixin, views.DeleteView):
-    permission_required = 'Can delete new user'
+class DeleteProfileView(views.DeleteView):
     model = NewUser
     template_name = 'profile/profile-delete-confirm.html'
     success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super(DeleteProfileView, self).get_context_data(**kwargs)
+        profile = NewUser.objects.get(pk=self.request.user.pk)
+        context['profile'] = profile
+        return context
 
 
 # // Errors views //
