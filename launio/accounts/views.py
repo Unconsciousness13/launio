@@ -37,11 +37,12 @@ class ProfilePageView(TemplateView):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = get_object_or_404(NewUser, **kwargs)
         curr_u = self.request.user.pk
-        if curr_u == profile.pk:
+        if not curr_u == profile.pk:
+            redirect('errors/404.html')
+
+        else:
             context['profile'] = profile
             return context
-        else:
-            redirect('errors/500.html')
 
 
 def profile_edit(request, pk):
