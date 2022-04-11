@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 from launio.accounts.forms import RegisterForm, UpdateForm
 from launio.accounts.models import NewUser
 
-User = get_user_model()
+User = get_user_model
 
 
 class UserRegisterView(gen_views.CreateView):
@@ -36,10 +36,12 @@ class ProfilePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = get_object_or_404(NewUser, **kwargs)
-        if not profile.pk:
+        curr_u = self.request.user.pk
+        if curr_u == profile.pk:
+            context['profile'] = profile
+            return context
+        else:
             redirect('errors/500.html')
-        context['profile'] = profile
-        return context
 
 
 def profile_edit(request, pk):
