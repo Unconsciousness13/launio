@@ -22,8 +22,8 @@ BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG', 'False') == 'True'
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
