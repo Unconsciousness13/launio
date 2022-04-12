@@ -10,7 +10,7 @@ urlpatterns = [
                   path('accounts/', include('launio.accounts.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler400 = 'launio.accounts.views.handler400'
-handler403 = 'launio.accounts.views.handler403'
+# handler400 = 'launio.accounts.views.handler400'
+# handler403 = 'launio.accounts.views.handler403'
 handler404 = 'launio.accounts.views.handler404'
 handler500 = 'launio.accounts.views.handler500'

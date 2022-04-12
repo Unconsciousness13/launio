@@ -50,6 +50,7 @@ class NewUserTests(TestCase):
     def test_profile_if_superuser(self):
         profile = NewUser(**self.VALID_USER_DATA)
         profile.is_superuser = True
+        profile.clean()
         profile.save()
         self.assertTrue(profile.is_superuser, True)
 
@@ -73,5 +74,5 @@ class NewUserTests(TestCase):
         with self.assertRaises(ValidationError) as context:
             profile.clean()
             profile.save()
-        print(context.exception)
         self.assertIsNotNone(context.exception)
+

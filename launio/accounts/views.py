@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as gen_views
@@ -86,16 +85,3 @@ def handler500(request):
     response.status_code = 500
     return response
 
-
-def handler403(request, exception):
-    context = {}
-    response = render(request, "errors/403.html", context=context)
-    response.status_code = 403
-    return response
-
-
-def handler400(request, exception):
-    context = {}
-    response = render(request, "errors/400.html", context=context)
-    response.status_code = 400
-    return response
