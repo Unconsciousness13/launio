@@ -1,5 +1,7 @@
-from django.test import TestCase
+from django.test import TestCase,Client
 from django.urls import reverse
+
+from launio.accounts.models import NewUser
 
 
 class NewUserViewsTests(TestCase):
@@ -21,11 +23,14 @@ class NewUserViewsTests(TestCase):
 
         self.assertTemplateUsed(response, 'profile/login.html')
 
-    # def test_new_user_successful__profile_page_view(self):
-    #     user = self.VALID_USER_DATA
-    #     print(user)
-    #     response = self.client.get(reverse('profile view', user['id']))
-    #     self.assertTemplateUsed(response, '/accounts/profile/1/')
+    def test_new_user_successful__profile_page_view(self):
+        user = NewUser.objects.create(id=1, user_name='testuser')
+        user.set_password('12345')
+        user.save()
+        client = Client()
+        client.force_login(user)
+        response = client.get("/accounts/profile/1/", follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_new_user_profile_edit_view(self):
         pass
@@ -34,5 +39,5 @@ class NewUserViewsTests(TestCase):
         pass
 
     def test_wrong_url_returns_404(self):
-        response = self.client.get('/something/really/weird/')
+        response = self.client.get('/wrong/wrong/wrong/blalba')
         self.assertEqual(response.status_code, 404)

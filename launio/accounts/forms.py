@@ -23,5 +23,5 @@ class UpdateForm(forms.ModelForm):
                   'email',
                   'profile_image',
                   'about',
-                  'start_time',
+
                   )
