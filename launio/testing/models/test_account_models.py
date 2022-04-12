@@ -64,4 +64,14 @@ class NewUserTests(TestCase):
         profile.save()
         self.assertEqual(profile.email, 'pako@pako.es')
 
+    def test_username___expect_raise_if_not_letters_or_numbers(self):
+        user_name = 'IPaKo_ '
+        profile = NewUser(user_name=user_name,
+                          first_name=self.VALID_USER_DATA['first_name'],
+                          last_name=self.VALID_USER_DATA['user_name'], )
 
+        with self.assertRaises(ValidationError) as context:
+            profile.clean()
+            profile.save()
+        print(context.exception)
+        self.assertIsNotNone(context.exception)

@@ -81,5 +81,5 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
                 f'El apellido tiene que contener solo letras,pero contiene: {invalid_chars_last_name}')
         if invalid_chars_username:
             raise ValidationError(
-                f'El usuario tiene que contener solo letras o numeros: {invalid_chars_last_name}')
+                f'El usuario tiene que contener solo letras o numeros: {invalid_chars_username}')
 
