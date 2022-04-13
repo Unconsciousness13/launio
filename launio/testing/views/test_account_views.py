@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.http import HttpResponseServerError
 from django.test import TestCase, Client
 from django.urls import reverse
 
@@ -18,6 +18,7 @@ class NewUserViewsTests(TestCase):
         self.client.login(**self.VALID_USER_DATA)
         response = self.client.get(reverse('show index'))
         self.assertEqual(response.status_code, 200)
+
 
     def test_new_user_login_successful_login(self):
         response = self.client.get(reverse('login page'))
@@ -46,6 +47,7 @@ class NewUserViewsTests(TestCase):
             'email': 'pako@pako.es',
             'about': 'res'
         })
+
         update_profile = NewUser.objects.get(pk=user.pk)
         self.assertEqual('Pako', update_profile.first_name)
 
@@ -78,12 +80,22 @@ class NewUserViewsTests(TestCase):
         response = self.client.get('/wrong/wrong/wrong/blalba')
         self.assertEqual(response.status_code, 404)
 
-    # def test_wrong_url_returns_500(self):
-    #     user = NewUser.objects.create(**self.VALID_USER_DATA)
-    #     user.save()
-    #     client = Client()
-    #     client.force_login(user)
-    #     response = self.client.get("/accounts/profile-edit/12/")
-    #     self.assertEqual(response.status_code, 500)
+    def test_wrong_url_returns_500(self):
+        response = HttpResponseServerError
+        self.assertEqual(response.status_code, 500)
 
+    def test_delete_profile_view(self):
+        user = NewUser.objects.create(**self.VALID_USER_DATA)
+        user.save()
+        client = Client()
+        client.force_login(user)
+        response = client.get(reverse('profile delete', kwargs={'pk': user.pk}))
+        self.assertEqual(response.status_code, 200)
 
+    def test_delete_profile_view_incorrect(self):
+        user = NewUser.objects.create(**self.VALID_USER_DATA)
+        user.save()
+        client = Client()
+        client.force_login(user)
+        response = client.get(reverse('profile delete', kwargs={'pk': 2}))
+        self.assertEqual(response.status_code, 404)

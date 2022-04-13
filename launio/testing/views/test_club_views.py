@@ -47,3 +47,8 @@ class ClubGymnastListView(TestCase):
         client = Client()
         response = client.get("/team-details/1/", flolow=True)
         self.assertEqual(response.status_code, 200)
+
+    # def test_contact_view_successful(self):
+    #     form = {'name': 'Pep', 'email': 'pep@pep.es', 'message': 'Hello'}
+    #     self.assertTrue(form.is_valid())
+

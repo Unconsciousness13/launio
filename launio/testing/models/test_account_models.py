@@ -1,8 +1,7 @@
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-from launio.accounts.models import NewUser
+from launio.accounts.models import NewUser, CustomAccountManager
 
 
 class NewUserTests(TestCase):
@@ -77,9 +76,11 @@ class NewUserTests(TestCase):
             profile.save()
         self.assertIsNotNone(context.exception)
 
-    # def test_new_superuser(self):
-    #     profile = get_user_model()
-    #     super_user = profile.objects.crete_superuser(
-    #         'testuser@super.com', 'username', 'first_name', 'last_name', 'password'
-    #     )
-    #     self.assertEqual(super_user.email, 'testuser@super.com')
+    # def test_create_user_successful(self):
+    #     profile = CustomAccountManager.create_user(
+    #         email='pako@pako.es', user_name='Pako', first_name='Pako',
+    #                                                last_name='Iliev',
+    #                                                password='12345qua')
+    #     profile.save()
+    #     self.assertEqual(profile.email, 'pako@pako.es')
+

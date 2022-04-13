@@ -82,6 +82,6 @@ def handler404(request, exception):
 
 def handler500(request):
     context = {}
-    response = render(request, "errors/404.html", context=context)
+    response = render(request, "errors/500.html", context=context)
     response.status_code = 500
     return response
