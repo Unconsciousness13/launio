@@ -56,7 +56,7 @@ def profile_edit(request, pk):
         }
         return render(request, 'profile/profile-edit.html', context)
     else:
-        redirect('errors/500.html')
+        redirect('errors/404.html')
 
 
 class DeleteProfileView(views.DeleteView):
@@ -64,11 +64,12 @@ class DeleteProfileView(views.DeleteView):
     template_name = 'profile/profile-delete-confirm.html'
     success_url = '/'
 
-    def get_context_data(self, **kwargs):
-        context = super(DeleteProfileView, self).get_context_data(**kwargs)
-        profile = NewUser.objects.get(pk=self.request.user.pk)
-        context['profile'] = profile
-        return context
+    def get_queryset(self):
+        owner = self.request.user.pk
+        if owner == self.request.user.pk:
+            return self.model.objects.filter(pk=owner)
+        else:
+            redirect('errors/404.html')
 
 
 # // Errors views //
@@ -84,4 +85,3 @@ def handler500(request):
     response = render(request, "errors/500.html", context=context)
     response.status_code = 500
     return response
-
