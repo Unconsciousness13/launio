@@ -56,7 +56,7 @@ def profile_edit(request, pk):
         }
         return render(request, 'profile/profile-edit.html', context)
     else:
-        redirect('errors/404.html')
+        redirect('errors/500.html')
 
 
 class DeleteProfileView(views.DeleteView):
@@ -69,7 +69,7 @@ class DeleteProfileView(views.DeleteView):
         if owner == self.request.user.pk:
             return self.model.objects.filter(pk=owner)
         else:
-            redirect('errors/404.html')
+            redirect('errors/500.html')
 
 
 # // Errors views //
