@@ -5,7 +5,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy
 
-from validators.image_validator import MaxFileSizeInMbValidator
+# from validators.image_validator import MaxFileSizeInMbValidator
 
 
 from cloudinary.models import CloudinaryField

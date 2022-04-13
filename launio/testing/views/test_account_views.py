@@ -1,4 +1,5 @@
-from django.test import TestCase,Client
+from django.contrib.auth import get_user_model
+from django.test import TestCase, Client
 from django.urls import reverse
 
 from launio.accounts.models import NewUser
@@ -33,7 +34,42 @@ class NewUserViewsTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_new_user_profile_edit_view(self):
-        pass
+        user = NewUser.objects.create(**self.VALID_USER_DATA)
+        user.save()
+        client = Client()
+        client.force_login(user)
+        response = client.post("/accounts/profile-edit/1/", data={
+            'id': 1,
+            'first_name': 'Spas',
+            'last_name': 'Iliev',
+            'user_name': 'PaKo',
+            'email': 'pako@pako.es',
+            'about': 'res'
+        })
+        update_profile = NewUser.objects.get(pk=user.pk)
+        self.assertEqual('Pako', update_profile.first_name)
+
+        # profile = NewUser.objects.create(**self.VALID_USER_DATA)
+        # profile.save()
+        # client = Client()
+        # client.force_login(profile)
+        #
+        # response = self.client.post(
+        #     reverse(
+        #         'profile edit', profile.pk),
+        #     data={
+        #         'id': 1,
+        #         'first_name': 'Spas',
+        #         'last_name': 'Iliev',
+        #         'user_name': 'PaKo',
+        #         'email': 'pako@pako.es',
+        #         # 'profile_image': 'nvfbboicknzkgl3du5fj'
+        #     }
+        # )
+        #
+        # update_profile = NewUser.objects.get(pk=profile.pk)
+        # print(response)
+        # self.assertEqual('Spas', update_profile.first_name)
 
     def test_new_user_profile_edit_view__invalid_url_redirect(self):
         pass
@@ -41,3 +77,13 @@ class NewUserViewsTests(TestCase):
     def test_wrong_url_returns_404(self):
         response = self.client.get('/wrong/wrong/wrong/blalba')
         self.assertEqual(response.status_code, 404)
+
+    # def test_wrong_url_returns_500(self):
+    #     user = NewUser.objects.create(**self.VALID_USER_DATA)
+    #     user.save()
+    #     client = Client()
+    #     client.force_login(user)
+    #     response = self.client.get("/accounts/profile-edit/12/")
+    #     self.assertEqual(response.status_code, 500)
+
+

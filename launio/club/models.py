@@ -2,7 +2,7 @@ from cloudinary.models import CloudinaryField
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
-from validators.image_validator import MaxFileSizeInMbValidator
+# from validators.image_validator import MaxFileSizeInMbValidator
 
 IMAGE_MAX_SIZE_IN_MB = 2
 MIN_NAMES_LENGTH_VALIDATOR = 2

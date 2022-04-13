@@ -40,6 +40,7 @@ class ProfilePageView(TemplateView):
 
 def profile_edit(request, pk):
     profile = NewUser.objects.get(pk=pk)
+
     if request.user.pk == profile.pk:
         if request.method == 'POST':
             form = UpdateForm(request.POST, request.FILES, instance=profile)
@@ -55,8 +56,6 @@ def profile_edit(request, pk):
             'profile': profile,
         }
         return render(request, 'profile/profile-edit.html', context)
-    else:
-        redirect('errors/500.html')
 
 
 class DeleteProfileView(views.DeleteView):
@@ -66,10 +65,11 @@ class DeleteProfileView(views.DeleteView):
 
     def get_queryset(self):
         owner = self.request.user.pk
-        if owner == self.request.user.pk:
-            return self.model.objects.filter(pk=owner)
-        else:
-            redirect('errors/500.html')
+        try:
+            if owner == self.request.user.pk:
+                return self.model.objects.filter(pk=owner)
+        except:
+            redirect('errors/404.html')
 
 
 # // Errors views //
@@ -82,6 +82,6 @@ def handler404(request, exception):
 
 def handler500(request):
     context = {}
-    response = render(request, "errors/500.html", context=context)
+    response = render(request, "errors/404.html", context=context)
     response.status_code = 500
     return response

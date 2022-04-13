@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
@@ -76,3 +77,9 @@ class NewUserTests(TestCase):
             profile.save()
         self.assertIsNotNone(context.exception)
 
+    # def test_new_superuser(self):
+    #     profile = get_user_model()
+    #     super_user = profile.objects.crete_superuser(
+    #         'testuser@super.com', 'username', 'first_name', 'last_name', 'password'
+    #     )
+    #     self.assertEqual(super_user.email, 'testuser@super.com')
