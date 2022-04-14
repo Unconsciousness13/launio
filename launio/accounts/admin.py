@@ -7,13 +7,13 @@ from .models import NewUser
 
 class UserAdminConfig(UserAdmin):
     search_fields = ('email', 'user_name', 'last_name')
-    list_filter = ('email', 'user_name')
+    list_filter = ('email', 'user_name', 'groups')
     ordering = ('id',)
-    list_display = ('email', 'user_name', 'first_name', 'last_name', 'is_active', 'is_staff', )
+    list_display = ('email', 'user_name', 'first_name', 'last_name', 'is_active', 'is_staff',)
 
     fieldsets = (
         (None, {'fields': ('email', 'user_name', 'first_name', 'last_name',)}),
-        ('Permissions', {'fields': ('is_staff', 'is_active' ,'groups')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', 'groups', 'is_superuser')}),
         ('Personal', {'fields': ('about', 'profile_image',)}),
     )
 
