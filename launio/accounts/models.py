@@ -38,6 +38,7 @@ class CustomAccountManager(BaseUserManager):
                           **other_fields)
         user.set_password(password)
         user.save()
+        return user
 
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
