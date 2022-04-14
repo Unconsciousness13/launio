@@ -133,6 +133,7 @@ class DeleteTeamView(PermissionRequiredMixin, views.DeleteView):
 class TeamsView(views.ListView):
     model = Team
     template_name = 'launio/teams.html'
+    ordering = 'name'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

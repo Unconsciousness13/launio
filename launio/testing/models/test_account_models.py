@@ -76,11 +76,11 @@ class NewUserTests(TestCase):
             profile.save()
         self.assertIsNotNone(context.exception)
 
-    # def test_create_user_successful(self):
-    #     profile = CustomAccountManager.create_user(
-    #         email='pako@pako.es', user_name='Pako', first_name='Pako',
-    #                                                last_name='Iliev',
-    #                                                password='12345qua')
-    #     profile.save()
-    #     self.assertEqual(profile.email, 'pako@pako.es')
+    def test_create_user_successful(self):
+        profile = CustomAccountManager.create_user(
+            email='pako@pako.es', user_name='Pako', first_name='Pako',
+                                                   last_name='Iliev',
+                                                   password='12345qua', self='self', )
+        profile.save()
+        self.assertEqual(profile.email, 'pako@pako.es')
 

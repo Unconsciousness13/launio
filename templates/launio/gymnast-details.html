@@ -9,7 +9,7 @@
                     <li>Fecha de nacimiento: {{ gymnast.birthdate|date:"d M, Y" }}</li>
                     <li>Categoria: {{ gymnast.category }}</li>
                     <li>Entrena: {{ gymnast.train }}</li>
-                    <li>Conjunto: {{ gymnast.team }}</li>
+                    <li>Conjunto: <a href="{% url 'detail team' gymnast.team.pk %}" style="color: deeppink">{{ gymnast.team }}</a></li>
                     {% if gymnast.photo %}
                         <li><img src="{{ gymnast.photo.url }}" alt="gymnast photo"/></li>
                     {% endif %}
