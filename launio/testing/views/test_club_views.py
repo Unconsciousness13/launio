@@ -1,7 +1,8 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from launio.club.models import Gymnast, Team
+from launio.club.forms import CreateContactForm, AddNoteIndividual, AddNoteTeam
+from launio.club.models import Gymnast, Team, Competition
 
 
 class ClubGymnastListView(TestCase):
@@ -48,7 +49,43 @@ class ClubGymnastListView(TestCase):
         response = client.get("/team-details/1/", flolow=True)
         self.assertEqual(response.status_code, 200)
 
-    # def test_contact_view_successful(self):
-    #     form = {'name': 'Pep', 'email': 'pep@pep.es', 'message': 'Hello'}
-    #     self.assertTrue(form.is_valid())
+    def test_contact_view_successful(self):
+        subject = 'Sended from web La Unio contact form'
+        body = {
+            'first_name': 'Someone',
+            'email_address': 'some@some.com',
+            'message': 'Hello',
+        }
+        message = "\n".join(body.values())
+        form = CreateContactForm(body)
+        self.assertTrue(form.is_valid())
 
+    def test_add_notes_individual_view__valid_form(self):
+        team = Team.objects.create(id=2, name='Benjamin A', description='None', photo='/photo.jpg')
+        gymnast = Gymnast.objects.create(id=2, first_name='testuser', last_name='lastname', team_id=2)
+        competition = Competition.objects.create(competition_name='BlackroseS', competition_date='2022-03-02',
+                                                 competition_club_organisation='Somea')
+        context = {
+            'nota_competition': 11.100,
+            'competition': competition,
+            'gymnast': gymnast,
+            'competition_place_on_board': 2,
+
+        }
+        form = AddNoteIndividual(context)
+        self.assertTrue(form.is_valid())
+
+    def test_add_notes_team_view__valid_form(self):
+        team = Team.objects.create(id=1, name='Benjamin', description='None', photo='/photo.jpg')
+        gymnast = Gymnast.objects.create(id=1, first_name='testuser', last_name='lastname', team_id=1)
+        competition = Competition.objects.create(competition_name='Blackrose', competition_date='2022-02-02',
+                                                 competition_club_organisation='Some')
+        context = {
+            'nota_competition': 16.100,
+            'competition': competition,
+            'team': team,
+            'competition_place_on_board': 1,
+
+        }
+        form = AddNoteTeam(context)
+        self.assertTrue(form.is_valid())
