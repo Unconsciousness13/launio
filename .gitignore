@@ -56,9 +56,9 @@ dist/
 downloads/ 
 .vscode/
 __pycache__
-# mediafiles/
-# static/
-# staticfiles/
+mediafiles/
+static/
+staticfiles/
 .idea
 eggs/ 
 .eggs/ 
