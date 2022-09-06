@@ -26,13 +26,18 @@ div.row div.column ul li img {
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 572px) {
   .column {
-    width: 100%;
+    display: block;
+    width: 90%;
+    padding: 30px;
+    box-shadow: 1px 1px 1px 1px deeppink;
+    margin: 10px;
+  
   }
-  .row {
-    width: 100%;
-  }
+
+  
+
 }
 
 /*select css*/
