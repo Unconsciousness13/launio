@@ -38,7 +38,7 @@ DJANGO_APPS = ('django.contrib.admin',
                'django.contrib.staticfiles',
                )
 
-THIRD_PARTY_APPS = ()
+THIRD_PARTY_APPS = ("bootstrap5",)
 
 LA_UNIO_APPS = (
     'launio.club',
