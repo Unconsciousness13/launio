@@ -1,0 +1,22 @@
+/* @import "bootstrap.min.css"; */
+@import "main.css";
+@import "navbar.css";
+@import "footer.css";
+@import "home.css";
+@import "contact-form.css";
+@import "forms.css";
+@import "trainers_and_gymnast.css";
+@import "login.css";
+@import "loader.css";
+@import "admin-stuffs.css";
+
+
+html{
+    position:relative; 
+    min-height: 100%;
+  }
+  /*Normalize html and body elements,this style is just good to have*/
+  html,body{
+    margin:0;
+    padding:0;
+  }
