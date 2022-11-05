@@ -84,7 +84,6 @@ TEMPLATES = [
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'launio.up.railway.app' ,
     'https://launio.up.railway.app',
 ]
 
