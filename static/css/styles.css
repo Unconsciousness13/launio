@@ -20,3 +20,22 @@ html{
     margin:0;
     padding:0;
   }
+
+
+@media (max-width: 991px) { 
+  .notes-individual {
+      font-size:10px
+  }
+}
+
+@media (max-width: 671px) { 
+  .notes-individual {
+      font-size:8px
+  }
+}
+
+@media (max-width: 412px) { 
+  .notes-individual {
+      font-size:6px
+  }
+}
