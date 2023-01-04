@@ -34,7 +34,7 @@ class Gymnast(models.Model):
         # )
     )
     description = models.TextField(null=True)
-    team = models.ForeignKey('Team', on_delete=models.CASCADE)
+    team = models.ForeignKey('Team', on_delete=models.CASCADE, default='Sin conjunto')
 
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
