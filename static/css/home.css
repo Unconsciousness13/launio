@@ -11,18 +11,16 @@
     float: left;
 }
 
-@media (max-width: 991px) {
+@media screen and (min-width: 900px) {
     .club-info-div {
-        margin: 0;
-        width: -moz-fit-content;
-        width: fit-content;
-        font-size: 20px;
+      margin:10px;
     }
-}
+  }
 
 
 .club-info-div {
-    margin: 100px;
+    margin: 10%;
+    margin-top: 5%;
     width: -moz-fit-content;
     width: fit-content;
     font-size: 20px;

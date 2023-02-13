@@ -4,6 +4,10 @@ from django import forms
 from launio.club.models import Gymnast, Trainer, NotesTeam, NotesIndividual, Competition, Team, Contact
 
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class AddGymnast(forms.ModelForm):
     class Meta:
         model = Gymnast
@@ -19,6 +23,9 @@ class AddGymnast(forms.ModelForm):
             'description': 'Descripcion',
         }
 
+        widgets = {
+            'birthdate': DateInput(), 
+        }
 
 class AddTrainer(forms.ModelForm):
     class Meta:
@@ -34,6 +41,10 @@ class AddTrainer(forms.ModelForm):
             'description': 'Descripcion',
         }
 
+
+        widgets = {
+            'birthdate': DateInput(), 
+        }
 
 class AddNoteTeam(forms.ModelForm):
     class Meta:
@@ -71,6 +82,10 @@ class AddCompetition(forms.ModelForm):
             'competition_name': 'Nombre de la competicion',
             'competition_place': 'Lugar(poblacion)',
             'competition_date': 'Fecha de competicion',
+        }
+        
+        widgets = {
+            'competition_date': DateInput(), 
         }
 
 
