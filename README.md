@@ -1,5 +1,5 @@
 # launio live at :
-https://launio.herokuapp.com/
+https://launio.up.railway.app/
 
 
 Only administrator can add content.
